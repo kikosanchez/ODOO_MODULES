@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="template_includes" inherit_id="website.assets_frontend" name="JIM Template Includes">
+
+        <!-- Estilos propios del módulo (en static/less/)  -->
+        <xpath expr="link[last()]" position="after">
+            <!-- Importar hojas de estilo .less -->
+            <link href="/js_website_template/static/less/main.less" rel="stylesheet" type="text/less"/>
+            <link href="/js_website_template/static/less/shop.less" rel="stylesheet" type="text/less"/>
+            <link href="/js_website_template/static/less/page.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+
+        <!-- Funciones JavaScript propias del módulo (en static/js/)  -->
+        <xpath expr="script[last()]" position="after">
+            <!-- Importar ficheros JavaScript .js -->
+            <script type="text/javascript" src="/js_website_template/static/js/functions.js" />
+        </xpath>
+
+    </template>
+
+    <template id="custom_frontend_layout" inherit_id="portal.frontend_layout" name="Custom Frontend Layout">
+
+        <!-- Menú superior fixed -->
+        <xpath expr="//header/div" position="attributes">
+            <attribute name="class">navbar navbar-default navbar-fixed-top</attribute>
+        </xpath>
+
+    </template>
+
+    <template id="custom_contact_us" inherit_id="website.contactus" name="Custom Contact Us">
+
+        <!-- Cambiar mapa de Google por OpenMaps  -->
+		<xpath expr="//div[hasclass('col-md-4','mb32')]" position="replace">
+            <div id="organization" class="col-md-4">
+    		    <address itemscope="itemscope" itemtype="http://schema.org/Organization">
+                    <div><span itemprop="name">JIM SPORTS DOMINICANA SRL</span></div>
+
+                    <div itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
+                        <div>
+                            <i class="fa fa-map-marker fa-fw"></i>
+                            <span itemprop="streetAddress">
+                                <![CDATA[
+                                    Av. 27 de Febrero #234<br>
+                                    &nbsp; &nbsp; Edificio Yolanda, Local 104, 1er. nivel<br>
+                                    &nbsp; &nbsp; El vergal SD 10128<br>
+                                    &nbsp; &nbsp; República Dominicana
+                                ]]>
+                            </span>
+                        </div>
+                        <div>
+                            <i class="fa fa-phone fa-fw"></i> <span itemprop="telephone">+1 809 902 7707</span>
+                        </div>
+                    </div>
+
+    				<iframe class="map" width="100%" height="340" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-69.92692172527315%2C18.466782207191528%2C-69.9224478006363%2C18.469209256892473&amp;layer=mapnik&amp;marker=18.467995736333986%2C-69.92468476295471"></iframe>
+    			</address>
+            </div>
+		</xpath>
+
+	</template>
+
+</odoo>

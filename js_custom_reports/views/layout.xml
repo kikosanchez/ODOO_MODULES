@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="report_includes" inherit_id="web.report_assets_common" name="JIM Report Includes">
+
+        <!-- Estilos propios del módulo (en static/less/)  -->
+        <xpath expr="link[last()]" position="after">
+            <!-- Importar styles.less -->
+            <link href="/js_custom_reports/static/less/report_styles.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+
+    </template>
+
+    <!-- http://192.168.1.204:8069/report/html/account.report_invoice/1 -->
+
+</odoo>

@@ -1,0 +1,19 @@
+/* TAMAÑO DE TEXTO */
+
+.o_boxed_footer, .o_boxed_header, .o_report_layout_boxed {
+    font-size: 16px;
+}
+
+/* ELIMINAR TELÉFONO, CORREO, WEB Y NIF DEL PIE DE PÁGINA */
+
+.o_boxed_footer ul.list-inline {
+    display: none;
+}
+
+/* FORMATO DE TEXTO EN PIÉ DE PÁGINA (TEXTO RGPD) */
+
+.o_boxed_footer div[data-oe-field="report_footer"] {
+    text-align: justify;
+    white-space: normal;
+    margin: 8px 0;
+}
