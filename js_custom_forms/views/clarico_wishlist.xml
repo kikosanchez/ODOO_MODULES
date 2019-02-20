@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Que el corazón en la página de producto cuando se es usuario anónimo no haga nada en vez de ir a la página de login -->
+    <template id="js_clarico_wishlist" inherit_id="clarico_wishlist.clarico_product_wishlist" name="JS Clarico Lista de deseos" priority="25">
+        <xpath expr="//a[@t-attf-href='/web/login?redirect=#{url}']" position="replace">
+            <a t-attf-href="#" class="product_wish_wo_signin">
+                <i class="fa fa-heart-o" aria-hidden="true"/>
+            </a>
+        </xpath>
+    </template>
+
+    <template id="js_clarico_wishlist_imagen" inherit_id="clarico_wishlist.clarico_wishlist" name="JS Clarico Lista de deseos, imagen" priority="20">
+        <xpath expr="//section/img[hasclass('wishlist-cover-img')]" position="replace">
+        </xpath>
+    </template>
+</odoo>

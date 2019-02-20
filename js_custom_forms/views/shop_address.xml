@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Que sólo aparezca Francia en el Select de la dirección de Checkout. URL: /shop/address -->
+    <template id="js_shop_address" inherit_id="website_sale.address" name="JS Shop Address">
+        <xpath expr="//form[@name='/shop/checkout']//select[@id='country_id']" position="replace">
+            <select id="country_id" name="country_id" class="form-control disabled">
+                <option value="75" selected="True">France</option>
+            </select>
+        </xpath>
+    </template>
+</odoo>
