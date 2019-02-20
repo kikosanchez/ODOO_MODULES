@@ -104,7 +104,7 @@
         </field>
     </record>
 
-    <menuitem id="menu_ecommerce_vimenpaq" parent="website_sale.menu_ecommerce_settings" name="Sucursales Vimenpaq" action="vimenpaq_offices"  sequence="10" />
+    <menuitem id="menu_ecommerce_vimenpaq" parent="website_sale.menu_ecommerce_settings" name="Sucursales Vimenpaq" action="vimenpaq_offices" sequence="10" />
 
     <!-- CAMBIAR TÍTULO DE DIRECCIÓN EN PROCESO DE CHECKOUT Y SOLO APAREZCA LA REP. DOMINICANA EN PAISES -->
 
