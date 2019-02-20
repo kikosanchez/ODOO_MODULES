@@ -1,0 +1,20 @@
+{
+    "name": "JS Custom Forms",
+    "summary": "Cambios en los formularios frontend. De contacto, de compra en la web",
+    "version": "1.0",
+    "license": "AGPL-3",
+    "author": "Jim Sports",
+    "category": "Uncategorized",
+    "website": "https://jimsports.com",
+    'author':'Jim Sports',
+    'data': [
+        'views/shop_address.xml',
+        'views/default_contact_form.xml',
+        'views/web_product.xml',
+        'views/custom_generic_css.xml',
+        'views/clarico_product_compare.xml',
+        'views/clarico_wishlist.xml',
+    ],
+    'category': 'Website',
+    'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare'],
+}

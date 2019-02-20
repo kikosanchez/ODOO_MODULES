@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="js_estilar_emails" name="JS ESilos para los emails" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/js_emails_personalizacion/static/less/style.less" rel="stylesheet" type="text/less" />
+        </xpath>
+    </template>
+
+    <template id="js_eliminar_mensaje_powered_by_odoo" inherit_id="web.menu_secondary" name="JS Eliminar mensaje Powered by Odoo">
+        <xpath expr="//div[hasclass('o_sub_menu_footer')]" position="replace">
+            <div class="o_sub_menu_footer"></div>
+        </xpath>
+    </template>
+
+
+</odoo>
