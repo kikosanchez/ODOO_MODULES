@@ -43,6 +43,11 @@
         <xpath expr="//div[hasclass('cart-quantity-div')]" position="replace"></xpath>
         <xpath expr="//div[hasclass('p_ad2cart')]" position="replace"></xpath>
     </template>
+    
+    <!-- Tema Clarico: el elemento de menu desplegable Mi cuenta > Mi Carrito -->
+    <template id="js_clarico_micuenta_micarrito" inherit_id="clarico_account.clarico_account_clarico_layout" name="JS Clarico Mi Cuenta Mi Carrito" priority="25">       
+        <xpath expr="//div[@id='cart_id']" position="replace"></xpath>
+    </template>
 
     <!-- Ocultar por CSS <div> +1- de Cambiar cantidades en producto -->
     <!-- Tema Clarico: eliminar <div> +1- de Cambiar cantidades en producto -->
