@@ -14,6 +14,8 @@
         'views/custom_generic_css.xml',
         'views/clarico_product_compare.xml',
         'views/clarico_wishlist.xml',
+        'views/filter_sort_by.xml',
+        'views/cart.xml',
     ],
     'category': 'Website',
     'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare'],
