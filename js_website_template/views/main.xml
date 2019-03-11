@@ -28,31 +28,64 @@
 
     </template>
 
+    <!-- CONTACT FORM -->
+
     <template id="custom_contact_us" inherit_id="website.contactus" name="Custom Contact Us">
+
+        <!-- Modificar formulario de contacto -->
+        <xpath expr="//form" position="replace">
+            <form id="contact_form" action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/contactus-thank-you" class="s_website_form form-horizontal" enctype="multipart/form-data" data-editable-form="false">
+                <div class="form-group form-field o_website_form_required_custom">
+                    <label class="col-md-3 control-label" for="contact_name">Nombre</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required=""/>
+                    </div>
+                </div>
+                <div class="form-group form-field">
+                    <label class="col-md-3 control-label" for="phone">Teléfono</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control o_website_form_input" name="phone" t-att-value="request.params.get('phone', '')"/>
+                    </div>
+                </div>
+                <div class="form-group form-field o_website_form_required_custom">
+                    <label class="col-md-3 control-label" for="email_from">Email</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control o_website_form_input" name="email_from" required="" t-att-value="request.params.get('email_from', '')"/>
+                    </div>
+                </div>
+
+                <div class="form-group form-field o_website_form_required">
+                    <label class="col-md-3 control-label" for="name">Asunto</label>
+                    <div class="col-md-7">
+                        <input type="text" class="form-control o_website_form_input" name="name" required="" t-att-value="request.params.get('name', '')"/>
+                    </div>
+                </div>
+                <div class="form-group form-field o_website_form_required_custom">
+                    <label class="col-md-3 control-label" for="description">Mensaje</label>
+                    <div class="col-md-7">
+                        <textarea class="form-control o_website_form_input" name="description" required=""><t t-esc="request.params.get('description', '')"/></textarea>
+                    </div>
+                </div>
+                <div class="form-group form-field o_website_form_required_custom">
+                    <label class="col-md-3 control-label" for="g-recaptcha-response">Recaptcha</label>
+                    <div class="col-md-7">
+                        <span class="o_website_form_recaptcha" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-7">
+                        <span class="btn btn-primary btn-lg o_website_form_send">Enviar</span>
+                        <span id="o_website_form_result"/>
+                    </div>
+                </div>
+            </form>
+        </xpath>
 
         <!-- Cambiar mapa de Google por OpenMaps  -->
 		<xpath expr="//div[hasclass('col-md-4','mb32')]" position="replace">
-            <div id="organization" class="col-md-4">
+            <div id="organization" class="col-md-3">
     		    <address itemscope="itemscope" itemtype="http://schema.org/Organization">
-                    <div><span itemprop="name">JIM SPORTS DOMINICANA SRL</span></div>
-
-                    <div itemprop="address" itemscope="itemscope" itemtype="http://schema.org/PostalAddress">
-                        <div>
-                            <i class="fa fa-map-marker fa-fw"></i>
-                            <span itemprop="streetAddress">
-                                <![CDATA[
-                                    Av. 27 de Febrero #234<br>
-                                    &nbsp; &nbsp; Edificio Yolanda, Local 104, 1er. nivel<br>
-                                    &nbsp; &nbsp; El vergal SD 10128<br>
-                                    &nbsp; &nbsp; República Dominicana
-                                ]]>
-                            </span>
-                        </div>
-                        <div>
-                            <i class="fa fa-phone fa-fw"></i> <span itemprop="telephone">+1 809 902 7707</span>
-                        </div>
-                    </div>
-
+                    <div t-field="res_company.partner_id" t-options='{ "widget": "contact", "fields": ["address", "phone", "mobile", "email"] }'/>
     				<iframe class="map" width="100%" height="340" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-69.92692172527315%2C18.466782207191528%2C-69.9224478006363%2C18.469209256892473&amp;layer=mapnik&amp;marker=18.467995736333986%2C-69.92468476295471"></iframe>
     			</address>
             </div>

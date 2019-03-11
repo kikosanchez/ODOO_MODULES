@@ -8,13 +8,14 @@
     $(document).ready(function() {
 
         /*
-         * MOSTRAR/OCLTAR MENÚ DE CATEGORÍAS
-         */
+        * MOSTRAR/OCLTAR MENÚ DE CATEGORÍAS
+        */
 
         $('#cat_collapse').click(function(){
             $(this).toggleClass('active');
             $('#products_grid_before > ul.nav').slideToggle();
         });
+
 
         /*
          * BOTÓN DE VOLVER ARRIBA

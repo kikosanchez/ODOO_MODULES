@@ -7,6 +7,7 @@
   'version':'1.0',
   'author':'Jim Sports',
   'data': [
+    'data/ir_model_data.xml',
     'views/pdfs.xml',
     'views/main.xml',
     'views/cart.xml',
@@ -15,5 +16,5 @@
 
   ],
   'category': 'Website',
-  'depends': ['website', 'website_sale'],
+  'depends': ['website', 'website_sale', 'website_form_recaptcha'],
 }

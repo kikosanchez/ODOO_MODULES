@@ -139,23 +139,38 @@
     }
 }
 
+/* Formulario de contacto */
+
+@media (min-width: @screen-sm-max){
+    #contact_form{
+        margin-bottom: 50px;
+    }
+}
+
 /* Mapa de ubicación */
 
 #organization{
 
     .map{
-        border: 1px solid #999;
         margin-top: 10px;
     }
 
-    address > div[itemprop=address] > div{
-        padding-left: 7px;
-        text-indent: -7px;
-    }
+    address{
 
-    @media (max-width: @screen-sm-max){
-        address{
-            margin-top: 20px;
+        margin-top: 20px;
+
+        div[itemprop=address] > div{
+            padding-left: 7px;
+            text-indent: -7px;
+        }
+
+        @media (max-width: @screen-sm-max){
+            div[itemprop=address]{
+                margin-top: 50px;
+                background: #333;
+                color: #FAFAFA;
+                padding: 10px 16px;
+            }
         }
     }
 }
