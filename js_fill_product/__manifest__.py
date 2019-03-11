@@ -8,14 +8,18 @@
     'summary': """Descarga de imágenes de productos""",
 
     'description': """
-        Descarga automática de las imágenes de productos 
+        Descarga automática de las imágenes de productos
         desde el servidor de Jim Sports.
+
+        08/03/2019 Modificado para que también funcione con
+        las referencias de variantes, cogiendo la parte anterior
+        al primer punto de la referencia.
     """,
 
     'author': "Miguel Ángel García",
     'website': "http://miguel-angel-garcia.com",
     'category': 'Administration',
-    'version': '0.1',
+    'version': '0.2',
     'depends': ['base', 'product', 'website_sale'],
     'external_dependencies': {'python' : ['urllib', 'base64']},
     'data': [
