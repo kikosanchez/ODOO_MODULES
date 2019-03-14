@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!-- Estilos propios del módulo (en static/less/)  -->
-    <template id="js_custom_generic_css" inherit_id="website.assets_frontend" name="JS Estilos Genéricos">
-        <xpath expr="." position="inside">    
+    <template id="js_custom_forms_generic_css" inherit_id="website.assets_frontend" name="JS Estilos Genéricos">
+        <xpath expr="." position="inside">
             <link href="/js_custom_forms/static/less/estilos.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+    </template>
+    <template id="js_custom_forms_ancho_lista_formularios_backend" name="JS Ancho lista formularios backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link href="/js_custom_forms/static/less/backend_styles.less" rel="stylesheet" type="text/less"/>
         </xpath>
     </template>
 </odoo>

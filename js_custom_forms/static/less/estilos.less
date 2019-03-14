@@ -1,5 +1,12 @@
+/* Que desaparezca en pantallas pequeñas el Menu Style > Offer del tema Clarico */
 @media (max-width: 1000px) {
   section#palas_y_balones {
     display: none;
   }
+}
+
+/* En el Tema Clarico está !important, por lo que no se da cambiado. 
+Editado  /addons/clarico_shop_left_sidebar/static/src/less/shop_left_categ.less para quitarle el !important */
+.oe_shop_left {
+    width: 24.5% !important;
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <!--  -->
+    <!-- Quitar foto de página de carrito -->
     <template id="js_cart_page" inherit_id="clarico_cart.clarico_cart" name="JS Cart Page">
         <xpath expr="//div[hasclass('cart-cover-img-div')]" position="replace"></xpath>
     </template>

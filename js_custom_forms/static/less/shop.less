@@ -1,0 +1,241 @@
+/**
+ * HEADER
+ **/
+
+.main-header-before{
+
+    .main-header-right{
+        text-align: left !important;
+        padding: 6px 0 !important;
+        float: left !important;
+        width: auto !important;
+
+        .company_call_us {
+            border-left: none;
+            line-height: 22px;
+        }
+
+        ul.js_language_selector a{
+            text-decoration: none !important;
+        }
+
+        @media (max-width: @screen-xs-min){
+            .company_language {
+                border-left: none;
+            }
+
+            .company_call_us{
+                display: none;
+            }
+        }
+    }
+
+    .header_main_center{
+        display: none;
+    }
+
+    #header-actions-custom{
+        padding: 6px 0;
+
+        #header-icons{
+            display: inline-block;
+            position: relative;
+            margin-right: 5px;
+            float: right;
+            top: -1px;
+
+            .mr-common {
+                padding-right: 3px !important;
+                padding-left: 5px !important;
+
+                > div a,
+                > div a:hover{
+                    text-decoration: none;
+                    font-size: 14px;
+                    color: #FFF;
+
+                    .my_wish_quantity,
+                    .my_cart_quantity{
+                        background: transparent;
+                        color: #FFF;
+                    }
+                }
+            }
+
+            .hs_6_search_res {
+                margin: 0 !important;
+                display: block;
+                float: right;
+
+                .js_searchBox{
+                    padding-left: 8px;
+                    padding-top: 0;
+
+                    a{
+                        font-size: 14px;
+                    }
+                }
+
+                .anim-search{
+                    width: 235px;
+
+                    .input-group {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        #logout_ul{
+            padding-left: 0;
+            float: right;
+
+            & > li > a{
+                text-decoration: none !important;
+                color: #FFF;
+            }
+        }
+
+    }
+
+ }
+
+.navbar.navbar-static-top{
+
+    @media (min-width: @screen-lg-min){
+        margin-bottom: 12px;
+    }
+
+    .navbar-header + .collapse.navbar-top-collapse{
+        margin-top: 12px;
+
+        .nav.navbar-right{
+            @media (min-width: @screen-lg-min){
+                height: auto !important;
+            }
+
+            @media (max-width: @screen-lg-min){
+                overflow: hidden;
+                display: block !important;
+                visibility: hidden;
+                height: 0;
+
+                -webkit-transition: all 0.8s ease;
+                -moz-transition: all 0.8s ease;
+                transition: all 0.8s ease;
+
+                &.collapse.in{
+                    visibility: visible;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+/**
+ * MENÚ DE CATEGORÍAS
+ **/
+
+@keyframes zoomPulse {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+#o_shop_collapse_category{
+    li > a {
+        padding: 0 3px !important;
+        //border-radius: 30px;
+        line-height: 1.40;
+    }
+
+    li > a:hover::before{
+        -webkit-animation: zoomPulse 0.3s 1;
+        -moz-animation: zoomPulse 0.3s 1;
+        animation: zoomPulse 0.3s 1;
+    }
+}
+
+#sport-equipalia-catalog{
+    margin-top: 30px;
+
+    a{
+        display: block;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+/**
+ * BREADCRUMB
+ **/
+
+.clarico_breadcrumb {
+    text-transform: uppercase;
+}
+
+/**
+ * SLIDERS
+ **/
+
+ section.img_banner_snippet{
+     display: none;
+ }
+
+ section.slider_section{
+
+    .carousel-control i {
+        top: 50% !important;
+        margin-top: -50px;
+    }
+
+    .carousel-inner .item {
+        padding: 0 !important;
+
+        section.lc2_carousel_caption{
+            max-width: 600px;
+
+            h2{
+                padding: 0 0 20px 0px;
+            }
+
+            p{
+                min-height: none;
+                padding: 5px 0px;
+
+                & > *[class^="bg-"]{
+                    padding: 2px 6px;
+                    -webkit-box-decoration-break: clone;
+                    -moz-box-decoration-break: clone;
+                    box-decoration-break: clone;
+                }
+            }
+        }
+    }
+
+    .clarico_slider_style_3_carousel .lc2_carousel_caption {
+        top: 0% !important;
+    }
+
+    @media (max-width: @screen-xs-min){
+        display: none;
+    }
+ }
+
+ /**
+  * FOOTER
+  **/
+
+ .ftr_main{
+     margin-top: 0 !important;
+ }
