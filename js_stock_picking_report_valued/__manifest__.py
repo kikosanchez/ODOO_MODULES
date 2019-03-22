@@ -6,12 +6,8 @@
     "category": "Warehouse Management",
     "license": "AGPL-3",
     "depends": [
-        "base",
-        "sale",
-        "sale_management",
         "stock",
         "delivery",
-        "account",
     ],
     "data": [
         'views/res_partner_view.xml',
