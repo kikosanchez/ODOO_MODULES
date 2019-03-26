@@ -10,5 +10,5 @@
     'views/layout.xml'
   ],
   'category': 'Advanced Reporting',
-  'depends': [],
+  'depends': ['base', 'delivery', 'stock', 'sale', 'purchase', 'account'],
 }

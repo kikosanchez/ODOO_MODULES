@@ -1,19 +1,46 @@
 /* TAMAÑO DE TEXTO */
-
-.o_boxed_footer, .o_boxed_header, .o_report_layout_boxed {
+.o_boxed_header,
+.o_background_header,
+div.header.not-last-page {
     font-size: 16px;
+}
+/* Logo */
+div.header.not-last-page div img{    
+    max-height: 260px !important;
+    max-width: 250px !important;
+}
+
+/* eliminar imaxen de fondo */
+.o_report_layout_background{
+    background-image: none;
+}
+
+/* As líneas de artículos */
+.o_report_layout_boxed,
+.o_report_layout_background,
+div.article.o_report_layout_standard{
+    /*font-size: 8px;*/
+}
+div.footer.not-last-page,
+.o_boxed_footer {
+    font-size: 8px;
 }
 
 /* ELIMINAR TELÉFONO, CORREO, WEB Y NIF DEL PIE DE PÁGINA */
-
+div.footer.not-last-page ul.list-inline,
 .o_boxed_footer ul.list-inline {
     display: none;
 }
 
 /* FORMATO DE TEXTO EN PIÉ DE PÁGINA (TEXTO RGPD) */
-
+div.footer.not-last-page div[data-oe-field="report_footer"],
 .o_boxed_footer div[data-oe-field="report_footer"] {
-    text-align: justify;
-    white-space: normal;
-    margin: 8px 0;
+    /* text-align: justify; */
+    /* white-space: normal; */
+    /* margin: 8px 0; */
+}
+
+/* Texarea de la firma en los PDFs */
+textarea#firma{
+    width: 30%;
 }
