@@ -1,5 +1,5 @@
 from odoo import api, fields, models, _
-from openerp.exceptions import ValidationError
+from odoo.exceptions import AccessError, UserError, ValidationError
 
 class ProductTemplateProduct(models.Model):
     _inherit = 'product.template'
