@@ -10,39 +10,71 @@
 
     <!-- Custom HTM for Shop page -->
 
+    <template id="js_custom_forms_wishlist_link" inherit_id="clarico_shop.clarico_shop_products" name="Custom Wishlist" priority="20">
+        <!-- Modificar texto de búsqueda -->
+        <xpath expr="//p[hasclass('oe_search_found', 'search_found')]" position="replace">
+            <p t-if='search and search_count' class='oe_search_found search_found'>
+                <small>
+                    <t t-esc="search_count" /> results found matching “<t t-esc="search" />” IN
+                    <t t-if="category" t-esc="category.name"/>
+                    <t t-else="">All Products</t>
+                </small>
+            </p>
+        </xpath>
+
+        <!-- Eliminar botón de wishlist (encima de categorías) -->
+        <xpath expr="//a[hasclass('apply-wishlist', 'apply-filter-in-page')]" position="replace"></xpath>
+    </template>
+
+    <template id="js_custom_forms_recursive_cats" inherit_id="website_sale.option_collapse_categories_recursive" name="Custom Collapse Category Recursive" priority="20">
+        <!-- Modificar enlace de categorías recursivas -->
+        <xpath expr="//a" position="replace">
+            <a t-att-href="'/shop/category/' + slug(categ)" t-field="categ.name"/>
+        </xpath>
+    </template>
+
     <template id="js_custom_forms_shop_categories" inherit_id="clarico_shop.clarico_shop_ecommerce_categories" name="Custom eCommerce Categories" priority="10">
         <!-- Modificar botón de cerrar -->
         <xpath expr="//span[hasclass('mobile-view-filter-close-btn')]" position="replace">
             <span class="mobile-view-filter-close-btn"><i class="fa fa-times" aria-hidden="true"></i></span>
         </xpath>
 
+        <!-- Modificar enlace de categorías (para todos los productos) -->
+        <xpath expr="//div[hasclass('all-category-div')]" position="replace">
+            <div class="all-category-div">
+                <ul class="nav nav-pills nav-stacked mt16" id="o_shop_collapse_category">
+                    <li t-att-class=" '' if category else 'active all-products' ">
+                        <a href="/shop" class="o_not_editable">All Products</a>
+                    </li>
+                    <t t-foreach="categories" t-as="categ">
+                        <t t-call="website_sale.option_collapse_categories_recursive"/>
+                    </t>
+                </ul>
+            </div>
+        </xpath>
+
         <!-- Añadir enlace a catálogo de sport equipalia -->
         <xpath expr="//div[hasclass('products_grid_before_maxW')]" position="inside">
-            <div id="sport-equipalia-catalog">
-                <h4 class="category">Sport Equipalia Catalog</h4>
+            <div id="sport-equipalia">
+                <h4 class="category">PROJECTS</h4>
 
                 <hr></hr>
 
                 <div class="catalog-link">
-                    <a t-if="request.lang == 'es_ES'" href="http://sportequipalia.com/catalogo" title="Go to Sport Equipalia Catalog" target="_blank" style="border:1px solid #f2eeee">
-                        <img src="/js_custom_forms/static/img/sport-equipalia-es.jpg" alt="Sport Equipalia Catalog" />
+                    <a t-if="request.lang == 'es_ES'" href="/es_ES/sport-facilities" style="border:1px solid #f2eeee">
+                        <img src="/js_custom_forms/static/img/sport-equipalia-es.jpg" alt="Sport Facilities" />
                     </a>
 
-                    <a t-elif="request.lang == 'fr_FR'" href="http://sportequipalia.com/catalogo" title="Go to Sport Equipalia Catalog" target="_blank" style="border:1px solid #f2eeee">
-                        <img src="/js_custom_forms/static/img/sport-equipalia-fr.jpg" alt="Sport Equipalia Catalog" />
+                    <a t-elif="request.lang == 'fr_FR'" href="/fr_FR/sport-facilities" style="border:1px solid #f2eeee">
+                        <img src="/js_custom_forms/static/img/sport-equipalia-fr.jpg" alt="Sport Facilities" />
                     </a>
 
-                    <a t-else="" href="http://sportequipalia.com/catalogo" title="Go to Sport Equipalia Catalog" target="_blank" style="border:1px solid #f2eeee">
-                        <img src="/js_custom_forms/static/img/sport-equipalia-en.jpg" alt="Sport Equipalia Catalog" />
+                    <a t-else="" href="/en_US/sport-facilities" style="border:1px solid #f2eeee">
+                        <img src="/js_custom_forms/static/img/sport-equipalia-en.jpg" alt="Sport Facilities" />
                     </a>
                 </div>
             </div>
         </xpath>
-    </template>
-
-    <template id="js_custom_forms_wishlist_link" inherit_id="clarico_shop.clarico_shop_products" name="Custom Wishlist" priority="20">
-        <!-- Eliminar botón de wishlist (encima de categorías) -->
-        <xpath expr="//a[hasclass('apply-wishlist', 'apply-filter-in-page')]" position="replace"></xpath>
     </template>
 
     <template id="js_custom_forms_theme_style_6" inherit_id="customize_theme.template_header_style_6" name="Custom Header Style 6" priority="20">
@@ -60,7 +92,7 @@
                     <li class="dropdown" id="login_user_name" t-ignore="true" t-if="website.user_id != user_id">
                         <a href="#" class="dropdown-toggle header_admin_border" data-toggle="dropdown">
                             <b>
-                                <span>Mi cuenta</span>&amp;nbsp;<span class="caret"/>
+                                <span>My account</span>&amp;nbsp;<span class="caret"/>
                             </b>
                         </a>
                         <ul class="dropdown-menu js_usermenu account-ul" role="menu">
@@ -73,7 +105,7 @@
                                 </p>
                             </li>
                             <li id="o_logout">
-                                <a t-attf-href="/web/session/logout?redirect=/" role="menuitem" class="btn">Cerrar sesión</a>
+                                <a t-attf-href="/web/session/logout?redirect=/" role="menuitem" class="btn">Log out</a>
                             </li>
                         </ul>
                     </li>
@@ -111,9 +143,10 @@
                             </a>
                         </div>
                         <div class="anim-search">
+                            <!-- t-att-action="keep('/shop'+ ('/category/'+slug(category)) if category else '', search=0)" -->
                             <form action="/shop" method="get" t-att-class="search_class">
                                 <div class="input-group">
-                                    <input type="text" name="search" class="search-query form-control oe_search_box clarico_search_border" placeholder="Buscar…" t-att-value="search" required="required"/>
+                                    <input type="text" name="search" class="search-query form-control oe_search_box clarico_search_border" placeholder="Search…" t-att-value="search" required="required"/>
                                     <button type="submit" class="btn-default oe_search_button">
                                         <i class="fa fa-search"/>
                                     </button>

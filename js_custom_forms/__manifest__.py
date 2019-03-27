@@ -1,12 +1,11 @@
 {
     "name": "JS Custom Forms",
-    "summary": "Cambios en los formularios frontend. De contacto, de compra en la web",
+    "summary": "Cambios genéricos en plantilla Clarico y otras personalizaciones",
     "version": "1.0",
     "license": "AGPL-3",
     "author": "Jim Sports",
     "category": "Uncategorized",
     "website": "https://jimsports.com",
-    'author':'Jim Sports',
     'data': [
         'views/shop_address.xml',
         'views/default_contact_form.xml',
@@ -20,5 +19,5 @@
         'views/web_shop.xml'
     ],
     'category': 'Website',
-    'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare',  'clarico_shop'],
+    'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare', 'clarico_wishlist',  'clarico_shop'],
 }

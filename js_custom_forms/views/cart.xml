@@ -4,4 +4,14 @@
     <template id="js_cart_page" inherit_id="clarico_cart.clarico_cart" name="JS Cart Page">
         <xpath expr="//div[hasclass('cart-cover-img-div')]" position="replace"></xpath>
     </template>
+
+    <!-- Cambiar la "x" de cerrar el modal que aparece al Añadir al carrito  -->
+    <template id="js_modal_add_to_cart" inherit_id="website_sale_options.modal" name="JS Modal Add to Cart" priority="20">
+        <xpath expr="//div[hasclass('modal-header')]" position="replace">
+        	<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        		<h4 class="modal-title" id="myModalLabel">Add to Cart</h4>
+      		</div>        	
+        </xpath>
+    </template>
 </odoo>

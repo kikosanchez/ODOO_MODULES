@@ -35,6 +35,11 @@
         }
     }
 
+    #in-wishlist-shop {
+        top: 14px;
+        right: 14px;
+    }
+
     .suggest-product-heading {
         font-size: 1.4rem;
         margin-bottom: 30px;
@@ -62,4 +67,10 @@
     ul.wizard {
         margin: 50px 0;
     }
+}
+
+
+/* En la vista de grid, eliminar precio 0,00 tachado en gris a la izquierda del precio */
+table#product-grid-table form section div.product_price > b > del{
+    display: none;
 }
