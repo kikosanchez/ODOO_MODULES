@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='category_id']" position="after">
-                <field name="group_companies_ids" widget="many2many_tags" domain="[('name','in',['GESTIBECA SPORT SL', 'EME INVERSIA 72 S.L.', 'JIM SPORTS TECHNOLOGY S.L.'])]" options="{ 'no_create_edit':True, 'no_quick_create': True }" attrs="{'invisible': [('is_company', '=', False)]}"  />
+                <field name="group_companies_ids" widget="many2many_tags" domain="[('name','in',['GESTIBECA SPORT SL', 'EME INVERSIA 72 S.L.', 'JIM SPORTS TECHNOLOGY S.L.'])]" options="{ 'no_create_edit':True, 'no_quick_create': True }" attrs="{'invisible': [('is_company', '=', False)]}" />
             </xpath>
         </field>
     </record>
