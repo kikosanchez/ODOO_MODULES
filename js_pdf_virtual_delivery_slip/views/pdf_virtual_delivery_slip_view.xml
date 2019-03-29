@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="js_pdf_virtual_delivery_slip_document" inherit_id="sale.report_saleorder_document" name="JIM PDF Virtual Delivery Slip Document">
+        <!-- Quitar datos de facturación (el albarán)  -->
+        <xpath expr="//div[@class='page']/div[@class='row']/div[@class='col-xs-6']" position="replace"></xpath>
+
+        <!-- Cambiar el título h2 de Pedido por Albarán -->
+        <xpath expr="//div[@class='page']/h2" position="replace">
+            <h2>
+                <span t-if="doc.state not in ['draft','sent']">Delivery Slip OUT </span>                
+                <span t-field="doc.name"/>
+            </h2>
+        </xpath>
+
+        <!-- Sustituir la primera fila del pedido -->
+        <xpath expr="//div[@class='page']/div[@id='informations']" position="replace">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>
+                            <strong>Order (Origin)</strong>
+                        </th>
+                        <th>
+                            <strong>Date</strong>
+                        </th>
+                        <!-- th>
+                            <strong>Carrier</strong>
+                        </th>        
+                        <th>
+                            <strong>Number of packages</strong>
+                        </th -->            
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span t-field="doc.name" />
+                        </td>
+                        <td>                       
+                            <span t-field="doc.confirmation_date" />
+                        </td>
+                        <!-- td>
+                            <span t-field="doc.note" />
+                        </td>
+                        <td>
+                            <span></span>
+                        </td-->
+                    </tr>
+                </tbody>
+            </table>
+        </xpath>
+
+        <!-- Las líneas del pedido pero sólo con la info prepia del albarán: producto y cantidad -->
+        <xpath expr="//div[hasclass('page')]/t[@t-foreach='doc.order_lines_layouted()']" position="replace">
+            <t t-foreach="doc.order_lines_layouted()" t-as="page">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="text-right">Quantity</th>
+                        </tr>
+                   </thead>
+                   <tbody class="sale_tbody">
+                        <t t-foreach="page" t-as="layout_category">
+                            <t t-if="layout_category_size &gt; 1 or page_size &gt; 1" groups="sale.group_sale_layout">
+                                <tr class="active">
+                                    <td colspan="7" style="font-weight: bold; border-bottom: 1px solid black;">&amp;bull;
+                                        <t t-esc="layout_category['name']"/>
+                                    </td>
+                                </tr>
+                            </t>
+
+                            <!-- Líneas -->
+                            <t t-foreach="layout_category['lines']" t-as="l">
+                                <!-- Sólo los productos con cantidad entregada mayor a cero -->
+                                <t t-if="l.qty_delivered > 0">
+                                    <!-- Los productos que son Service no van -->
+                                    <t t-if="l.product_id.type != 'service'">
+                                        <tr>
+                                            <td>
+                                                <span t-field="l.product_id"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-field="l.qty_delivered"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </t>
+                        </t>
+                    </tbody>
+                </table>
+
+                <t t-if="page_index &lt; page_size - 1" groups="sale.group_sale_layout">
+                    <p style="page-break-before:always;"> </p>
+                </t>
+            </t>
+        </xpath>
+
+        <!-- Quitar Total -->
+        <xpath expr="//div[hasclass('page')]/div[hasclass('clearfix')]/div[hasclass('row')]" position="replace"></xpath>
+
+        <!-- Quitar Nota de pedido -->
+        <xpath expr="//div[hasclass('page')]/p[@t-field='doc.note']" position="replace"></xpath>
+
+        <!-- Quitar Nota de pedido -->
+        <xpath expr="//div[hasclass('page')]/p[@t-if='doc.payment_term_id.note']" position="replace"></xpath>
+
+    </template>
+
+    <template id="js_pdf_virtual_delivery_slip_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="js_pdf_virtual_delivery_slip.js_pdf_virtual_delivery_slip_document" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>
