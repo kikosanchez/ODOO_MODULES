@@ -6,10 +6,22 @@
     "author": "Jim Sports",
     "category": "Generic",
     "website": "https://jimsports.com",
-    "depends": ["base", "product"],
+    "depends": [
+        "base",
+        "product",
+        "sale",
+        "custom_sale_order_variant_mgmt",
+        "telesale_manage_variants",
+        "telesale"
+    ],
     "data": [
+        "views/assets.xml",
         "views/res_partner.xml",
+        "views/sale_views.xml",
         "views/product.xml"
     ],
-    "installable": True,
+    'qweb': [
+        'static/xml/popups_template.xml',
+    ],
+    "installable": True
 }
