@@ -7,6 +7,7 @@
     "category": "Uncategorized",
     "website": "https://jimsports.com",
     'data': [
+        'data/ir_model_data.xml',
         'views/shop_address.xml',
         'views/default_contact_form.xml',
         'views/web_product.xml',
@@ -16,8 +17,9 @@
         'views/filter_sort_by.xml',
         'views/cart.xml',
         'views/res_partner_form.xml',
-        'views/web_shop.xml'
+        'views/web_shop.xml',
+        # 'views/devoluciones.xml',
     ],
     'category': 'Website',
-    'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare', 'clarico_wishlist',  'clarico_shop'],
+    'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare',  'clarico_shop'],
 }

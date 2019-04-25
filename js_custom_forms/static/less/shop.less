@@ -94,6 +94,12 @@
                 text-decoration: none !important;
                 color: #FFF;
             }
+
+            .account-ul li .fa_common_style_header {
+                padding: 0;
+                width: 40px;
+                text-align: center;
+            }
         }
 
     }
@@ -254,3 +260,19 @@
  .ftr_main{
      margin-top: 0 !important;
  }
+
+/* Borrar precio tachado "0" de productos accesorios en página de carrito */
+#wrap table.js_cart_lines td.td-price > del{
+    /*display: none;*/
+}
+
+/* Ventana modal de Añadir al Carrito, productos opcionales */
+#modal_optional_products a.js_add.btn-sm.btn-info{
+    color: #333333;
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(255, 255, 255, 0);
+}
+#modal_optional_products a.js_add.btn-sm.btn-info:hover {
+    color: #000000;
+    font-weight: bold;
+}

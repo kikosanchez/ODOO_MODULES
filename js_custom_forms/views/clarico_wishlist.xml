@@ -10,7 +10,6 @@
     </template>
 
     <template id="js_clarico_wishlist_imagen" inherit_id="clarico_wishlist.clarico_wishlist" name="JS Clarico Lista de deseos, imagen" priority="20">
-        <xpath expr="//section/img[hasclass('wishlist-cover-img')]" position="replace">
-        </xpath>
+        <xpath expr="//section/img[hasclass('wishlist-cover-img')]" position="replace"></xpath>
     </template>
 </odoo>

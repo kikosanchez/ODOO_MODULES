@@ -91,17 +91,13 @@
                     <li id="user_sign_in"/>
                     <li class="dropdown" id="login_user_name" t-ignore="true" t-if="website.user_id != user_id">
                         <a href="#" class="dropdown-toggle header_admin_border" data-toggle="dropdown">
-                            <b>
-                                <span>My account</span>&amp;nbsp;<span class="caret"/>
-                            </b>
+                            <b><span>My account</span>&amp;nbsp;<span class="caret"/></b>
                         </a>
                         <ul class="dropdown-menu js_usermenu account-ul" role="menu">
                             <li>
                                 <p class="ul_class_admin_name">
                                     <i class="fa fa-user fa_common_style_header" style="padding-right: 9px;"/>
-                                    <a href="/my/home">
-                                        <span class="span_logout" t-esc="(len(user_id.name)&gt;25) and (user_id.name[:23]+'...') or user_id.name"/>
-                                    </a>
+                                    <a href="/my/home"><span class="span_logout" t-esc="(len(user_id.name)&gt;25) and (user_id.name[:23]+'...') or user_id.name"/></a>
                                 </p>
                             </li>
                             <li id="o_logout">

@@ -9,10 +9,14 @@
             .carousel-inner{
                 z-index: 20;
             }
-
             img.product_detail_img {
                 max-width: 480px !important;
                 max-height: 480px !important;
+            }
+            @media (max-width: @screen-xs-min){
+                img.product_detail_img {
+                    width: 100%;
+                }
             }
         }
 
@@ -45,6 +49,15 @@
         margin-bottom: 30px;
     }
 
+    #suggested_item_product{
+        div.owl-prev{
+            left: 0px;
+        }
+        div.owl-next{
+            right: 0px;
+        }
+    }
+
     .div_class_product_features.block {
         width: 95%;
         margin-bottom: 2%;
@@ -69,12 +82,8 @@
     }
 }
 
-
 /* En la vista de grid, eliminar precio 0,00 tachado en gris a la izquierda del precio */
 table#product-grid-table form section div.product_price > b > del{
     display: none;
 }
-/* En /shop/cart/, ocultar precio tachado 0,00 en gris de los productos sugeridos (debajo del pedido) */
-div.oe_website_sale table.suggested-product-table td.td-price > del{
-    display: none;
-}
+

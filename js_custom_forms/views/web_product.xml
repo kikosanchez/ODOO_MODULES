@@ -27,6 +27,8 @@
                 </t>
             </p>
         </xpath>
+
+
     </template>
 
     <template id="js_custom_forms_product_compare" inherit_id="clarico_compare.clarico_compare_clarico_product" name="Custom Clarico Products Compare" priority="25">

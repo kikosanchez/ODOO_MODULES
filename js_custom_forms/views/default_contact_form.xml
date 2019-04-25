@@ -6,9 +6,19 @@
             <div class="form-group form-field">
                 <label class="col-md-3 col-sm-4 control-label" for="partner_name">Your company</label>
                 <div class="col-md-7 col-sm-8">
-                    <input type="text" class="form-control o_website_form_input" name="partner_name" t-att-value="request.params.get('partner_name', '')"/>                    
+                    <input type="text" class="form-control o_website_form_input" name="partner_name" t-att-value="request.params.get('partner_name', '')"/>
                 </div>
-            </div>            
+            </div>
+        </xpath>
+
+        <!-- Añadir campo de recaptcha -->
+        <xpath expr="//form[@action='/website_form/']/div[6]" position="after">
+            <div class="form-group form-field o_website_form_required_custom">
+                <label class="col-md-3 col-sm-4 control-label" for="g-recaptcha-response">Recaptcha</label>
+                <div class="col-md-7 col-sm-8">
+                    <span class="o_website_form_recaptcha" />
+                </div>
+            </div>
         </xpath>
     </template>
 </odoo>

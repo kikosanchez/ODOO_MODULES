@@ -7,18 +7,5 @@
                 <option value="75" selected="True">France</option>
             </select>
         </xpath>
-
-        <!-- xpath expr="//form[@name='/shop/checkout']//input[@name='zip']" position="attributes">
-            <attribute name="required">required</attribute>         
-        </xpath -->
-
-        <!-- xpath expr="//form[hasclass('checkout_autoformat')]/div[8]" position="attributes">
-            <attribute name="t-attf-class">o_website_form_required_custom</attribute>
-        </xpath>
-
-        <xpath expr="//form[hasclass('checkout_autoformat')]/div[10]" position="attributes">
-            <attribute name="t-attf-class">o_website_form_required_custom</attribute>
-        </xpath -->
-
     </template>
 </odoo>
