@@ -1,3 +1,4 @@
+/* DE MOMENTO NO SE USA */
 odoo.define('js_addons.notify', function (require) {
     "use strict";
 

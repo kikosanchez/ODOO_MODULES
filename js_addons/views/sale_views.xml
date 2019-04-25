@@ -9,12 +9,12 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='template_lines']/tree" position="inside">
-                <field name="discontinued_product" invisible="1" />
+                <field name="discontinued_line" invisible="1" />
             </xpath>
 
             <xpath expr="//field[@name='template_lines']/tree" position="attributes">
-                <attribute name="decoration-muted">discontinued_product == True</attribute>
-                <attribute name="decoration-it">discontinued_product == True</attribute>
+                <attribute name="decoration-muted">discontinued_line == True</attribute>
+                <attribute name="decoration-it">discontinued_line == True</attribute>
             </xpath>
 
             <xpath expr="//field[@name='template_lines']/tree" position="before">
@@ -31,12 +31,12 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <xpath expr="//tree" position="inside">
-                <field name="discontinued_product" invisible="1" />
+                <field name="discontinued_line" invisible="1" />
             </xpath>
 
             <xpath expr="//tree" position="attributes">
-                <attribute name="decoration-muted">discontinued_product == True</attribute>
-                <attribute name="decoration-it">discontinued_product == True</attribute>
+                <attribute name="decoration-muted">discontinued_line == True</attribute>
+                <attribute name="decoration-it">discontinued_line == True</attribute>
             </xpath>
         </field>
     </record>

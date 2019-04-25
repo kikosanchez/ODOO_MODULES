@@ -16,7 +16,7 @@ odoo.define('js_addons.telesale', function (require) {
 
             self._super(product_id, add_qty).then(function(result){
                 // CHANGE BG ON DISCONTINUED PRODUCTS
-                if (result.discontinued){
+                if (typeof(result.discontinued) != 'undefined' && result.discontinued){
                     var $item_note = $('<tr><td colspan="13">Tenga en cuenta que este producto está descatalogado</td></tr>');
                     $item_note.css('background', discontinuedItemBg).insertAfter(self.$el);
                     self.$el.css('background', discontinuedItemBg);
