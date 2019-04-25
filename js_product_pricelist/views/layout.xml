@@ -45,6 +45,12 @@
                     <form method="GET" action="/js_product_pricelist/run">
                         <div class="checkbox">
                             <label>
+        						<input name="tmode" type="checkbox" checked="true" value="1" /> Modo de test (no se hacen cambios)
+        					</label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
                                 <input id="allProducts" type="checkbox" checked="true" /> Procesar todos los productos
                             </label>
                         </div>

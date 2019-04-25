@@ -4,7 +4,7 @@
     "version": "1.0",
     "license": "AGPL-3",
     "author": "Jim Sports",
-    "category": "Inventory",
+    "category": "Product",
     "website": "https://jimsports.com",
     "depends": ["product"],
     "data": [

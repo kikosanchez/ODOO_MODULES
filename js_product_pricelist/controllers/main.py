@@ -12,16 +12,14 @@ class jsProductPricelist(http.Controller):
     @http.route([
         '/js_product_pricelist/run'
     ], type='http', auth='user')
-    def run(self, plimit=0, **kw):
+    def run(self, plimit=0, tmode=0, **kw):
 
         # Solo pueden acceder usuarios con permisos de configuración (Administración/Ajustes)
         if request.env.user.has_group('base.group_system'):
 
-            # Limite de productos como entero
-            product_limit = int(plimit)
-
-            # Creamos una lista para guardar los valores
-            debug_processed = []
+            product_limit = int(plimit) # Limite de productos como entero
+            test_mode = int(tmode) # Test mode como entero (0-1)
+            debug_processed = [] # Creamos una lista para guardar los valores
 
             # Hacemos uso de request para acceder al modelo de los productos
             product_list = request.env['product.template'].sudo().search([
@@ -41,15 +39,17 @@ class jsProductPricelist(http.Controller):
                         ('product_id', '=', product.product_variant_ids[0].id)
                     ])
 
-                    # Actualizamos los precios
-                    for price_item in prices_list:
-                        price_item.write({
-                            'applied_on':'1_product',
-                            'product_id':None,
-                            'product_tmpl_id':product.id
-                        })
+                    # Si no estamos en modo test
+                    if not test_mode:
+                        # Actualizamos los precios
+                        for price_item in prices_list:
+                            price_item.write({
+                                'applied_on':'1_product',
+                                'product_id':None,
+                                'product_tmpl_id':product.id
+                            })
 
-                    # Sacamos la información de los productos actualizados
+                    # Sacamos la información de los productos
                     debug_processed.append({
                         'id': product.id,
                         'reference': product.default_code.strip(),
