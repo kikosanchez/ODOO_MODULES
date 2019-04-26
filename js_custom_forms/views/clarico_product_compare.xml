@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Eliminar botón de Comparar productos en Productos sugeridos en la página del producto -->
+    <template id="js_clarico_product_compare" inherit_id="clarico_compare.clarico_compare_recommended_product" name="JS Clarico Comparar Productos" priority="25">
+        <xpath expr="//span[hasclass('suggest-product-heading')]" position="replace"></xpath>
+    </template>
+    <template id="js_clarico_product_compare_2" inherit_id="website_sale_comparison.recommended_product" name="JS Clarico Comparar Productos 2" priority="30">
+        <xpath expr="//a[@t-attf-href='/shop/compare/?products=#{ids}']" position="replace"></xpath>
+    </template>
+</odoo>

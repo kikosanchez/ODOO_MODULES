@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Frontend Shop CSS -->
+
+    <template id="js_custom_forms_assets_frontend_shop" inherit_id="website.assets_frontend" name="Jim Custom Forms CSS Frontend">
+        <xpath expr="." position="inside">
+            <link href="/js_custom_forms/static/less/shop.less" rel="stylesheet" type="text/less" />
+        </xpath>
+    </template>
+
+    <!-- Custom HTM for Shop page -->
+
+    <template id="js_custom_forms_wishlist_link" inherit_id="clarico_shop.clarico_shop_products" name="Custom Wishlist" priority="20">
+        <!-- Modificar texto de búsqueda -->
+        <xpath expr="//p[hasclass('oe_search_found', 'search_found')]" position="replace">
+            <p t-if='search and search_count' class='oe_search_found search_found'>
+                <small>
+                    <t t-esc="search_count" /> results found matching “<t t-esc="search" />” IN
+                    <t t-if="category" t-esc="category.name"/>
+                    <t t-else="">All Products</t>
+                </small>
+            </p>
+        </xpath>
+
+        <!-- Eliminar botón de wishlist (encima de categorías) -->
+        <xpath expr="//a[hasclass('apply-wishlist', 'apply-filter-in-page')]" position="replace"></xpath>
+    </template>
+
+    <template id="js_custom_forms_recursive_cats" inherit_id="website_sale.option_collapse_categories_recursive" name="Custom Collapse Category Recursive" priority="20">
+        <!-- Modificar enlace de categorías recursivas -->
+        <xpath expr="//a" position="replace">
+            <a t-att-href="'/shop/category/' + slug(categ)" t-field="categ.name"/>
+        </xpath>
+    </template>
+
+    <template id="js_custom_forms_shop_categories" inherit_id="clarico_shop.clarico_shop_ecommerce_categories" name="Custom eCommerce Categories" priority="10">
+        <!-- Modificar botón de cerrar -->
+        <xpath expr="//span[hasclass('mobile-view-filter-close-btn')]" position="replace">
+            <span class="mobile-view-filter-close-btn"><i class="fa fa-times" aria-hidden="true"></i></span>
+        </xpath>
+
+        <!-- Modificar enlace de categorías (para todos los productos) -->
+        <xpath expr="//div[hasclass('all-category-div')]" position="replace">
+            <div class="all-category-div">
+                <ul class="nav nav-pills nav-stacked mt16" id="o_shop_collapse_category">
+                    <li t-att-class=" '' if category else 'active all-products' ">
+                        <a href="/shop" class="o_not_editable">All Products</a>
+                    </li>
+                    <t t-foreach="categories" t-as="categ">
+                        <t t-call="website_sale.option_collapse_categories_recursive"/>
+                    </t>
+                </ul>
+            </div>
+        </xpath>
+
+        <!-- Añadir enlace a catálogo de sport equipalia -->
+        <xpath expr="//div[hasclass('products_grid_before_maxW')]" position="inside">
+            <div id="sport-equipalia">
+                <h4 class="category">PROJECTS</h4>
+
+                <hr></hr>
+
+                <div class="catalog-link">
+                    <a t-if="request.lang == 'es_ES'" href="/es_ES/sport-facilities" style="border:1px solid #f2eeee">
+                        <img src="/js_custom_forms/static/img/sport-equipalia-es.jpg" alt="Sport Facilities" />
+                    </a>
+
+                    <a t-elif="request.lang == 'fr_FR'" href="/fr_FR/sport-facilities" style="border:1px solid #f2eeee">
+                        <img src="/js_custom_forms/static/img/sport-equipalia-fr.jpg" alt="Sport Facilities" />
+                    </a>
+
+                    <a t-else="" href="/en_US/sport-facilities" style="border:1px solid #f2eeee">
+                        <img src="/js_custom_forms/static/img/sport-equipalia-en.jpg" alt="Sport Facilities" />
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="js_custom_forms_theme_style_6" inherit_id="customize_theme.template_header_style_6" name="Custom Header Style 6" priority="20">
+        <!-- Eliminar elementos de la cabecera -->
+        <xpath expr="//div[hasclass('clarico_hs6_toggle')]" position="replace"></xpath>
+        <xpath expr="//div[hasclass('static_menus_main')]" position="replace"></xpath>
+        <xpath expr="//section[hasclass('search_menu')]" position="replace"></xpath>
+        <xpath expr="//ul[@id='logout_ul']" position="replace"></xpath>
+
+        <!-- Re-hacer opciones del menú superior (naranja) -->
+        <xpath expr="//div[hasclass('hs_6_search_res')]" position="replace">
+            <div id="header-actions-custom">
+                <ul id="logout_ul" class="sign_in_and_administrtor_link header-main-signin">
+                    <li id="user_sign_in"/>
+                    <li class="dropdown" id="login_user_name" t-ignore="true" t-if="website.user_id != user_id">
+                        <a href="#" class="dropdown-toggle header_admin_border" data-toggle="dropdown">
+                            <b><span>My account</span>&amp;nbsp;<span class="caret"/></b>
+                        </a>
+                        <ul class="dropdown-menu js_usermenu account-ul" role="menu">
+                            <li>
+                                <p class="ul_class_admin_name">
+                                    <i class="fa fa-user fa_common_style_header" style="padding-right: 9px;"/>
+                                    <a href="/my/home"><span class="span_logout" t-esc="(len(user_id.name)&gt;25) and (user_id.name[:23]+'...') or user_id.name"/></a>
+                                </p>
+                            </li>
+                            <li id="o_logout">
+                                <a t-attf-href="/web/session/logout?redirect=/" role="menuitem" class="btn">Log out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div id="header-icons">
+                    <div id="header-compare" class="mr-common compare-menu hidden">
+                        <a class="compare o_compare" title="Add to Compare">
+                            <i class="fa fa-refresh" aria-hidden="true"/>
+                            <sup class="o_product_circle"/>
+                        </a>
+                    </div>
+
+                    <div class="mr-common">
+                        <t t-if="request.env.ref('website_sale_wishlist.add_to_wishlist').active">
+            				<t t-set="wishcount" t-value="len(request.env['product.wishlist'].current())"/>
+            				<div id="my_wish" t-att-style="not wishcount and 'display:none;'">
+            					<a href="/shop/wishlist">
+            						<i class="fa fa-heart" aria-hidden="true"/>
+            						<sup t-attf-class="my_wish_quantity">
+            							<t t-esc="wishcount"/>
+            						</sup>
+            					</a>
+            				</div>
+            			</t>
+                    </div>
+
+                    <div class="header_cart_main header_cart_default mr-common"/>
+
+                    <div class="hs_6_search_res">
+                        <div class="js_searchBox">
+                            <a href="#" class="header_right_search_icon_link">
+                                <i class="fa fa-search srch_icon"/>
+                                <i class="fa fa-times close_icon"/>
+                            </a>
+                        </div>
+                        <div class="anim-search">
+                            <!-- t-att-action="keep('/shop'+ ('/category/'+slug(category)) if category else '', search=0)" -->
+                            <form action="/shop" method="get" t-att-class="search_class">
+                                <div class="input-group">
+                                    <input type="text" name="search" class="search-query form-control oe_search_box clarico_search_border" placeholder="Search…" t-att-value="search" required="required"/>
+                                    <button type="submit" class="btn-default oe_search_button">
+                                        <i class="fa fa-search"/>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

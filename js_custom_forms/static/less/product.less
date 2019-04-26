@@ -1,0 +1,89 @@
+/**
+ * MODIFICACIONES PARA VISTA PRODUCTO
+ **/
+
+#wrap {
+
+    #product_detail {
+        .carousel {
+            .carousel-inner{
+                z-index: 20;
+            }
+            img.product_detail_img {
+                max-width: 480px !important;
+                max-height: 480px !important;
+            }
+            @media (max-width: @screen-xs-min){
+                img.product_detail_img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .pvideo_link {
+            z-index: 20;
+        }
+
+        #product_attributes_simple,
+        div.c_product_name,
+        select.form-control option{
+            text-transform: uppercase;
+        }
+    }
+
+    #product_full_spec {
+        text-align: justify;
+
+        .sort_description_div_main {
+            margin-bottom: 5px;
+        }
+    }
+
+    #in-wishlist-shop {
+        top: 14px;
+        right: 14px;
+    }
+
+    .suggest-product-heading {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+    }
+
+    #suggested_item_product{
+        div.owl-prev{
+            left: 0px;
+        }
+        div.owl-next{
+            right: 0px;
+        }
+    }
+
+    .div_class_product_features.block {
+        width: 95%;
+        margin-bottom: 2%;
+    }
+
+    .product_video_popup_main {
+        background-color: rgba(0,0,0,0.6);
+
+        .product_video_popup_wrap {
+            display: table;
+            height: 100%;
+
+            .product_video_subpopup {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    ul.wizard {
+        margin: 50px 0;
+    }
+}
+
+/* En la vista de grid, eliminar precio 0,00 tachado en gris a la izquierda del precio */
+table#product-grid-table form section div.product_price > b > del{
+    display: none;
+}
+
