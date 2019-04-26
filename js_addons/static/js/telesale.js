@@ -20,6 +20,8 @@ odoo.define('js_addons.telesale', function (require) {
                     var $item_note = $('<tr><td colspan="13">Tenga en cuenta que este producto está descatalogado</td></tr>');
                     $item_note.css('background', discontinuedItemBg).insertAfter(self.$el);
                     self.$el.css('background', discontinuedItemBg);
+                    // BORRAR
+                    window.last_order_line = self;
                 }
             });
         }
