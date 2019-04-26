@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<odoo>
-    <!-- El Select de ordenar por precio y por nombre en la tienda -->
-    <template id="js_filter_sort_by" inherit_id="clarico_shop.clarico_shop_products" name="JS Filter Sort By" priority="20">
-        <xpath expr="//div[hasclass('filter-sort-by')]" position="replace"></xpath>
-    </template>
-</odoo>
