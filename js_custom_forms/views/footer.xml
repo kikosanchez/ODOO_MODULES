@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Cambiar logo por PNG transparente, por defecto Odoo no lo hace -->
+    <template id="js_logotipo_png_fondo_transparente" inherit_id="clarico_layout.clarico_layout_footer_default" name="JS Logotipo PNG Fondo Transparente">
+        <xpath expr="//div[hasclass('logo_name_container')]" position="replace">
+            <div class="logo_name_container">
+                <span class="ftr_logo_span" itemprop="name">
+                    <img class="img img-responsive s_image_common" src="/js_custom_forms/static/img/sport-on-time-logo.png" alt="Logo Sport On Time" />
+                </span>
+            </div>
+        </xpath>
+    </template>
+</odoo>

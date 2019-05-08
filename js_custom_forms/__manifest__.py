@@ -18,7 +18,9 @@
         'views/cart.xml',
         'views/res_partner_form.xml',
         'views/web_shop.xml',
+        'views/shop_payment.xml',
         # 'views/devoluciones.xml',
+        'views/footer.xml'
     ],
     'category': 'Website',
     'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare',  'clarico_shop'],
