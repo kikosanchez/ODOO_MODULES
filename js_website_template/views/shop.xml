@@ -172,8 +172,9 @@
                             </t>
 
                             <!--<span t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>-->
-                            <span t-esc="str(product.website_price_min) + ' - '" t-if="product.website_price_min != product.website_price_max" />
+                            <span t-esc="'{:.2f}'.format(product.website_price_min) + ' - '" t-if="product.website_price_min != product.website_price_max" />
                             <span t-esc="product.website_price_max" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+
                             <span itemprop="price" style="display:none;" t-esc="product.website_price"/>
                             <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
 
