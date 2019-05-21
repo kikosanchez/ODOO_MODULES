@@ -4,6 +4,7 @@ from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 class JsWebTemplateWebsiteSale(WebsiteSale):
+
     # Para corregir problema al mostrar el precio del producto
     # https://trello.com/c/EtrtWRyi/72-odoo-modifica-el-precio-del-producto-al-a%C3%B1adir-o-quitar-unidades-en-el-sitio-web
     @http.route(['/shop/get_unit_price'], type='json', auth="public", methods=['POST'], website=True)

@@ -10,5 +10,5 @@
     'views/layout.xml'
   ],
   'category': 'Website',
-  'depends': ['website', 'website_sale'],
+  'depends': ['website', 'website_sale', 'js_website_template'],
 }
