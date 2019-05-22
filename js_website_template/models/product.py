@@ -14,15 +14,11 @@ class ProductTemplate(models.Model):
             # Para guardar los precios
             product_prices = []
 
-            # Precio de la plantilla
-            if (template.sale_ok and template.website_price > 0):
-                product_prices.append(template.website_price);
-
             # Precio de las variantes
             # Se necesita usar sudo() para el visitante anónimo
             for p in template.sudo().product_variant_ids:
-                # Obtener el precio de cada variante si es mayor que 0, tiene stock y se puede comprar
-                if (p.sale_ok and (p.inventory_availability == "always" or p.inventory_availability == "threshold") and p.qty_available > 0 and p.website_price > 0):
+                # Obtener el precio de cada variante si es mayor que 0 y se puede comprar
+                if (p.sale_ok and p.website_price > 0):
                     product_prices.append(p.website_price)
 
             # Obtenemos el precio más bajo y el más alto
