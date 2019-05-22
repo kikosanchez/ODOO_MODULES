@@ -171,24 +171,32 @@
                                 <del class="text-danger mr8" style="white-space: nowrap;" t-esc="compute_currency(product.website_public_price)" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}"/>
                             </t>
 
-                            <!--<span t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>-->
-                            <span t-esc="'{:.2f}'.format(product.website_price_min) + ' - '" t-if="product.website_price_min != product.website_price_max" />
-                            <span t-esc="product.website_price_max" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            <t t-if="product.website_price_max > 0">
+                                <!--<span t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>-->
+                                <span t-esc="'{:.2f}'.format(product.website_price_min) + ' - '" t-if="product.website_price_min != product.website_price_max" />
+                                <span t-esc="product.website_price_max" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            </t>
+
+                            <span t-else="">Consultar Precio</span>
 
                             <span itemprop="price" style="display:none;" t-esc="product.website_price"/>
                             <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
 
                             <!-- AÑADIR PRODUCTO AL CARRITO -->
                             <input name="product_id" t-att-value="product.product_variant_id.id" type="hidden"/>
-                            <t t-if="len(product.product_variant_ids) == 1">
-                                <a class="btn btn-default btn-xs a-submit">
-                                    <span class="fa fa-shopping-cart"/>
-                                </a>
-                            </t>
-                            <t t-if="len(product.product_variant_ids) &gt; 1">
-                                <a class="btn btn-default btn-xs" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
-                                    <span class="fa fa-shopping-cart"/>
-                                </a>
+
+                            <!-- Si el producto no tiene precio no mostrar opciones de compra (en grid) -->
+                            <t t-if="product.website_price_max > 0">
+                                <t t-if="len(product.product_variant_ids) == 1">
+                                    <a class="btn btn-default btn-xs a-submit">
+                                        <span class="fa fa-shopping-cart"/>
+                                    </a>
+                                </t>
+                                <t t-if="len(product.product_variant_ids) &gt; 1">
+                                    <a class="btn btn-default btn-xs" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
+                                        <span class="fa fa-shopping-cart"/>
+                                    </a>
+                                </t>
                             </t>
                         </b>
                         <input name="product_id" t-att-value="product.product_variant_id.id" type="hidden"/>

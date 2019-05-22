@@ -13,13 +13,10 @@ class JsWebTemplateWebsiteSale(WebsiteSale):
         # return {product.id: product.website_price / add_qty for product in products}
         return {product.id: product.website_price for product in products}
 
-#class MyWebsiteSale(WebsiteSale):
-#    @http.route([
-#        '/shop',
-#        '/shop/page/<int:page>',
-#        '/shop/category/<model("product.public.category"):category>',
-#        '/shop/category/<model("product.public.category"):category>/page/<int:page>'
-#    ], type='http', auth="public", website=True)
-#    def shop(self, page=0, category=None, search='', ppg=False, **post):
-#        post['paginate_scope'] = 5 #Necesario incorporar esta variable en website_sale\controllers\main.py linea 258 para el parametro 'scope'
-#        return super(MyWebsiteSale, self).shop(page, category, search, ppg, **post)
+    # Para que no se puedan añadir al carro productos sin precio
+    # https://trello.com/c/haFQLVA4/14-hacer-que-no-se-puedan-comprar-art%C3%ADculos-sin-precio
+    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True, csrf=False)
+    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
+        product = request.env['product.product'].search([('id','=',product_id)])
+        if (product.website_price <= 0): return False
+        return super(JsWebTemplateWebsiteSale, self).cart_update(product_id, add_qty=1, set_qty=0, **kw)
