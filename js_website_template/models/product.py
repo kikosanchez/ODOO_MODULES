@@ -11,14 +11,20 @@ class ProductTemplate(models.Model):
         super(ProductTemplate, self)._website_price()
 
         for template in self:
+            print("############### JS_WEBSITE_TEMPLATE DEBUG ###############")
+            print("TEMPLATE NAME: " + str(template.name))
             # Para guardar los precios
             product_prices = []
+
+            # Precio de la plantilla
+            if (template.sale_ok and template.website_price > 0):
+                product_prices.append(template.website_price)
 
             # Precio de las variantes
             # Se necesita usar sudo() para el visitante anónimo
             for p in template.sudo().product_variant_ids:
-                # Obtener el precio de cada variante si es mayor que 0 y se puede comprar
-                if (p.sale_ok and p.website_price > 0):
+                # Obtener el precio de cada variante si es mayor que 0, tiene stock y se puede comprar
+                if (p.type == 'product' and p.sale_ok and p.website_price > 0 and (p.inventory_availability == "never" or p.inventory_availability == "custom" or p.qty_available > 0)) or ((p.type == 'consu' or p.type == 'service') and p.sale_ok and p.website_price > 0):
                     product_prices.append(p.website_price)
 
             # Obtenemos el precio más bajo y el más alto
