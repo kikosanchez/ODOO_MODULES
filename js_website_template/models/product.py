@@ -11,8 +11,6 @@ class ProductTemplate(models.Model):
         super(ProductTemplate, self)._website_price()
 
         for template in self:
-            print("############### JS_WEBSITE_TEMPLATE DEBUG ###############")
-            print("TEMPLATE NAME: " + str(template.name))
             # Para guardar los precios
             product_prices = []
 
