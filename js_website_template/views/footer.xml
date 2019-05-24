@@ -21,16 +21,22 @@
                             <ul class="list-unstyled">
                                 <li><a href="/contacto">Contáctanos</a></li>
                             </ul>
-                            <ul class="list-unstyled">
-                                <li t-ignore="true">
-                                    <i class="fa fa-phone"/>
-                                    <!--<span t-field="res_company.phone"/>-->
-                                    <span>+1 800 902 7707</span>
-                                </li>
-                                <li t-ignore="true"><i class="fa fa-envelope"/>
-                                    <span><a href="mailto:ventas@grupojimsports.com">ventas@grupojimsports.com</a></span>
-                                </li>
-                            </ul>
+							<ul class="list-unstyled">
+							  <li t-ignore="true">
+								<i class="fa fa-phone-square" style="width: 16px; text-align: center" />
+								Celular <span>+1 800 902 7707</span>
+							  </li>
+							  <li t-ignore="true">
+								<i class="fa fa-phone-square" style="width: 16px; text-align: center" />
+								Oficina <span t-field="res_company.phone"/>
+							  </li>
+							  <li t-ignore="true">
+								<i class="fa fa-envelope" style="width: 16px; text-align: center" />
+								<span>
+								  <a href="mailto:ventas@grupojimsports.com">ventas@grupojimsports.com</a>
+								</span>
+							  </li>
+							</ul>
                         </div>
 
                         <div class="col-md-3 col-lg-3">
