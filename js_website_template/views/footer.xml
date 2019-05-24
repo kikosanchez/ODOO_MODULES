@@ -25,7 +25,7 @@
                                 <li t-ignore="true">
                                     <i class="fa fa-phone"/>
                                     <!--<span t-field="res_company.phone"/>-->
-                                    <span>+1 809 902 7707</span>
+                                    <span>+1 800 902 7707</span>
                                 </li>
                                 <li t-ignore="true"><i class="fa fa-envelope"/>
                                     <span><a href="mailto:ventas@grupojimsports.com">ventas@grupojimsports.com</a></span>
