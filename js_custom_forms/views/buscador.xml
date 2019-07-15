@@ -1,0 +1,14 @@
+<odoo>
+    <template id="js_buscador_encima_categorias" inherit_id="clarico_shop.clarico_shop_ecommerce_categories" name="JS Buscador encima Categorias">
+        <xpath expr="//h4[hasclass('category')]" position="before">            
+            <form t-att-action="keep('/shop'+ ('/category/'+slug(category)) if category else None, search=0)" method="get" t-att-class="o_website_sale_search">
+                <t t-if="attrib_values">
+                    <t t-foreach="attrib_values" t-as="a">
+                        <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+                    </t>
+                </t>
+                <t t-call="website.website_search_box"/>                
+            </form>
+        </xpath>
+    </template>
+</odoo>

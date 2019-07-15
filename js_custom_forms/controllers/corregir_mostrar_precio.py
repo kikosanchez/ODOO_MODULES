@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 from odoo import http, tools, _
 from odoo.http import request
@@ -12,3 +11,14 @@ class JsWebTemplateWebsiteSale(WebsiteSale):
         products = request.env['product.product'].with_context({'quantity': add_qty}).browse(product_ids)
         # return {product.id: product.website_price / add_qty for product in products}
         return {product.id: product.website_price for product in products}
+
+    # Para que no se puedan añadir al carro productos sin precio
+    # https://trello.com/c/haFQLVA4/14-hacer-que-no-se-puedan-comprar-art%C3%ADculos-sin-precio
+    @http.route(['/shop/cart/update'], type='http', auth="public", methods=['POST'], website=True, csrf=False)
+    def cart_update(self, product_id, add_qty=1, set_qty=0, **kw):
+        product = request.env['product.product'].search([('id','=',product_id)])
+
+        if (product.website_price <= 0):
+            return False
+
+        return super(JsWebTemplateWebsiteSale, self).cart_update(product_id, add_qty=1, set_qty=0, **kw)

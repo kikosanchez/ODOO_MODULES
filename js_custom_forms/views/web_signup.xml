@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="js_web_signup_aviso_empresas" inherit_id="clarico_signup.clarico_signup_c_signup" name="JS Web Signup Aviso Empresas">
+        <xpath expr="//div[hasclass('oe_login_buttons', 'c_signup_link_btn')]" position="after">
+            <div class="clearfix text-center registro-aviso-empresas">
+                <p>Are you a company?</p>
+                <a class="btn-link" href="/demande-compte-societe">Contact us</a>
+            </div>
+        </xpath>        
+    </template>
+</odoo>

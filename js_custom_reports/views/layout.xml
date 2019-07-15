@@ -127,10 +127,15 @@
         <!-- Quitar la dirección extra que aparece en superior/derecha del PDF -->
         <xpath expr="//div[@class='page']/div[@class='row']/div[@class='col-xs-5 col-xs-offset-1']" position="replace"></xpath>
 
-        <!-- Añadir siret y vat a la dirección de facturación -->
+        <!-- Añadir siret y vat a la dirección de facturación. Legalmente una empresa sólo puede tener una dirección de facturación -->
         <xpath expr="//div[@class='page']/div[@class='row']/div[@class='col-xs-6']" position="inside">
-            <span t-if="doc.partner_id.vat"><t t-esc="doc.company_id.country_id.vat_label or 'TIN'"/>: <span t-field="doc.partner_id.vat"/>&#160;&#160;</span>
-            <span t-if="doc.partner_id.siret">SIRET: <span t-field="doc.partner_id.siret"/></span>
+            <t t-set="numero_vat" t-value="doc.partner_id.vat or doc.partner_id.parent_id.vat" />
+            <!-- Si el contacto tiene padre, poner el VAT_number del padre si lo tiene -->
+            <span t-if="numero_vat"><t t-esc="doc.company_id.country_id.vat_label or 'TIN'"/>: <span t-raw="numero_vat"/>&#160;&#160;</span>
+
+            <t t-set="numero_siret" t-value="doc.partner_id.siret or doc.partner_id.parent_id.siret" />
+            <!-- Si el contacto tiene padre, poner el SIRET del padre si lo tiene -->
+            <span t-if="numero_siret">SIRET: <span t-raw="numero_siret" /></span>
         </xpath>
 
         <!-- Quitar la dirección de envío (que aparece debajo de la de facturación)  -->

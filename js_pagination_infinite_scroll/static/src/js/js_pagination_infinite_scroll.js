@@ -5,6 +5,9 @@
 odoo.define('js_pagination_infinite_scroll', function (require) {
     "use strict";
 
+    // Soluciona errores HTTPS Mixed Content
+    if (window.location.protocol == 'https:') $('head').append('<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">');
+
     require('web.dom_ready');
     var Class = require('web.Class');
 
@@ -23,9 +26,6 @@ odoo.define('js_pagination_infinite_scroll', function (require) {
             $('div.filter-show').remove();
             $(self.paginationSelector).not(':last').remove().end().hide();
             var $productstable = $(self.productsTableSelector), $productsContainer = $productstable.find('tr:last td');
-
-            // Soluciona errores HTTPS Mixed Content
-            if (window.location.protocol == 'https:') $('head').append('<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">');
 
             // Ejecutamos las acciones en este rango de medidas ya que el tema tiene un error y no muestra nada
             if ($(window).width()>900 && $(window).width()<1000) self.loadProductsActions();
@@ -56,6 +56,7 @@ odoo.define('js_pagination_infinite_scroll', function (require) {
             $.getScript(window.location.origin +  '/clarico_wishlist/static/src/js/wishlist_script.js');
             $.getScript(window.location.origin +  '/website_sale_wishlist/static/src/js/website_sale_wishlist.js');
             $.getScript(window.location.origin +  '/clarico_quick_view/static/src/js/quick_view.js');
+            $.getScript(window.location.origin +  '/clarico_quick_view/static/src/js/quickview_script.js');
             $.getScript(window.location.origin +  '/clarico_similar_product/static/src/js/similar_product.js');
             //console.log('JsPagination Actions Loaded!');
 

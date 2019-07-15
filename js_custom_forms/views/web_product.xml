@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Frontend CSS -->
-
     <template id="js_custom_forms_assets_frontend_product" inherit_id="website.assets_frontend" name="Jim Custom Forms CSS Frontend">
         <xpath expr="." position="inside">
             <link href="/js_custom_forms/static/less/product.less" rel="stylesheet" type="text/less" />
         </xpath>
     </template>
 
-    <!-- Custom HTM for Product Page -->
-
+    <!-- Custom HTML for Product Page -->
     <template id="js_custom_forms_product_product" inherit_id="clarico_product.clarico_product_product" name="Custom Clarico Product" priority="25">
         <!-- Quitar condiciones debajo de añadir al carrito -->
         <xpath expr="//div[hasclass('p_static_desc_para')]" position="replace"></xpath>
@@ -27,8 +25,6 @@
                 </t>
             </p>
         </xpath>
-
-
     </template>
 
     <template id="js_custom_forms_product_compare" inherit_id="clarico_compare.clarico_compare_clarico_product" name="Custom Clarico Products Compare" priority="25">
@@ -41,5 +37,85 @@
         </xpath>
         <!-- Quitar atributos debajo de la descripción corta -->
         <xpath expr="//div[@id='product_specifications']" position="replace"></xpath>
+    </template>
+
+    <!-- Mostrar un rango de precios en la miniatura del producto, en el grid. En Dominicana está en js_website_template/views/shop.xml -->
+    <template id="jim_rango_de_precios" inherit_id="clarico_shop.clarico_shop_products_item" name="Jim Rango de precios" priority="25">
+        <!-- Modificacion en product_item (sacar precios y botones del section)  -->
+        <xpath expr="//form/div/section/div[hasclass('production-description')]/div[hasclass('product_price')]/b" position="replace">
+           <b>
+                <t t-if="product.website_price_difference and website.get_current_pricelist().discount_policy=='without_discount'">
+                    <del class="text-danger mr8" style="white-space: nowrap;" t-esc="compute_currency(product.website_public_price)" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}"/>
+                </t>
+
+                <t t-if="product.website_price_max > 0">
+                    <span t-esc="'{:.2f}'.format(product.website_price_min) + ' - '" t-if="product.website_price_min != product.website_price_max" />
+                    <span t-esc="product.website_price_max" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                </t>
+                <span t-else="">Check the price</span>
+
+                <span itemprop="price" style="display:none;" t-esc="product.website_price"/>
+                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+
+                <!-- AÑADIR PRODUCTO AL CARRITO -->
+                <input name="product_id" t-att-value="product.product_variant_id.id" type="hidden"/>
+
+                <!-- Si el producto no tiene precio no mostrar opciones de compra (en grid) -->
+                <t t-if="product.website_price_max > 0">
+                    <t t-if="len(product.product_variant_ids) == 1">
+                        <a class="btn btn-default btn-xs a-submit">
+                            <span class="fa fa-shopping-cart"/>
+                        </a>
+                    </t>
+                    <t t-if="len(product.product_variant_ids) &gt; 1">
+                        <a class="btn btn-default btn-xs" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
+                            <span class="fa fa-shopping-cart"/>
+                        </a>
+                    </t>
+                </t>
+            </b>
+        </xpath>
+    </template>
+
+    <!-- Personalizar vista del producto (variantes) --> <!-- en Dominicana está en js_website_product/views/layout.xml -->
+    <template id="jim_no_vender_productos_sin_precio" inherit_id="clarico_product.clarico_product_product" name="Jim. No vender productos sin precio">
+        <xpath expr="//form" position="replace">
+            <!-- Si el producto no tiene precio no mostrar opciones de compra (en vista producto) -->
+            <t t-if="product.website_price_max > 0">
+                <form action="/shop/cart/update" class="js_add_cart_variants" t-att-data-attribute_value_ids="attribute_value_ids" method="POST">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="js_product" t-if="product.product_variant_ids">
+                        <t t-call="website_sale.product_price"/>
+                        <div class="availability_messages"/>
+                        <div t-if="product.default_code" class="clarico_product_sku">
+                            <p class="sku_label">SKU:<t t-esc="product.default_code"/></p>
+                        </div>
+                        <t t-placeholder="select">
+                            <input type="hidden" class="product_id" name="product_id" t-att-value="product.product_variant_id.id if len(product.product_variant_ids) == 1 else '0'"/>
+
+                            <t t-call="website_sale.variants">
+                                <t t-set="ul_class" t-value="'nav-stacked'"/>
+                            </t>
+
+                        </t>                      
+                        <p t-if="len(product.product_variant_ids) &gt; 1" class="css_not_available_msg bg-danger" style="padding: 15px;">This combination does not exist...</p>
+                        <div class="cart-quantity-div">
+                            <div class="product_quantity"></div>
+                            <div class="product_wish_compare">
+                                <div class="wishlink" id="wishicon_div"/>
+                                <div class="compare_btn" id="compare_div"/>
+                            </div>
+                        </div>
+                        <div class="p_ad2cart">
+                            <a id="add_to_cart" class="btn btn-lg mt8 js_check_product a-submit" href="#">Add to Cart</a>
+                        </div>                      
+                    </div>
+                </form>
+            </t>
+            <t t-else="">
+                <hr style="margin-bottom: 12px" />
+                <a href="/contactus" class="btn btn-danger">Check the price</a>
+            </t>
+        </xpath>
     </template>
 </odoo>

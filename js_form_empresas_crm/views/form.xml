@@ -1,0 +1,163 @@
+<odoo>
+
+    <record id="js_crm_campos_adicionales" model="ir.ui.view">
+        <field name="name">js.crm.lead.form.lead.inherited</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='lead']" position="after">
+                <page string="Information complémentaire.">
+                    <group>
+                        <field name="tipo_empresa" />
+                        <field name="siret" />
+                        <field name="vat_number" />
+                        <!-- field name="opt_out" / -->
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <template id="js_form_empresas_crm_vista" name="JS Formulario Empresas CRM Vista">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure" />
+                <div class="container">
+                    <h1>Demande de compte société</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="oe_structure">
+                                <div>
+                                    <p>Si vous êtes une entreprise et souhaitez disposer d'un compte approprié, remplissez le formulaire suivant. Nous prendrons contact avec vous.</p>                                    
+                                </div>
+                            </div>
+                            <div class="text-left mt64 row" name="mail_button">
+                                <div>
+                                    <form action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/contactus-thank-you" class="s_website_form form-horizontal container-fluid mt32 col-md-9" enctype="multipart/form-data" data-editable-form="false">
+
+                                        <div class="form-group form-field o_website_form_required">
+                                            <label class="col-md-3 col-sm-4 control-label" for="name">Sujet</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="name" t-att-value="request.params.get('name', '')" required="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-field o_website_form_required_custom clearfix">
+                                            <label class="col-md-3 col-sm-4 control-label" for="partner_name">Nom de votre société</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="partner_name" t-att-value="request.params.get('partner_name', '')" required="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-field col-md-6 clearfix">
+                                            <label class="control-label" for="tipo_empresa">Type de société</label>
+                                            <select name="tipo_empresa" class="form-control">
+                                                <option t-att-value="Magasin" t-att-selected="magasin">Magasin</option>
+                                                <option t-att-value="Club" t-att-selected="club">Club, association ou collectif</option>
+                                                <option t-att-value="Autre" t-att-selected="autre" selected="selected">Autre</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12 clearfix"></div>
+
+                                        <div class="form-group form-field o_website_form_required_custom col-md-6 clearfix">
+                                            <label class="col-md-3 col-sm-4 control-label" for="siret">SIRET</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="siret" t-att-value="request.params.get('siret', '')" required="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-field col-md-6">
+                                            <label class="col-md-3 col-sm-4 control-label" for="vat_number">Numéro de TVA</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="vat_number" t-att-value="request.params.get('vat_number', '')" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-field o_website_form_required_custom col-md-6 clearfix">
+                                            <label class="col-md-3 col-sm-4 control-label" for="street">Rue</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="street" t-att-value="request.params.get('street', '')" required="" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-field col-md-6">
+                                            <label class="col-md-3 col-sm-4 control-label col-md-6" for="street2">Rue2</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="street2" t-att-value="request.params.get('street2', '')" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom col-md-6 clearfix">
+                                            <label class="col-md-3 col-sm-4 control-label" for="city">Ville</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="city" t-att-value="request.params.get('city', '')" required="" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-field o_website_form_required_custom col-md-6">
+                                            <label class="col-md-3 col-sm-4 control-label" for="zip">Code postal</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="zip" t-att-value="request.params.get('zip', '')" required="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-field col-md-12 clearfix">
+                                            <label class="col-md-3 col-sm-4 control-label" for="website">Site web</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="website" t-att-value="request.params.get('website', '')" required="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 clearfix"></div>
+
+                                        <div class="form-group form-field o_website_form_required_custom clearfix col-md-12">
+                                            <label class="col-md-3 col-sm-4 control-label" for="contact_name">Votre Nom</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-field">
+                                            <label class="col-md-3 col-sm-4 control-label" for="function">Poste occupé</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="function" t-att-value="request.params.get('function', '')" />
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group form-field o_website_form_required">
+                                            <label class="col-md-3 col-sm-4 control-label" for="phone">Téléphone</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="phone" t-att-value="request.params.get('phone', '')" required="" />
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group form-field o_website_form_required_custom">
+                                            <label class="col-md-3 col-sm-4 control-label" for="email_from">Email</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <input type="text" class="form-control o_website_form_input" name="email_from" t-att-value="request.params.get('email_from', '')" required="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-field">
+                                            <label class="col-md-3 col-sm-4 control-label" for="description">Observations</label>
+                                            <div class="col-md-7 col-sm-8">
+                                                <textarea class="form-control o_website_form_input" name="description"><t t-esc="request.params.get('description', '')"/></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-md-offset-3 col-md-7 col-sm-offset-4 col-sm-8">
+                                                <a class="o_website_form_send btn btn-primary btn-lg">Envoyer</a>
+                                                <span id="o_website_form_result" />
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- container -->
+                <div class="oe_structure" />
+            </div><!-- wrap -->
+        </t>
+    </template>
+</odoo>

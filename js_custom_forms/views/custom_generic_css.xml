@@ -6,9 +6,19 @@
             <link href="/js_custom_forms/static/less/estilos.less" rel="stylesheet" type="text/less"/>
         </xpath>
     </template>
+
     <template id="js_custom_forms_ancho_lista_formularios_backend" name="JS Ancho lista formularios backend" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <link href="/js_custom_forms/static/less/backend_styles.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+    </template>
+
+    <!-- Funciones JavaScript propias del módulo (en static/js/)  -->
+    <template id="js_custom_forms_javascript" inherit_id="website.assets_frontend" name="Jim JavaScript">
+        <!-- Funciones JavaScript propias del módulo (en static/js/)  -->
+        <xpath expr="script[last()]" position="after">
+            <!-- Para  no mostrar los precios 0,00 -->
+            <script src="/js_custom_forms/static/js/functions.js" type="text/javascript" />
         </xpath>
     </template>
 </odoo>

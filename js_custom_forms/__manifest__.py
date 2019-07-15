@@ -1,6 +1,6 @@
 {
     "name": "JS Custom Forms",
-    "summary": "Cambios genéricos en plantilla Clarico y otras personalizaciones",
+    "summary": "Cambios genéricos en plantilla Clarico y otras personalizaciones de Odoo",
     "version": "1.0",
     "license": "AGPL-3",
     "author": "Jim Sports",
@@ -9,7 +9,7 @@
     'data': [
         'data/ir_model_data.xml',
         'views/shop_address.xml',
-        'views/default_contact_form.xml',
+        # 'views/default_contact_form.xml',
         'views/web_product.xml',
         'views/custom_generic_css.xml',
         'views/clarico_product_compare.xml',
@@ -18,10 +18,14 @@
         'views/cart.xml',
         'views/res_partner_form.xml',
         'views/web_shop.xml',
-        'views/shop_payment.xml',
-        # 'views/devoluciones.xml',
-        'views/footer.xml'
+        # 'views/shop_payment.xml',
+        'views/web_signup.xml',
+        'views/footer.xml',
+        # 'views/web_shop_confirmation.xml',
+        'views/metodos_de_pago.xml',
+        'views/metodos_de_envio.xml',
+        'views/buscador.xml',
     ],
     'category': 'Website',
-    'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare',  'clarico_shop'],
+    'depends': ['website', 'website_sale', 'clarico_product',  'clarico_compare',  'clarico_shop', 'website_form_recaptcha'],
 }

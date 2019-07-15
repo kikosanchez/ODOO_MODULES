@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="js_web_shop_confirmation_sale_bill_to" inherit_id="website_sale.bill_to" name="JS Webshop Confirmation Sale Bill to">
+        <xpath expr="//t[@groups='sale.group_delivery_invoice_address']/div/div/div[hasclass('o_div_text_overflow')]" position="replace">
+            <!-- Si el ID del Método de envío es 9 : Recoger en tienda -->
+            <t t-if="order.carrier_id.id == 9">
+                <p>Pickup at store</p>
+                <p>Sport On Time</p>
+                <p>45, RUE DE MARBRERIE, BAT.11</p>
+                <p>Multiparc du salaison</p>
+                <p>34740 VENDARGUES</p>
+                <p>France</p>
+            </t>
+            <t t-else="">
+                <div class="o_div_text_overflow" t-field="order.partner_shipping_id" t-options="{'widget': 'contact','fields': ['address', 'name', 'phone']}"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

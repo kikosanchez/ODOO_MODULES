@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Para mostrar el texto de "Recoger en tienda" en /shop/confirmation -->
+    <template id="js_web_shop_confirmation_sale_bill_to" inherit_id="website_sale.bill_to" name="JS Webshop Confirmation Sale Bill to">
+        <xpath expr="//t[@groups='sale.group_delivery_invoice_address']/div/div/div[hasclass('o_div_text_overflow')]" position="replace">
+            <!-- Si el ID del Método de envío es 9 : Recoger en tienda -->
+            <t t-if="order.carrier_id.id == 9">
+                <p>Pickup at store</p>
+                <p>Sport On Time</p>
+                <p>45, RUE DE MARBRERIE, BAT.11</p>
+                <p>Multiparc du salaison</p>
+                <p>34740 VENDARGUES</p>
+                <p>France</p>
+            </t>
+            <t t-else="">
+                <div class="o_div_text_overflow" t-field="order.partner_shipping_id" t-options="{'widget': 'contact','fields': ['address', 'name', 'phone']}"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Para mostrar el texto de "Recoger en tienda" en /shop/confirmation -->
+    <template id="js_web_shop_seleccionar_metodo_de_envio" inherit_id="website_sale_delivery.payment_delivery" name="JS Web shop seleccionar metodo de envio">
+        <xpath expr="//t[@t-foreach='deliveries']" position="replace">
+            <t t-set="id_pvp" t-value="request.env.user.partner_id.property_product_pricelist.id" />
+            <!-- si es un contacto hijo, el pricelist es el de su padre -->
+            <t t-foreach="deliveries" t-as="delivery">
+                <!--
+                    IDs: PVP00 = 1      FRAIS DE PORT = 1   (en mayúsculas)  
+                    IDs: PVP01 = 5258   Frais de Port = 10  (sustantivos con inicial en mayúscula) Para clubes, asociaciones y colectividades. 
+                    IDs: PVP02 = 12     Frais de port = 11
+                    IDs: PVP03 = 5156   Frais de port = 11
+                -->
+                <t t-if="id_pvp == 1 and (delivery.id == 10 or delivery.id == 11)">
+                    <!-- IDs: PVP00 = 1      FRAIS DE PORT = 1   (en mayúsculas) -->
+                </t>
+                <t t-elif="id_pvp == 5258 and (delivery.id == 1 or delivery.id == 11)">
+                    <!-- IDs: PVP01 = 5258   Frais de Port = 10  (sustantivos con inicial en mayúscula) Para clubes, asociaciones y colectividades -->
+                </t>
+                <t t-elif="(id_pvp == 12 or id_pvp == 5156) and (delivery.id == 1 or delivery.id == 10)">
+                    <!-- 
+                        IDs: PVP02 = 12     Frais de port = 11
+                        IDs: PVP03 = 5156   Frais de port = 11
+                     -->
+                </t>
+                <t t-else="">
+                    <li class="list-group-item">
+                        <input t-att-value="delivery.id" t-att-id="'delivery_%i' % delivery.id" type="radio" name="delivery_type" t-att-checked="order.carrier_id and order.carrier_id.id == delivery.id and 'checked' or False" t-att-class="'hidden' if delivery_nb == 1 else ''" />
+                        <label class="label-optional" t-field="delivery.name" t-att-for="'delivery_%i' % delivery.id" />
+                        <t t-if="delivery.delivery_type == 'fixed'">
+                            <span t-if="delivery.fixed_price &gt; 0.0" class="badge pull-right" t-field="delivery.fixed_price" t-options="{&quot;widget&quot;: &quot;monetary&quot;,                                       &quot;from_currency&quot;: delivery.product_id.company_id.currency_id, &quot;display_currency&quot;: website_sale_order.currency_id}" />
+                            <span t-else="" class="badge pull-right">Free</span>
+                        </t>
+                        <t t-else="">
+                            <span class="badge pull-right hidden" t-field="delivery.fixed_price" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;from_currency&quot;: delivery.product_id.company_id.currency_id, &quot;display_currency&quot;: website_sale_order.currency_id}" />
+                            <span class="badge pull-right o_delivery_compute">Select to compute delivery rate</span>
+                        </t>
+                        <t t-if="delivery.website_description">
+                            <div t-field="delivery.website_description" class="text-muted mt8" />
+                        </t>
+                    </li>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

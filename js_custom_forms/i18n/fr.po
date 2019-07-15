@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-15 16:58+0000\n"
-"PO-Revision-Date: 2019-03-15 18:12+0100\n"
+"POT-Creation-Date: 2019-05-08 15:46+0000\n"
+"PO-Revision-Date: 2019-05-08 17:55+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,20 +18,30 @@ msgstr ""
 "Language: fr\n"
 
 #. module: js_custom_forms
+#: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_theme_style_6
+msgid "<b><span>My account</span>&amp;nbsp;<span class=\"caret\"/></b>"
+msgstr "<b><span>Mon compte</span>&amp;nbsp;<span class=\"caret\"/></b>"
+
+#. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_modal_add_to_cart
 msgid "Add to Cart"
-msgstr "Ajouter au Panier"
+msgstr "Ajouter au panier"
 
 #. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_theme_style_6
 msgid "Add to Compare"
-msgstr "Comparer"
+msgstr "Ajouter pour comparer"
 
 #. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_shop_categories
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_wishlist_link
 msgid "All Products"
-msgstr "Tous les Produits"
+msgstr "Tous les produits"
+
+#. module: js_custom_forms
+#: model:ir.ui.view,arch_db:js_custom_forms.js_web_signup_aviso_empresas
+msgid "Are you a company?"
+msgstr "Êtes-vous une entreprise?"
 
 #. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_modal_add_to_cart
@@ -39,14 +49,30 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #. module: js_custom_forms
+#: model:ir.ui.view,arch_db:js_custom_forms.js_web_signup_aviso_empresas
+msgid "Contact us"
+msgstr "Contactez-nous"
+
+#. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_shop_address
 msgid "France"
 msgstr "France"
 
 #. module: js_custom_forms
+#: code:addons/js_custom_forms/controllers/shop_address.py:63
+#, python-format
+msgid "Invalid Email! Please enter a valid email address."
+msgstr "Adresse courriel incorrecte! Merci de saisir une adresse courriel valable."
+
+#. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_theme_style_6
 msgid "Log out"
-msgstr "Déconnectez-vous"
+msgstr "Déconnexion"
+
+#. module: js_custom_forms
+#: model:ir.ui.view,arch_db:js_custom_forms.js_logotipo_png_fondo_transparente
+msgid "Logo Sport On Time"
+msgstr "Logo Sport On Time"
 
 #. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_shop_categories
@@ -54,19 +80,52 @@ msgid "PROJECTS"
 msgstr "PROJETS"
 
 #. module: js_custom_forms
+#: model:ir.ui.view,arch_db:js_custom_forms.js_default_contact_form
+msgid "Recaptcha"
+msgstr "Recaptcha"
+
+#. module: js_custom_forms
+#: model:ir.ui.view,arch_db:js_custom_forms.js_lista_metodos_de_pago
+msgid "Save my payment data"
+msgstr "Enregistrer mes informations de règlement"
+
+#. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_theme_style_6
 msgid "Search…"
-msgstr "Chercher…"
+msgstr "Recherche…"
+
+#. module: js_custom_forms
+#: code:addons/js_custom_forms/controllers/shop_address.py:81
+#, python-format
+msgid "Some required fields are empty."
+msgstr "Certains champs obligatoires sont vides."
 
 #. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_shop_categories
 msgid "Sport Facilities"
-msgstr "Installations Sportives"
+msgstr "Installations sportives"
 
 #. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_default_contact_form
 msgid "Your company"
-msgstr "Votre entreprise"
+msgstr "Votre société"
+
+#. module: js_custom_forms
+#: code:addons/js_custom_forms/controllers/shop_address.py:53
+#, python-format
+msgid "ZIP Code is not valid."
+msgstr "Le code postal n'est pas valide."
+
+#. module: js_custom_forms
+#: code:addons/js_custom_forms/controllers/shop_address.py:49
+#, python-format
+msgid "ZIP Code is required."
+msgstr "Le code postal est requis."
+
+#. module: js_custom_forms
+#: model:ir.ui.view,arch_db:js_custom_forms.js_lista_metodos_de_pago
+msgid "and more"
+msgstr "et plus"
 
 #. module: js_custom_forms
 #: model:ir.ui.view,arch_db:js_custom_forms.js_custom_forms_wishlist_link

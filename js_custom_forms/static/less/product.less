@@ -87,3 +87,18 @@ table#product-grid-table form section div.product_price > b > del{
     display: none;
 }
 
+
+/* En aquellos productos en los que la primera combinación de color/talla [SELECT/SELECT] no está disponible, 
+el <li> desaparecía oculto por display: none y no había forma de seleccionar otro atributo;
+*/
+.css_not_available.js_product > *:nth-child(5) > * {
+    display: block !important;
+}
+
+ul.js_add_cart_variants li div.select_wrapp select#attr_select option{
+    color: #002395;
+}
+ul.js_add_cart_variants li div.select_wrapp select#attr_select option.css_not_available{
+    color: #bbb;
+}
+
