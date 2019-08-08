@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="oficina_vimenpaq_1" model="js_website_vimenpaq.office">
+            <field name="sequence">1</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Oficina Principal</field>
+            <field name="phone">(809) 532-7388</field>
+            <field name="schedule">Lun-Vier. 07:30am - 09:00pm, Sáb. 08:00am - 04:00pm</field>
+            <field name="address">Ave. Winston Churchill No. 5 esq. Bolívar. La Julia</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_2" model="js_website_vimenpaq.office">
+            <field name="sequence">2</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Remesas Vimenca Lincoln</field>
+            <field name="phone">(809) 487-2364</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Ave. Abraham Lincoln No. 306, La Julia</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_3" model="js_website_vimenpaq.office">
+            <field name="sequence">3</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Plaza Sambil</field>
+            <field name="phone">(809) 475-3870</field>
+            <field name="schedule">Lun-Vier. 10:00am - 07:00pm, Sáb. 10:00am - 02:00pm</field>
+            <field name="address">Ave. John F. Kennedy esq. Máximo Gómez, Nivel Acuario Local AC54</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_4" model="js_website_vimenpaq.office">
+            <field name="sequence">4</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. Oficina Principal</field>
+            <field name="phone">(809) 582-2338</field>
+            <field name="schedule">Lun-Vier. 08:00am – 07:00pm, Sáb. 08:00am – 02:00pm</field>
+            <field name="address">C/ Independencia No. 30 casi esq. Juan Pablo Duarte. Al lado Banco Vimenca</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_5" model="js_website_vimenpaq.office">
+            <field name="sequence">5</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Plaza Luperón</field>
+            <field name="phone">(809) 740-0130</field>
+            <field name="schedule">Lun-Vier. 09:00am - 06:00pm, Sáb. 09:00am - 01:00pm</field>
+            <field name="address">Av. Independencia esq. Ave. Luperón</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_6" model="js_website_vimenpaq.office">
+            <field name="sequence">6</field>
+            <field name="active">True</field>
+            <field name="name">La Romana. Plaza Lama</field>
+            <field name="phone">(809) 813-4240</field>
+            <field name="schedule">Lun-Vier. 09:00am - 07:00 pm, Sáb. 09:00am - 01:00pm</field>
+            <field name="address">C/ Francisco Richiez No. 60 esq. Fray Juan de Utrera. Plaza Lama</field>
+            <field name="city">La Romana</field>
+        </record>
+
+        <record id="oficina_vimenpaq_7" model="js_website_vimenpaq.office">
+            <field name="sequence">7</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Herrera, Plaza Jean Luis</field>
+            <field name="phone">(809) 537-5447</field>
+            <field name="schedule">Lun-Vier. 09:00am – 06:00pm, Sáb. 09:00am – 01:00pm</field>
+            <field name="address">Ave. 27 de Febrero No. 1300, Plaza Jean Luis</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_8" model="js_website_vimenpaq.office">
+            <field name="sequence">8</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Supermercado Nacional Arroyo Hondo</field>
+            <field name="phone">(809) 566-9862</field>
+            <field name="schedule">Lun-Vier. 08:00am – 09:00pm, Sáb. 09:00am – 04:00pm</field>
+            <field name="address">Av. Camino Chiquito Esq. Reyes Católicos, dentro del Supermercado Nacional</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_9" model="js_website_vimenpaq.office">
+            <field name="sequence">9</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Cristo Rey, Farmacia Karen</field>
+            <field name="phone">(809) 566-3420</field>
+            <field name="schedule">Lun-Vie. 08:00am – 08:00pm, Sáb. 08:00am – 08:00pm</field>
+            <field name="address">Ave. Nicolás de Ovando No. 396</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_10" model="js_website_vimenpaq.office">
+            <field name="sequence">10</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Sabana perdida</field>
+            <field name="phone">(809) 568-0811 / (809)568-8007</field>
+            <field name="schedule">Lun-Vier. 08:00am – 06:00pm, Sáb. 08:00am – 06:00pm</field>
+            <field name="address">Ave. Restauradores esquina C/ 13</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_11" model="js_website_vimenpaq.office">
+            <field name="sequence">11</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Plaza Megacentro</field>
+            <field name="phone">(809) 592-6515</field>
+            <field name="schedule">Lun-Vier. 09:00am – 07:00pm, Sáb. 09:00am – 01:00pm</field>
+            <field name="address">Ave. San Vicente de Paul esq. Carretera Mella</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_12" model="js_website_vimenpaq.office">
+            <field name="sequence">12</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Villa Mella, Plaza Buena Vista I</field>
+            <field name="phone">(809) 332-9231</field>
+            <field name="schedule">Lun-Vier. 09:00am – 06:00pm, Sáb. 09:00am – 01:00pm</field>
+            <field name="address">Av. Hnas. Mirabal No. 449 Local 05</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_13" model="js_website_vimenpaq.office">
+            <field name="sequence">13</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Los Frailes, Hipermercado Olé</field>
+            <field name="phone">(809) 598-8658</field>
+            <field name="schedule">Lun-Vier. 09:00am – 06:00pm, Sáb. 09:00am – 01:00pm</field>
+            <field name="address">C/ Miramar Norte esq. Marginal, Km 10</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_14" model="js_website_vimenpaq.office">
+            <field name="sequence">14</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Los Trinitarios</field>
+            <field name="phone">(809) 788-7488</field>
+            <field name="schedule">Lun-Vier. 08:00am – 05:00pm, Sáb. 09:00am – 01:00pm</field>
+            <field name="address">Av. Charles de Gaulle #50. Urb. Los Trabajadores</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_15" model="js_website_vimenpaq.office">
+            <field name="sequence">15</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. Supermercado Nacional, Estrella Sadhalá</field>
+            <field name="phone">(809) 226-0691</field>
+            <field name="schedule">Lun-Vier. 10:00am – 07:00pm, Sáb. 10:00am – 02:00pm</field>
+            <field name="address">Avenida Estrella Sadhalá esq. 27 de Febrero</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_16" model="js_website_vimenpaq.office">
+            <field name="sequence">16</field>
+            <field name="active">True</field>
+            <field name="name">Bonao</field>
+            <field name="phone">(809) 525-6115</field>
+            <field name="schedule">Lun-Vier. 08:00am – 06:00pm, Sáb. 08:00am – 06:00pm</field>
+            <field name="address">Calle Padre Meriño No. 10 esq. Sánchez</field>
+            <field name="city">Bonao</field>
+        </record>
+
+        <record id="oficina_vimenpaq_17" model="js_website_vimenpaq.office">
+            <field name="sequence">17</field>
+            <field name="active">True</field>
+            <field name="name">Puerto Plata</field>
+            <field name="phone">(809) 586-4022 / (809) 586-3883</field>
+            <field name="schedule">Lun-Vier. 08:00am – 05:00pm, Sáb. 08:00am – 05:00pm</field>
+            <field name="address">Av. Luis Ginebra No. 02. Plaza Juan Brugal</field>
+            <field name="city">Puerto Plata</field>
+        </record>
+
+        <record id="oficina_vimenpaq_18" model="js_website_vimenpaq.office">
+            <field name="sequence">18</field>
+            <field name="active">True</field>
+            <field name="name">San Pedro de Macorís</field>
+            <field name="phone">(809) 526-6356</field>
+            <field name="schedule">Lun-Vier. 08:00am - 07:00pm, Sáb. 08:00am - 02:00pm</field>
+            <field name="address">Calle Alejo Martínez No. 13</field>
+            <field name="city">San Pedro de Macorís</field>
+        </record>
+
+        <record id="oficina_vimenpaq_19" model="js_website_vimenpaq.office">
+            <field name="sequence">19</field>
+            <field name="active">True</field>
+            <field name="name">Sosúa. El Batey</field>
+            <field name="phone">(809) 571-3800</field>
+            <field name="schedule">Lun-Vier. 08:00am – 05:00pm, Sáb. 08:00am – 05:00pm</field>
+            <field name="address">C/ Duarte No. 2 Edif.Bommarito. El Batey</field>
+            <field name="city">Sosúa</field>
+        </record>
+
+        <record id="oficina_vimenpaq_20" model="js_website_vimenpaq.office">
+            <field name="sequence">20</field>
+            <field name="active">True</field>
+            <field name="name">Sirena. Autopista Duarte</field>
+            <field name="phone">(809) 372-1559</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Aut. Duarte Km. 13 ½</field>
+            <field name="city">Sirena</field>
+        </record>
+
+        <record id="oficina_vimenpaq_21" model="js_website_vimenpaq.office">
+            <field name="sequence">21</field>
+            <field name="active">True</field>
+            <field name="name">San Francisco de Macorís</field>
+            <field name="phone">(809) 588-8844</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">C/ 27 de Febrero esq. Padre Billini No. 24</field>
+            <field name="city">San Francisco de Macorís</field>
+        </record>
+
+        <record id="oficina_vimenpaq_22" model="js_website_vimenpaq.office">
+            <field name="sequence">22</field>
+            <field name="active">True</field>
+            <field name="name">Plaza Lama Máximo Gómez</field>
+            <field name="phone">(809) 567-3785</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Ave. Máximo Gómez esq. Nicolás de Ovando</field>
+            <field name="city">Plaza Lama Máximo Gómez</field>
+        </record>
+
+        <record id="oficina_vimenpaq_23" model="js_website_vimenpaq.office">
+            <field name="sequence">23</field>
+            <field name="active">True</field>
+            <field name="name">Punta Cana. Punta Cana Village</field>
+            <field name="phone">(809) 959-0261</field>
+            <field name="schedule">Lun-Vier. 08:00am – 05:00pm, Sáb. 08:00am – 12:00pm</field>
+            <field name="address">Carretera Aeropuerto Punta Cana, Plaza Bolera local 5 y 6, Punta Cana Village</field>
+            <field name="city">Punta Cana</field>
+        </record>
+
+        <record id="oficina_vimenpaq_24" model="js_website_vimenpaq.office">
+            <field name="sequence">24</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Las Américas, Ozama</field>
+            <field name="phone">(809) 592-5661</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 06:00pm</field>
+            <field name="address">Autopista Las Américas No. 4 Ens. Ozama</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_25" model="js_website_vimenpaq.office">
+            <field name="sequence">25</field>
+            <field name="active">True</field>
+            <field name="name">Barahona</field>
+            <field name="phone">(809) 524-3500</field>
+            <field name="schedule">Lun-Vier. 08:00am - 07:00pm, Sáb. 08:00am - 07:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">C/ María Montez No. 19 casi esq. Luis E. Del Monte</field>
+            <field name="city">Barahona</field>
+        </record>
+
+        <record id="oficina_vimenpaq_26" model="js_website_vimenpaq.office">
+            <field name="sequence">26</field>
+            <field name="active">True</field>
+            <field name="name">Olé Duarte Norte. Villa Consuelo</field>
+            <field name="phone">(809) 538-9421</field>
+            <field name="schedule">Lun-Vier. 08:00am - 07:00pm, Sáb. 08:00am - 07:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Av. Duarte No.194 esq. Manuela Diez, Villa Consuelo</field>
+            <field name="city">Olé Duarte Norte</field>
+        </record>
+
+        <record id="oficina_vimenpaq_27" model="js_website_vimenpaq.office">
+            <field name="sequence">27</field>
+            <field name="active">True</field>
+            <field name="name">Plaza Lama Duarte Sur. Villa Francisca</field>
+            <field name="phone">(809) 221-7167</field>
+            <field name="schedule">Lun-Vier. 08:00am - 07:00pm, Sáb. 08:00am - 07:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Av. Duarte No .78 esq. Barahona, Villa Francisca</field>
+            <field name="city">Plaza Lama Duarte Sur</field>
+        </record>
+
+        <record id="oficina_vimenpaq_28" model="js_website_vimenpaq.office">
+            <field name="sequence">28</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. La Sirena, Bartolomé Colón</field>
+            <field name="phone">(809) 582-4320</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 08:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">C/ Bartolomé Colón esquina Germán Soriano</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_29" model="js_website_vimenpaq.office">
+            <field name="sequence">29</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Padre Castellanos</field>
+            <field name="phone">(809) 245-3033 / (809) 536-7916</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 06:00pm</field>
+            <field name="address">Av. Padre Castellanos No. 218 ,esq. Madre Mazarelli, Villa Maria</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_30" model="js_website_vimenpaq.office">
+            <field name="sequence">30</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Charles De Gaulle</field>
+            <field name="phone">(809) 483-2515</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Ave. Charles de Gaulle Casi esq. Carr. Mella. Cancino 2do</field>
+            <field name="city">Sirena Charles De Gaulle</field>
+        </record>
+
+        <record id="oficina_vimenpaq_31" model="js_website_vimenpaq.office">
+            <field name="sequence">31</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Avenida Mella</field>
+            <field name="phone">(809) 688-7535</field>
+            <field name="schedule">Lun-Vier. 08:00am - 07:00pm, Sáb. 08:00am - 07:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Av. Mella No. 258 esq. Duarte</field>
+            <field name="city">Sirena Avenida Mella</field>
+        </record>
+
+        <record id="oficina_vimenpaq_32" model="js_website_vimenpaq.office">
+            <field name="sequence">32</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Winston Churchill</field>
+            <field name="phone">(809) 541-4216 / (809) 541-4217</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 08:00pm</field>
+            <field name="address">Av. Winston Churchill esq. Av. Gustavo M. Ricart</field>
+            <field name="city">Sirena Winston Churchill</field>
+        </record>
+
+        <record id="oficina_vimenpaq_33" model="js_website_vimenpaq.office">
+            <field name="sequence">33</field>
+            <field name="active">True</field>
+            <field name="name">Sirena San Francisco de Macoris II</field>
+            <field name="phone">(809) 588-0554</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Carretera SFM-Nagua. Km 2 1/2</field>
+            <field name="city">Sirena San Francisco de Macoris II</field>
+        </record>
+
+        <record id="oficina_vimenpaq_34" model="js_website_vimenpaq.office">
+            <field name="sequence">34</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Av. Luperon II</field>
+            <field name="phone">(809) 227-8386</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Ave. Luperon , Herrera. Anti. Aer. De Herrera</field>
+            <field name="city">Sirena Av. Luperon II</field>
+        </record>
+
+        <record id="oficina_vimenpaq_35" model="js_website_vimenpaq.office">
+            <field name="sequence">35</field>
+            <field name="active">True</field>
+            <field name="name">Jumbo Avenida Luperon. Las Praderas</field>
+            <field name="phone">(809) 565-4970</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Av. Luperon esq. Gustavo M. Ricart, Las Praderas</field>
+            <field name="city">Jumbo Avenida Luperon</field>
+        </record>
+
+        <record id="oficina_vimenpaq_36" model="js_website_vimenpaq.office">
+            <field name="sequence">36</field>
+            <field name="active">True</field>
+            <field name="name">Plaza Lama Carretera Mella</field>
+            <field name="phone">(809) 483-3999</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 07:00pm</field>
+            <field name="address">Carretera Mella Km 8 1/2. Local No. 1 Cancino II</field>
+            <field name="city">Plaza Lama Carretera Mella</field>
+        </record>
+
+        <record id="oficina_vimenpaq_37" model="js_website_vimenpaq.office">
+            <field name="sequence">37</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Autopista San Isidro II</field>
+            <field name="phone">(809) 788-9011 / (809) 788-881</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Autopista San Isidro No. 03</field>
+            <field name="city">Sirena Autopista San Isidro II</field>
+        </record>
+
+        <record id="oficina_vimenpaq_38" model="js_website_vimenpaq.office">
+            <field name="sequence">38</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Avenida Venezuela</field>
+            <field name="phone">(809) 234-1918</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Av. Venezuela No. 100</field>
+            <field name="city">Sirena Avenida Venezuela</field>
+        </record>
+
+        <record id="oficina_vimenpaq_39" model="js_website_vimenpaq.office">
+            <field name="sequence">39</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Supermercado Carrefour</field>
+            <field name="phone">(809) 561-5231</field>
+            <field name="schedule">Lun-Vier. 09:00am – 08:00pm, Sáb. 09:00am – 02:00pm</field>
+            <field name="address">Autopista Duarte, Km. 10 ½</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_40" model="js_website_vimenpaq.office">
+            <field name="sequence">40</field>
+            <field name="active">True</field>
+            <field name="name">Bávaro. Oficina Principal</field>
+            <field name="phone">(809) 552-0148</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 09:00am - 01:00pm</field>
+            <field name="address">Av. España, Gran Plaza Friusa</field>
+            <field name="city">Bávaro</field>
+        </record>
+
+        <record id="oficina_vimenpaq_41" model="js_website_vimenpaq.office">
+            <field name="sequence">41</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. La Sirena, El Embrujo</field>
+            <field name="phone">(809) 587-9959</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Aut. Duarte esq. Rafael Vidal</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_42" model="js_website_vimenpaq.office">
+            <field name="sequence">42</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Las Caobas</field>
+            <field name="phone">(829) 688-0603</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Prolongación Ave. 27 de Febrero</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_43" model="js_website_vimenpaq.office">
+            <field name="sequence">43</field>
+            <field name="active">True</field>
+            <field name="name">Jimaní</field>
+            <field name="phone">(809) 248-3071</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Calle 27 de Febrero No. 04</field>
+            <field name="city">Sirena Villa Mella</field>
+        </record>
+
+        <record id="oficina_vimenpaq_44" model="js_website_vimenpaq.office">
+            <field name="sequence">44</field>
+            <field name="active">True</field>
+            <field name="name">Jimaní</field>
+            <field name="phone">(809) 248-3071</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Calle 27 de Febrero No. 04</field>
+            <field name="city">Jimaní</field>
+        </record>
+
+        <record id="oficina_vimenpaq_45" model="js_website_vimenpaq.office">
+            <field name="sequence">45</field>
+            <field name="active">True</field>
+            <field name="name">Sirena Bonao II</field>
+            <field name="phone">(809) 551-9823</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">C/ Las Hortensias (Ant. Autopista Duarte)</field>
+            <field name="city">Sirena Bonao II</field>
+        </record>
+
+        <record id="oficina_vimenpaq_46" model="js_website_vimenpaq.office">
+            <field name="sequence">46</field>
+            <field name="active">True</field>
+            <field name="name">Olé Autopista Duarte</field>
+            <field name="phone">(809) 238-2526 / (809) 616-5916</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Sáb. 09:00am - 05:00pm</field>
+            <field name="address">Olé Km 17 Autopista Duarte</field>
+            <field name="city">Olé Autopista Duarte</field>
+        </record>
+
+        <record id="oficina_vimenpaq_47" model="js_website_vimenpaq.office">
+            <field name="sequence">47</field>
+            <field name="active">True</field>
+            <field name="name">Sirena José Contreras</field>
+            <field name="phone">(809) 508-1749</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Av. José Contreras esq Alma Mater. Zona Universitaria</field>
+            <field name="city">Sirena José Contreras</field>
+        </record>
+
+        <record id="oficina_vimenpaq_48" model="js_website_vimenpaq.office">
+            <field name="sequence">48</field>
+            <field name="active">True</field>
+            <field name="name">Higuey - La Sirena</field>
+            <field name="phone">(809) 554-9387</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">C/ José Audilio Santana esq. Hermanos Goico Morales</field>
+            <field name="city">Higuey</field>
+        </record>
+
+        <record id="oficina_vimenpaq_49" model="js_website_vimenpaq.office">
+            <field name="sequence">49</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Supermercado Pola Independencia</field>
+            <field name="phone">(809) 535-0382</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pmm</field>
+            <field name="address">Avenida Independencia KM 8 ½ esq. Interior A</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_50" model="js_website_vimenpaq.office">
+            <field name="sequence">50</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Supermercado Nacional Nuñez de Cáceres</field>
+            <field name="phone">(809) 793-1649</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 04:00pm</field>
+            <field name="address">Av. Núñez de Cáceres Esq. Guarocuya, El Millón, Distrito Nacional</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_51" model="js_website_vimenpaq.office">
+            <field name="sequence">51</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Los Alcarrizos, Supermercado Aprezio</field>
+            <field name="phone">(809) 545-3633</field>
+            <field name="schedule">Lun-Vier. 08:00am - 07:00pm, Sáb. 08:00am - 07:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">C/ Duarte No. 90. Aprezio. Los Alcarrizos</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_52" model="js_website_vimenpaq.office">
+            <field name="sequence">52</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Lope de Vega</field>
+            <field name="phone">(809) 566-6228</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 09:00am - 04:00pm</field>
+            <field name="address">Av. Lope de Vega esq. C/ Rafael Hernandez No. 19. Naco</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_53" model="js_website_vimenpaq.office">
+            <field name="sequence">53</field>
+            <field name="active">True</field>
+            <field name="name">La Vega. La Sirena</field>
+            <field name="phone">(809) 824-3496</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Avenida Gregorio Rivas No.163 sector Villa Lora</field>
+            <field name="city">La Vega</field>
+        </record>
+
+        <record id="oficina_vimenpaq_54" model="js_website_vimenpaq.office">
+            <field name="sequence">54</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Plaza Patio Colombia, República de Colombia</field>
+            <field name="phone">(809)-378-6606</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 09:00am - 05:00pm</field>
+            <field name="address">Avenida República de Colombia, Plaza Patio Colombia, Sto. Dgo. Oeste</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_55" model="js_website_vimenpaq.office">
+            <field name="sequence">55</field>
+            <field name="active">True</field>
+            <field name="name">Boca Chica</field>
+            <field name="phone">(809) 523-4625</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:30pm, Sáb. 08:00am - 05:30pm</field>
+            <field name="address">C/ Duarte No. 65</field>
+            <field name="city">Boca Chica</field>
+        </record>
+
+        <record id="oficina_vimenpaq_56" model="js_website_vimenpaq.office">
+            <field name="sequence">56</field>
+            <field name="active">True</field>
+            <field name="name">El Seibo</field>
+            <field name="phone">(809) 552-5555</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">Av. Manuela Diez No. 8. Edif. Alfredo Sport 2. Local #3</field>
+            <field name="city">El Seibo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_57" model="js_website_vimenpaq.office">
+            <field name="sequence">57</field>
+            <field name="active">True</field>
+            <field name="name">Esperanza</field>
+            <field name="phone">(809) 585-8014 / (809) 585-8846</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 09:00am - 05:00pm</field>
+            <field name="address">C/ María Trinidad Sánchez No. 6</field>
+            <field name="city">Esperanza</field>
+        </record>
+
+        <record id="oficina_vimenpaq_58" model="js_website_vimenpaq.office">
+            <field name="sequence">58</field>
+            <field name="active">True</field>
+            <field name="name">Jarabacoa</field>
+            <field name="phone">(809) 574-4415 / (809) 574-4416 / (809) 574-4065</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:30pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">C/ Independencia No. 43</field>
+            <field name="city">Jarabacoa</field>
+        </record>
+
+        <record id="oficina_vimenpaq_59" model="js_website_vimenpaq.office">
+            <field name="sequence">59</field>
+            <field name="active">True</field>
+            <field name="name">Miches</field>
+            <field name="phone">(809) 553-5222 / (809) 553-5899</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 04:00pm</field>
+            <field name="address">C/ Mella No. 63</field>
+            <field name="city">Miches</field>
+        </record>
+
+        <record id="oficina_vimenpaq_60" model="js_website_vimenpaq.office">
+            <field name="sequence">60</field>
+            <field name="active">True</field>
+            <field name="name">Moca</field>
+            <field name="phone">(809) 578-3161 / (809) 578-3373</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 03:00pm</field>
+            <field name="address">C/ Dr. Alfonseca No. 17</field>
+            <field name="city">Moca</field>
+        </record>
+
+        <record id="oficina_vimenpaq_61" model="js_website_vimenpaq.office">
+            <field name="sequence">61</field>
+            <field name="active">True</field>
+            <field name="name">Nagua</field>
+            <field name="phone">(809) 584-2896 / (809) 584-1891</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 04:00pm</field>
+            <field name="address">C/ Emilio Conde No. 11</field>
+            <field name="city">Nagua</field>
+        </record>
+
+        <record id="oficina_vimenpaq_62" model="js_website_vimenpaq.office">
+            <field name="sequence">62</field>
+            <field name="active">True</field>
+            <field name="name">San Juan</field>
+            <field name="phone">(809) 557-2801</field>
+            <field name="schedule">Lun-Vier. 08:00am - 12:00pm, 2:00pm - 6:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Farmacia Inmaculada. Av. Independencia No. 45</field>
+            <field name="city">San Juan</field>
+        </record>
+
+        <record id="oficina_vimenpaq_63" model="js_website_vimenpaq.office">
+            <field name="sequence">63</field>
+            <field name="active">True</field>
+            <field name="name">Azua</field>
+            <field name="phone">(809) 521-2301</field>
+            <field name="schedule">Lun-Vier. 08:00am - 09:00pm, Sáb. 08:00am - 09:00pm, Dom. 08:00am - 01:00pm</field>
+            <field name="address">Farmacia Dilania. Av. 27 de Febrero No. 34. Detrás del Parque Duarte</field>
+            <field name="city">Azua</field>
+        </record>
+
+        <record id="oficina_vimenpaq_64" model="js_website_vimenpaq.office">
+            <field name="sequence">64</field>
+            <field name="active">True</field>
+            <field name="name">Mao</field>
+            <field name="phone">(809) 572-3515 / (809) 499-4442</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">C/ 27 de Febrero No. 88</field>
+            <field name="city">Mao</field>
+        </record>
+
+        <record id="oficina_vimenpaq_65" model="js_website_vimenpaq.office">
+            <field name="sequence">65</field>
+            <field name="active">True</field>
+            <field name="name">Villa Vásquez</field>
+            <field name="phone">(809) 579-6288 / (809) 579-6614</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:30pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">C/ Bernardo Rodríguez No. 48</field>
+            <field name="city">Villa Vásquez</field>
+        </record>
+
+        <record id="oficina_vimenpaq_66" model="js_website_vimenpaq.office">
+            <field name="sequence">66</field>
+            <field name="active">True</field>
+            <field name="name">Bayaguana. Calle Bernardo Rodríguez</field>
+            <field name="phone">(809) 579-6288 / (809) 579-6614</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:30pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">C/ Bernardo Rodríguez No. 48</field>
+            <field name="city">Bayaguana</field>
+        </record>
+
+        <record id="oficina_vimenpaq_67" model="js_website_vimenpaq.office">
+            <field name="sequence">67</field>
+            <field name="active">True</field>
+            <field name="name">Bayaguana. Calle Sánchez</field>
+            <field name="phone">(809) 525-1133 / (809) 525-0027</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 03:00p</field>
+            <field name="address">C/ Sánchez esq. Gastón F. Deligne No. 2</field>
+            <field name="city">Bayaguana</field>
+        </record>
+
+        <record id="oficina_vimenpaq_68" model="js_website_vimenpaq.office">
+            <field name="sequence">68</field>
+            <field name="active">True</field>
+            <field name="name">Las Terrenas</field>
+            <field name="phone">(809) 240-6551 / (809) 240-6873</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 09:00am - 04:00pm</field>
+            <field name="address">C/ Duarte No. 164</field>
+            <field name="city">Las Terrenas</field>
+        </record>
+
+        <record id="oficina_vimenpaq_69" model="js_website_vimenpaq.office">
+            <field name="sequence">69</field>
+            <field name="active">True</field>
+            <field name="name">La Isabela</field>
+            <field name="phone">(809) 589-5387</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">C/ Cristóbal Colón No. 8</field>
+            <field name="city">La Isabela</field>
+        </record>
+
+        <record id="oficina_vimenpaq_70" model="js_website_vimenpaq.office">
+            <field name="sequence">70</field>
+            <field name="active">True</field>
+            <field name="name">Sabana Grande de Boya</field>
+            <field name="phone">(809) 551-8866</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">C/ Monseñor de Merño No. 8</field>
+            <field name="city">Sabana Grande de Boya</field>
+        </record>
+
+        <record id="oficina_vimenpaq_71" model="js_website_vimenpaq.office">
+            <field name="sequence">71</field>
+            <field name="active">True</field>
+            <field name="name">Guerra</field>
+            <field name="phone">(809) 526-5852 / (809) 526-5606</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 03:00pm</field>
+            <field name="address">C/ Carlos Manuel Pumarol No. 5</field>
+            <field name="city">Guerra</field>
+        </record>
+
+        <record id="oficina_vimenpaq_72" model="js_website_vimenpaq.office">
+            <field name="sequence">72</field>
+            <field name="active">True</field>
+            <field name="name">Villa González</field>
+            <field name="phone">(809) 580-0626 / (809) 580-0542</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 03:00pm</field>
+            <field name="address">C/ José Manuel Peña hijo No. 15</field>
+            <field name="city">Villa González</field>
+        </record>
+
+        <record id="oficina_vimenpaq_73" model="js_website_vimenpaq.office">
+            <field name="sequence">73</field>
+            <field name="active">True</field>
+            <field name="name">Hato Mayor</field>
+            <field name="phone">(809) 553-2166 / (809) 553-2214</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 04:00pm</field>
+            <field name="address">C/ Duarte No. 65</field>
+            <field name="city">Hato Mayor</field>
+        </record>
+
+        <record id="oficina_vimenpaq_74" model="js_website_vimenpaq.office">
+            <field name="sequence">74</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. Gurabo</field>
+            <field name="phone">(809) 736-7015</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Carretera Luperón Km 7 ½</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_75" model="js_website_vimenpaq.office">
+            <field name="sequence">75</field>
+            <field name="active">True</field>
+            <field name="name">Dajabón</field>
+            <field name="phone">(809) 579-7210</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Av. Dulce de Jesús Senfleur No. 25</field>
+            <field name="city">Dajabón</field>
+        </record>
+
+        <record id="oficina_vimenpaq_76" model="js_website_vimenpaq.office">
+            <field name="sequence">76</field>
+            <field name="active">True</field>
+            <field name="name">Monte Cristi</field>
+            <field name="phone">(809) 579-3333 / (809) 230-1525</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">C/ Juan de la Cruz Álvarez No. 27</field>
+            <field name="city">Monte Cristi</field>
+        </record>
+
+        <record id="oficina_vimenpaq_77" model="js_website_vimenpaq.office">
+            <field name="sequence">77</field>
+            <field name="active">True</field>
+            <field name="name">San José de las Matas</field>
+            <field name="phone">(809) 571-6032</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">C/ 30 de Marzo No. 30</field>
+            <field name="city">San José de las Matas</field>
+        </record>
+
+        <record id="oficina_vimenpaq_78" model="js_website_vimenpaq.office">
+            <field name="sequence">78</field>
+            <field name="active">True</field>
+            <field name="name">Sánchez</field>
+            <field name="phone">(809) 552-7600</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 09:00am - 03:00pm</field>
+            <field name="address">C/ Duarte No. 1</field>
+            <field name="city">Sánchez</field>
+        </record>
+
+        <record id="oficina_vimenpaq_79" model="js_website_vimenpaq.office">
+            <field name="sequence">79</field>
+            <field name="active">True</field>
+            <field name="name">Bani</field>
+            <field name="phone">(809) 522-4300 / (809) 522-5323</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 09:00am - 03:00pm</field>
+            <field name="address">C/ Duarte No. 33</field>
+            <field name="city">Bani</field>
+        </record>
+
+        <record id="oficina_vimenpaq_80" model="js_website_vimenpaq.office">
+            <field name="sequence">80</field>
+            <field name="active">True</field>
+            <field name="name">Pedernales</field>
+            <field name="phone">(809) 524-0103</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 09:00am - 12:00pm</field>
+            <field name="address">C/ Duarte No. 6 esq. Idelfonso Pérez</field>
+            <field name="city">Pedernales</field>
+        </record>
+
+        <record id="oficina_vimenpaq_81" model="js_website_vimenpaq.office">
+            <field name="sequence">81</field>
+            <field name="active">True</field>
+            <field name="name">Samaná</field>
+            <field name="phone">(809) 538-2420 / (809) 538-2259</field>
+            <field name="schedule">Lun-Vier. 08:30am - 05:00pm, Sáb. 09:00am - 01:00pm</field>
+            <field name="address">Av. Las Marinas No. 5</field>
+            <field name="city">Samaná</field>
+        </record>
+
+        <record id="oficina_vimenpaq_82" model="js_website_vimenpaq.office">
+            <field name="sequence">82</field>
+            <field name="active">True</field>
+            <field name="name">San José de Ocoa</field>
+            <field name="phone">(809) 558-2359</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:30pm, Sáb. 08:00am - 05:30pm</field>
+            <field name="address">C/ Duarte No. 23</field>
+            <field name="city">San José de Ocoa</field>
+        </record>
+
+        <record id="oficina_vimenpaq_83" model="js_website_vimenpaq.office">
+            <field name="sequence">83</field>
+            <field name="active">True</field>
+            <field name="name">Santo Domingo. Manoguayabo</field>
+            <field name="phone">(809) 564-1878 / (809) 564-0551 ext 22</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:30pm, Sáb. 09:00am - 01:00pm</field>
+            <field name="address">Av. Los Beisbolistas esq. Santa Clara No. 1</field>
+            <field name="city">Santo Domingo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_84" model="js_website_vimenpaq.office">
+            <field name="sequence">84</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. La fuente</field>
+            <field name="phone">(829) 724-6162</field>
+            <field name="schedule">Lun-Vier. 08:00am - 07:00pm, Sáb. 08:00am - 07:00pm</field>
+            <field name="address">Av. Circunvalación No. 411. Plaza Ulloa</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_85" model="js_website_vimenpaq.office">
+            <field name="sequence">85</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. Las Colinas, Colinas Mall</field>
+            <field name="phone">(829) 575-6162</field>
+            <field name="schedule">Lun-Vier. 08:30am - 07:00pm, Sáb. 08:30am - 07:00pm</field>
+            <field name="address">Av. 27 de Febrero esq. Imbert. Colinas Mall</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_86" model="js_website_vimenpaq.office">
+            <field name="sequence">86</field>
+            <field name="active">True</field>
+            <field name="name">Salcedo</field>
+            <field name="phone">(809) 577-4892</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">C/ Restauración No. 24</field>
+            <field name="city">Salcedo</field>
+        </record>
+
+        <record id="oficina_vimenpaq_87" model="js_website_vimenpaq.office">
+            <field name="sequence">87</field>
+            <field name="active">True</field>
+            <field name="name">Monte Plata</field>
+            <field name="phone">(809) 551-6529</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 08:00am - 12:00pm</field>
+            <field name="address">Av. Altagracia No. 65</field>
+            <field name="city">Monte Plata</field>
+        </record>
+
+        <record id="oficina_vimenpaq_88" model="js_website_vimenpaq.office">
+            <field name="sequence">88</field>
+            <field name="active">True</field>
+            <field name="name">Santiago Rodriguez</field>
+            <field name="phone">(809)-580-4125 / (809)-582-4230</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">Av. Próceres de la Restauración No. 168</field>
+            <field name="city">Santiago Rodriguez</field>
+        </record>
+
+        <record id="oficina_vimenpaq_89" model="js_website_vimenpaq.office">
+            <field name="sequence">89</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. Supermercado Central, Cerros de Gurabo</field>
+            <field name="phone">(809) 582-4088</field>
+            <field name="schedule">Lun-Vier. 07:00am - 10:00pm, Sáb. 07:00am - 10:00pm, Dom. 07:00am - 10:00pm</field>
+            <field name="address">Supermercado Central. Ave. 27 de Febrero No. 65. Cerros de Gurabo</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_90" model="js_website_vimenpaq.office">
+            <field name="sequence">90</field>
+            <field name="active">True</field>
+            <field name="name">Bávaro - Verón</field>
+            <field name="phone">(809) 455-1599</field>
+            <field name="schedule">Lun-Vier. 08:00am - 06:00, Sáb. 08:00am - 06:00pm, Dom. 08:00am - 12:00pm</field>
+            <field name="address">Carretera Verón. Punta Cana Km 38</field>
+            <field name="city">Bávaro</field>
+        </record>
+
+        <record id="oficina_vimenpaq_91" model="js_website_vimenpaq.office">
+            <field name="sequence">91</field>
+            <field name="active">True</field>
+            <field name="name">Bávaro. San Juan Shopping Center</field>
+            <field name="phone">(809) 466-2082</field>
+            <field name="schedule">Lun-Vier. 08:00am - 08:00pm, Sáb. 08:00am - 08:00pm, Dom. 10:00am - 04:00pm</field>
+            <field name="address">Av. Barceló. San Juan Shopping Center</field>
+            <field name="city">Bávaro</field>
+        </record>
+
+        <record id="oficina_vimenpaq_92" model="js_website_vimenpaq.office">
+            <field name="sequence">92</field>
+            <field name="active">True</field>
+            <field name="name">Constanza II</field>
+            <field name="phone">(809) 539-2862</field>
+            <field name="schedule">Lun-Vier. 08:00am - 05:00pm, Sáb. 09:00am - 12:00pm</field>
+            <field name="address">C/ Luperón No. 86</field>
+            <field name="city">Constanza II</field>
+        </record>
+
+        <record id="oficina_vimenpaq_93" model="js_website_vimenpaq.office">
+            <field name="sequence">93</field>
+            <field name="active">True</field>
+            <field name="name">Bávaro. Otra banda</field>
+            <field name="phone">(809) 551-0965</field>
+            <field name="schedule">Lun-Vier. 08:00am - 08:00pm, Sáb. 08:00am - 06:00pm</field>
+            <field name="address">Carretera Higüey – Bávaro Km 5 ½</field>
+            <field name="city">Bávaro</field>
+        </record>
+
+        <record id="oficina_vimenpaq_94" model="js_website_vimenpaq.office">
+            <field name="sequence">94</field>
+            <field name="active">True</field>
+            <field name="name">Santiago. Super Plaza Venezuela</field>
+            <field name="phone">(809) 575-3854 ext 105</field>
+            <field name="schedule">Lun-Vier. 07:00am - 10:00pm, Sáb. 07:00am - 10:00pm, Dom. 07:00am - 10:00pm</field>
+            <field name="address">Super Plaza Venezuela. Ave. Estrella Sadhalá No. 98</field>
+            <field name="city">Santiago</field>
+        </record>
+
+        <record id="oficina_vimenpaq_95" model="js_website_vimenpaq.office">
+            <field name="sequence">95</field>
+            <field name="active">True</field>
+            <field name="name">Haina</field>
+            <field name="phone">(809) 237-0409</field>
+            <field name="schedule">Lun-Vier. 08:30am - 05:30pm, Sáb. 08:30am - 05:30pm</field>
+            <field name="address">C/ Sánchez No. 5</field>
+            <field name="city">Haina</field>
+        </record>
+
+        <record id="oficina_vimenpaq_96" model="js_website_vimenpaq.office">
+            <field name="sequence">96</field>
+            <field name="active">True</field>
+            <field name="name">Río San Juan</field>
+            <field name="phone">(809) 589-2371</field>
+            <field name="schedule">Lun-Vier. 08:30am - 05:30pm, Sáb. 08:00am - 01:00pm</field>
+            <field name="address">C/ Padre Billini No. 79</field>
+            <field name="city">Río San Juan</field>
+        </record>
+
+        <record id="oficina_vimenpaq_97" model="js_website_vimenpaq.office">
+            <field name="sequence">97</field>
+            <field name="active">True</field>
+            <field name="name">Bávaro. Plaza RBCAR</field>
+            <field name="phone">(809) 468-1300</field>
+            <field name="schedule">Lun-Vier. 08:00am - 08:00pm, Sáb. 08:00am - 05:00pm</field>
+            <field name="address">Av. España No. 7, Plaza RBCAR</field>
+            <field name="city">Bávaro</field>
+        </record>
+    </data>
+</odoo>

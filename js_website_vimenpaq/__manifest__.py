@@ -8,6 +8,7 @@
     'version':'1.0',
     'author':'Jim Sports',
     'data': [
+        'data/offices_data.xml',
         'security/ir.model.access.csv',
         'views/layout.xml'
     ],
