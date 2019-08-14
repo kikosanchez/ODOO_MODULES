@@ -1,9 +1,9 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    'name': 'JS Pagination Infinite Scroll',
+    'name': 'JS Clarico Infinite Scroll',
     'summary': '',
-    'description': '',
+    'description': 'Habilita la paginación automática en el tema clarico',
     'license': 'AGPL-3',
     'website': 'https://jimsports.com',
     'author':'Jim Sports',

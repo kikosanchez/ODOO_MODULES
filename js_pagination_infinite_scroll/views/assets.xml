@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<odoo>
-    <template id="js_pagination_infinite_scroll_assets" inherit_id="web.assets_frontend" priority="500">
-        <xpath expr="." position="inside">
-            <link rel="stylesheet" type="text/less" href="/js_pagination_infinite_scroll/static/src/less/js_pagination_infinite_scroll.less" />
-            <script type="text/javascript" src="/js_pagination_infinite_scroll/static/src/js/js_pagination_infinite_scroll.js"></script>
-        </xpath>
-    </template>
-</odoo>

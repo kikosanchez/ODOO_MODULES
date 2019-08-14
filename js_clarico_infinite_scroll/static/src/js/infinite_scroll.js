@@ -5,11 +5,18 @@
 odoo.define('js_pagination_infinite_scroll', function (require) {
     "use strict";
 
+    var Class = require('web.Class');
+    var core = require('web.core');
+    var _t = core._t;
+
     // Soluciona errores HTTPS Mixed Content
     if (window.location.protocol == 'https:') $('head').append('<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">');
 
     require('web.dom_ready');
-    var Class = require('web.Class');
+
+    var ReloadScript = function(file){
+        if (typeof(file) != 'undefined') $.getScript(window.location.origin +  file);
+    };
 
     var JsPagination = Class.extend({
 
@@ -21,6 +28,7 @@ odoo.define('js_pagination_infinite_scroll', function (require) {
             self.paginationSelector = 'ul.pagination';
             self.productSelector = 'div.oe_product';
             self.loadingIconPosition = '#products_grid';
+            self.ajaxCall = null;
 
             // Iniciar la paginación
             $('div.filter-show').remove();
@@ -52,26 +60,32 @@ odoo.define('js_pagination_infinite_scroll', function (require) {
         },
         loadProductsActions: function () {
 
-            $.getScript(window.location.origin +  '/clarico_shop/static/src/js/clarico_shop.js');
-            $.getScript(window.location.origin +  '/clarico_wishlist/static/src/js/wishlist_script.js');
-            $.getScript(window.location.origin +  '/website_sale_wishlist/static/src/js/website_sale_wishlist.js');
-            $.getScript(window.location.origin +  '/clarico_quick_view/static/src/js/quick_view.js');
-            $.getScript(window.location.origin +  '/clarico_quick_view/static/src/js/quickview_script.js');
-            $.getScript(window.location.origin +  '/clarico_similar_product/static/src/js/similar_product.js');
-            //console.log('JsPagination Actions Loaded!');
+            // Refrescar los eventos necesarios
+            ReloadScript('/clarico_shop/static/src/js/clarico_shop.js');
+            ReloadScript('/clarico_wishlist/static/src/js/wishlist_script.js');
+            ReloadScript('/website_sale_wishlist/static/src/js/website_sale_wishlist.js');
+            ReloadScript('/clarico_quick_view/static/src/js/quick_view.js');
+            ReloadScript('/clarico_quick_view/static/src/js/quickview_script.js');
+            ReloadScript('/clarico_similar_product/static/src/js/similar_product.js');
+            console.log('JsPagination Actions Loaded!');
 
         },
         loadNextpage: function($productstable, $productsContainer, $paginationElement, $nextPageLink){
 
             var self = this;
             self.loadingContent = true;
+            var loadingText = _t('En train de télécharger de plus de articles, attendez ou cliquez ici pour annuler ...'); // Loading more products, wait a moment or click here to cancel...
             var nextPageUrl = window.location.origin + $nextPageLink.attr('href'), $pagContainer = $paginationElement.parent();
-            $(self.loadingIconPosition).append('<div class="page-loading"><img src="/js_pagination_infinite_scroll/static/src/img/timer.gif" width="48" height="54" /></div>');
+
+            $('<div class="page-loading"><div class="alert alert-success" role="alert">' + loadingText + '</div><img src="/js_clarico_infinite_scroll/static/src/img/timer.gif" width="48" height="54" /></div>').click(function(){
+                if (self.ajaxCall != null) self.ajaxCall.abort();
+                $(self.loadingIconPosition).find('.page-loading').remove();
+            }).appendTo(self.loadingIconPosition);
 
             console.log('Getting Page', nextPageUrl);
 
             // Obtenemos la página por Ajax
-            $.get(nextPageUrl, function( response ){
+            self.ajaxCall = $.get(nextPageUrl, function( response ){
 
                 $(self.loadingIconPosition).find('.page-loading').remove();
                 var $responseHtml = $('<div />').html(response), $newPagination = $responseHtml.find(self.paginationSelector).last().hide();
@@ -82,8 +96,6 @@ odoo.define('js_pagination_infinite_scroll', function (require) {
                     $productsContainer.append($(this).clone());
                 });
 
-                //hideIncompleteRow($productstable, $productsContainer);
-
                 if ($(window).width()>900) self.loadProductsActions();
 
                 // Actualizamos la paginación
@@ -92,6 +104,7 @@ odoo.define('js_pagination_infinite_scroll', function (require) {
                 self.loadingContent = false;
 
             });
+
         }
     });
 
