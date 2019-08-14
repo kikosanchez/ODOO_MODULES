@@ -27,6 +27,11 @@
         </xpath>
     </template>
 
+    <!-- Añadir el texto "TVA incluse" al lado del precio en la ficha de producto -->
+    <template id="js_custom_forms_product_iva_incluido" inherit_id="website_sale.product_price" name="JS Custom Forms Product IVA incluido">
+        <xpath expr="//span[@itemprop='price']" position="after"><span class="text-muted">TVA incluse</span></xpath>
+    </template>
+
     <template id="js_custom_forms_product_compare" inherit_id="clarico_compare.clarico_compare_clarico_product" name="Custom Clarico Products Compare" priority="25">
         <!-- Añadir descripción del producto debajo de la descripción corta -->
         <xpath expr="//section[@id='product_full_spec']" position="inside">
@@ -40,7 +45,7 @@
     </template>
 
     <!-- Mostrar un rango de precios en la miniatura del producto, en el grid. En Dominicana está en js_website_template/views/shop.xml -->
-    <template id="jim_rango_de_precios" inherit_id="clarico_shop.clarico_shop_products_item" name="Jim Rango de precios" priority="25">
+    <template id="jim_rango_de_precios" inherit_id="clarico_shop.clarico_shop_products_item" name="Jim Rango de precios" priority="15">
         <!-- Modificacion en product_item (sacar precios y botones del section)  -->
         <xpath expr="//form/div/section/div[hasclass('production-description')]/div[hasclass('product_price')]/b" position="replace">
            <b>
@@ -78,7 +83,7 @@
     </template>
 
     <!-- Personalizar vista del producto (variantes) --> <!-- en Dominicana está en js_website_product/views/layout.xml -->
-    <template id="jim_no_vender_productos_sin_precio" inherit_id="clarico_product.clarico_product_product" name="Jim. No vender productos sin precio">
+    <template id="jim_no_vender_productos_sin_precio" inherit_id="clarico_product.clarico_product_product" name="Jim. No vender productos sin precio" priority="15">
         <xpath expr="//form" position="replace">
             <!-- Si el producto no tiene precio no mostrar opciones de compra (en vista producto) -->
             <t t-if="product.website_price_max > 0">

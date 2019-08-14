@@ -102,3 +102,19 @@ ul.js_add_cart_variants li div.select_wrapp select#attr_select option.css_not_av
     color: #bbb;
 }
 
+/* Texto descripción de producto se sale si es demasiado largo, por ejemplo ALETA BODY TALLA 41/42, ref. 0021724 */
+section#product_full_spec > div.prod_des > table > tbody > tr > td > div > div > p{
+    max-width: 50%;
+}
+
+/* En la vista rápida (icono del ojo 'quick view'), el botón de cerrar 'x' de la esquina */
+div.product_quick_view_class div.close_btn{
+    border: solid 1px #fd9731;
+    > span{
+        color: #fd9731;
+        font-weight: bolder;
+    }    
+}
+div.product_quick_view_class div.close_btn:hover{
+    border: solid 1px #ffffff;
+}

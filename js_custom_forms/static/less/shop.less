@@ -1,7 +1,6 @@
 /**
  * HEADER
  **/
-
 .main-header-before{
 
     .main-header-right{
@@ -142,7 +141,6 @@
 /**
  * MENÚ DE CATEGORÍAS
  **/
-
 @keyframes zoomPulse {
     0% {
         transform: scale(1.0);
@@ -185,15 +183,25 @@
 /**
  * BREADCRUMB
  **/
-
 .clarico_breadcrumb {
     text-transform: uppercase;
+}
+
+.clarico_product_breadcrumb .nav-selection-div{
+    text-transform: uppercase;
+    padding: 5px 0;
+    color: #777777;
+    float: none;
+
+    a.select-nevigation-child{
+        font-family: Muli-Regular;
+        color: #777777;
+    }
 }
 
 /**
  * CORRECCIÓN DE ICONOS
  **/
-
 .snippet_style17 .snippet_style17_top_cnt .top_cnt_section .top_cnt_section_img .section_img_span span {
     width: 50px;
     height: 50px;
@@ -205,23 +213,19 @@
     border-radius: 100%;
 }
 
-/**
- * SLIDERS
- **/
+// SLIDERS
+section.img_banner_snippet{
+    display: none;
+}
 
- section.img_banner_snippet{
-     display: none;
- }
-
- section.slider_section{
-
+section.slider_section{
     .carousel-control i {
         top: 50% !important;
         margin-top: -50px;
     }
 
     .carousel-inner .item {
-        padding: 0 !important;
+        // padding: 0 !important;
 
         section.lc2_carousel_caption{
             max-width: 600px;
@@ -251,28 +255,206 @@
     @media (max-width: @screen-xs-min){
         display: none;
     }
- }
+}
+
+// CONTACT PAGE
+#organization{
+    /*
+    .map{
+         margin-top: 10px;
+    }
+    */
+
+    address{
+        margin-top: 20px;
+
+        div[itemprop=address] > div{
+            padding-left: 7px;
+            text-indent: -7px;
+        }
+
+        @media (max-width: @screen-sm-max){
+            div[itemprop=address]{
+                margin-top: 50px;
+                background: #363A42;
+                color: #FAFAFA;
+                padding: 10px 16px;
+            }
+        }
+    }
+}
+
+// BG IMAGES
+@media (max-width: 400px){
+    .oe_img_bg{
+        min-height: 100px;
+    }
+}
+
+// FOOTER
+footer{
+    .ftr_main{
+        margin-top: 0 !important;
+
+        .ftr_social_icons_main{
+            display: none;
+        }
+
+        .oe_share.s_share{
+            color: #DDDDDD;
+
+            .o_default_snippet_text{
+                text-decoration: underline;
+                position: relative;
+                margin-right: 6px;
+                font-size: 16px;
+                top: -3px;
+            }
+
+            a{
+                color: #DDDDDD;
+
+                .fa{
+                    width: 30px;
+                    text-align: center;
+                }
+            }
+
+            a:hover{
+                color: @theme-color;
+            }
+        }
+
+        .footer-heading .customer-service-ul li a{
+            text-transform: none;
+        }
+    }
+}
+
+/**
+ * SHARE
+ **/
+.product_share{
+    right: 15px !important;
+
+    a{
+        border-radius: 0 !important;
+        font-size: 16px !important;
+        width: 35px !important;
+        height: 35px !important;
+    }
+}
+
+/**
+ * SCROLL UP
+ **/
+.scrollup-div {
+    border-radius: 0 !important;
+}
 
  /**
-  * FOOTER
+  * PRODUCTS
   **/
 
- .ftr_main{
-     margin-top: 0 !important;
- }
+// Hacer que la descripción ocupe todo el ancho
+#product_full_spec{
+    width: 100% !important;
+}
 
-/* Borrar precio tachado "0" de productos accesorios en página de carrito */
+// Margen en fotos de productos (grid)
+.oe_product .oe_product_image img{
+    padding: 20px;
+}
+
+// Margenes en vista rápida
+.product_quick_view_class{
+    padding: 20px;
+
+    &::after{
+        content: " ";
+        background: url('../img/jim-sports-corner.png') left top no-repeat;
+        position: absolute;
+        top: 0; left: 0;
+        display: block;
+        height: 146px;
+        width: 231px;
+        z-index: 999;
+    }
+
+    .product_quick_view_subclass{
+        width: 100%;
+
+        @media (min-width: @screen-sm-min){
+            display: flex;
+            height: 100%;
+
+            .quick_view_img_div_container{
+                flex: 1;
+            }
+        }
+
+        .quick_view_product_details{
+            background-color: #F6F6F6;
+            margin: 0 !important;
+
+            @media (min-width: @screen-sm-min){
+                background: rgba(247,247,247,1);
+                background: -moz-linear-gradient(left, rgba(247,247,247,1) 0%, rgba(247,247,247,1) 29%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
+                background: -webkit-gradient(left top, right top, color-stop(0%, rgba(247,247,247,1)), color-stop(29%, rgba(247,247,247,1)), color-stop(81%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1)));
+                background: -webkit-linear-gradient(left, rgba(247,247,247,1) 0%, rgba(247,247,247,1) 29%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
+                background: -o-linear-gradient(left, rgba(247,247,247,1) 0%, rgba(247,247,247,1) 29%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
+                background: -ms-linear-gradient(left, rgba(247,247,247,1) 0%, rgba(247,247,247,1) 29%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
+                background: linear-gradient(to right, rgba(247,247,247,1) 0%, rgba(247,247,247,1) 29%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#ffffff', GradientType=1);
+                flex: 1;
+            }
+
+            .quick_view_product_sub_details{
+                margin: 0 !important;
+                padding: 30px;
+                width: 100%;
+
+                .qv_ad2cart{
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .carousel-outer{
+            background: url('/js_custom_forms/static/img/dots.gif') center center no-repeat;
+        }
+
+        .common-close-btn{
+            top: 15px;
+        }
+    }
+}
+
+// Eliminar espacio innecesario
+.right-cnt-maxW_left > .main_left{
+    padding-top: 0 !important;
+}
+
+// Borrar precio tachado "0" de productos accesorios en página de carrito 
 #wrap table.js_cart_lines td.td-price > del{
     display: none;
 }
 
-/* Ventana modal de Añadir al Carrito, productos opcionales */
-#modal_optional_products a.js_add.btn-sm.btn-info{
-    color: #333333;
-    background-color: rgba(255, 255, 255, 0);
-    border-color: rgba(255, 255, 255, 0);
+// Ventana modal de Añadir al Carrito, productos opcionales
+#modal_optional_products{
+    a.js_add.btn-sm.btn-info{
+        color: #333333;
+        background-color: rgba(255, 255, 255, 0);
+        border-color: rgba(255, 255, 255, 0);
+    }
+
+    a.js_add.btn-sm.btn-info:hover{
+        color: #000000;
+        font-weight: bold;
+    }
 }
-#modal_optional_products a.js_add.btn-sm.btn-info:hover {
-    color: #000000;
-    font-weight: bold;
+
+// Margen después de "productos vistos recientemente"
+.div_class_whole_recent_view_product{
+    margin-bottom: 50px;
 }
