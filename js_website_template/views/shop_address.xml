@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="js_address" inherit_id="website_sale.address" name="JS Shop Address">
+        <!-- Que sólo aparezca República Dominicana en el Select de la dirección de Checkout. URL: /shop/address -->
+        <xpath expr="//form[@name='/shop/checkout']//select[@id='country_id']" position="replace">
+            <select id="country_id" name="country_id" class="form-control disabled">
+                <option value="61" selected="True">República Dominicana</option>
+            </select>
+        </xpath>
+
+        <!-- Cambiar el estilo de los errores -->
+        <xpath expr="//t[@t-if='error']" position="replace">
+            <div class="well mb32">
+                <t t-if="error" t-foreach="error.get('error_message', [])" t-as="err">
+                    <h4 class="text-danger" t-esc="err" />
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>

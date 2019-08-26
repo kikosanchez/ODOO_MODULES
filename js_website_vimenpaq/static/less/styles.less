@@ -1,20 +1,35 @@
 /* VIMENPAQ BOOTSRAP SELECT */
 
 #vimenpaq_sel_office{
-    margin: 20px 0;
+    .panel-body.vimenpaq{
+        img{
+            margin-top: 3px;
+            margin-bottom: 12px;
+        }
 
-    .dropdown.bootstrap-select{
-        width: 100%;
+        .help-block{
+            font-size: 84%;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
 
-        ul.dropdown-menu{
-            small.text-muted{
-                display: block;
-                padding-left: 0;
+        .dropdown.bootstrap-select{
+            width: 100%;
+
+            div.dropdown-menu.open{
+                max-height: 550px !important;
+
+                div.inner.open{
+                    max-height: 500px !important;
+
+                    ul.dropdown-menu{
+                        small.text-muted{
+                            display: block;
+                            padding-left: 0;
+                        }
+                    }
+                }
             }
         }
-    }
-
-    button.btn{
-        margin-bottom: 10px;
     }
 }

@@ -2,6 +2,8 @@
 from odoo import http
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
+import base64
+import os
 
 # Heredamos el método WebsiteSale para sobreescribir el checkout
 class VimenpaqOfficesController(WebsiteSale):
@@ -60,32 +62,57 @@ class VimenpaqOfficesController(WebsiteSale):
         order = request.website.sale_get_order()
 
         if post and post.get('office'):
-            Partner = request.env['res.partner']
+            Partner = request.env['res.partner'].sudo()
             selected_office_id = post.get('office');
             vimenpaq_offices = request.env['js_website_vimenpaq.office']
             selected_office = vimenpaq_offices.browse(int(selected_office_id))
 
-            # Buscamos si hay un contacto creado para este cliente con la dirección de Vimenpaq
-            partner_id = Partner.sudo().search([
+            # Buscamos si existe el partner Vimenpaq (activo o archivado)
+            vimenpaq_partner_id = Partner.sudo().with_context(active_test=False).search([
+                ('type', '=', 'other'),
+                ('parent_id', '=', None),
+                ('name', '=', 'VIMENPAQ')
+            ]).id
+
+            if not vimenpaq_partner_id:
+                # Si no existe el cliente VIMENPAQ se crea
+                vimenpaq_module_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+                with open(os.path.join(vimenpaq_module_path, 'static', 'img', 'logo.png'), 'rb') as image_logo:
+                    vimenpaq_partner_id = Partner.create({
+                        'customer': True,
+                        'parent_id': None,
+                        'team_id': request.website.salesteam_id and request.website.salesteam_id.id,
+                        'image': base64.encodestring(image_logo.read()),
+                        'type': 'other',
+                        'name': 'VIMENPAQ',
+                        'phone': '(809) 532-7388',
+                        'street': 'Av. Enrique Jimenez Moya No. 9 esq. Bolivar. La Julia',
+                        'city': 'Santo Domingo',
+                        'country_id': 61, #Rep. Dominicana
+                        'active': True
+                    }).id
+
+            # Buscamos si la dirección ya está creada
+            address_id = Partner.search([
                 ('type', '=', 'delivery'),
-                ('parent_id', '=', order.partner_id.id),
+                ('parent_id', '=', vimenpaq_partner_id),
                 ('name', '=', selected_office.name)
             ]).id
 
-            if partner_id: # Si hay un contacto creado lo asignamos como dirección de envío
-                order.partner_shipping_id = partner_id
-
-            else: # Si no lo hay lo creamos y asignamos
-                order.partner_shipping_id = Partner.browse(order.partner_id.id).sudo().create({
+            if address_id: # Si la dirección existe guardamos su id
+                order.partner_shipping_id = address_id
+            else: # Si no lo hay la creamos y asignamos
+                order.partner_shipping_id = Partner.create({
                     'customer': True,
-                    'parent_id': order.partner_id.id,
+                    'parent_id': vimenpaq_partner_id,
                     'team_id': request.website.salesteam_id and request.website.salesteam_id.id,
                     'type': 'delivery',
                     'name': selected_office.name,
                     'phone': selected_office.phone,
                     'street': selected_office.address,
                     'city': selected_office.city,
-                    'country_id': 61 #Rep. Dominicana
+                    'country_id': 61, #Rep. Dominicana
+                    'active': True
                 }).id
 
             return request.redirect('/shop/payment')

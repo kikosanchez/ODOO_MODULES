@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Plantilla de Facturas -->
+        <template id="js_report_invoice_document" inherit_id="account.report_invoice_document" name="JS Sale Report Invoice">
+
+            <!-- Poner información de pago al final de la factura -->
+            <xpath expr="//p[@t-if='o.payment_term_id']" position="replace">
+                <p t-if="o.type == 'out_invoice' and o.state != 'paid'">
+                    Puede pagar por cheque o transferencia a una de nuestras cuentas:<br/>
+                    <strong>Banreservas</strong>: Cuenta en Pesos: 1670016142 - Cuenta en Dólares: 9600196043<br/>
+                    <strong>BHDLeón</strong>: Cuenta en Pesos: 25556610012 - Cuenta en Dólares: 25556610021
+                </p>
+            </xpath>
+
+        </template>
+    </data>
+</odoo>

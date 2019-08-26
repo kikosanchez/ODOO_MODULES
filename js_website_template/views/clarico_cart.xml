@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Quitar foto de página de carrito -->
+    <template id="js_cart_page" inherit_id="clarico_cart.clarico_cart" name="JS Cart Page">
+        <xpath expr="//div[hasclass('cart-cover-img-div')]" position="replace"></xpath>
+    </template>
+
+    <!-- Cambiar la "x" de cerrar el modal que aparece al Añadir al carrito  -->
+    <template id="js_modal_add_to_cart" inherit_id="website_sale_options.modal" name="JS Modal Add to Cart" priority="20">
+        <xpath expr="//div[hasclass('modal-header')]" position="replace">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <h4 class="modal-title" id="myModalLabel">Add to Cart</h4>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="js_quitar_precios_tachados_productos_sugeridos_carrito" inherit_id="website_sale.suggested_products_list" name="JS Quitar precios tachados productos sugeridos carrito">
+        <xpath expr="//tbody/tr/td[hasclass('td-price')]/t" position="replace"></xpath>
+    </template>
+
+    <!-- Hacer que el subtotal de las líneas del carrito salgan con impuestos
+         Cambiado price_subtotal por line.price_total
+     -->
+    <template id="js_subtotal_carrito_con_iva" inherit_id="clarico_cart.clarico_cart_lines" name="JS Subtotal carrito con IVA">
+        <xpath expr="//tbody/t/tr/td[@name='totalprice']/span" position="replace">
+            <span t-field="line.price_total" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'from_currency': website_sale_order.pricelist_id.currency_id, 'display_currency': website.currency_id}"/>
+        </xpath>
+    </template>
+</odoo>

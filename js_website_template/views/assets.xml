@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Estilos propios del módulo (en static/less/)  -->
+    <template id="js_assets_frontend" inherit_id="website.assets_frontend" name="JS Frontend Styles">
+        <xpath expr="." position="inside">
+            <link href="/js_website_template/static/less/frontend_styles.less" rel="stylesheet" type="text/less"/>
+            <link href="/js_website_template/static/less/shop.less" rel="stylesheet" type="text/less" />
+            <link href="/js_website_template/static/less/product.less" rel="stylesheet" type="text/less" />
+        </xpath>
+
+        <!-- Funciones JavaScript propias del módulo (en static/js/)  -->
+        <xpath expr="script[last()]" position="after">
+            <script src="/js_website_template/static/js/functions.js" type="text/javascript" />
+        </xpath>
+    </template>
+
+    <template id="js_assets_backend" inherit_id="web.assets_backend" name="JS Backend Styles">
+        <xpath expr="." position="inside">
+            <link href="/js_website_template/static/less/backend_styles.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+    </template>
+</odoo>

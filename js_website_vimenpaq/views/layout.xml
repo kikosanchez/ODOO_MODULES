@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <!-- ESTILOS Y JAVASCRIPT -->
 
     <template id="template_includes" inherit_id="website.assets_frontend" name="JIM Template Includes">
@@ -237,78 +236,65 @@
 
     <!-- SELECCIÓN DE SUCURSAL DE VIMENPAQ EN CHECKOUT -->
 
-    <template id="office_selection" inherit_id="website_sale.checkout" name="Vimenpaq Office Selection">
+    <template id="vimenpaq_office_selection" inherit_id="website_sale.checkout" name="Vimenpaq Office Selection">
         <!-- INCORPORAR FORMULARIO DEBAJO DE DIRECCIÓN DE FACTURACIÓN -->
         <xpath expr="//div[hasclass('oe_cart')]/div[2]" position="after">
             <t t-if="only_services" groups="sale.group_delivery_invoice_address">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="page-header mt8">Sucursal Vimenpaq</h2>
-                    </div>
-                    <div class="col-sm-12">
-                        <p>Su pedido será enviado a la sucursal seleccionada una vez confirmado el pago del mismo, excepto que en el siguiente paso elija la opción "Recogida en Jim Sports"</p>
-                        <form id="vimenpaq_sel_office" action="/shop/vimenpaq" method="post" class="form-horizontal">
-                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <h2 class="chs_heading checkout_heading">Dirección de envío</h2>
 
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Destino</label>
-                                <div class="col-md-8">
-                                    <select name="office" class="selectpicker" required="true" data-dropup-auto="false" data-show-subtext="true" data-live-search="true">
+                    <form id="vimenpaq_sel_office" action="/shop/vimenpaq" method="post" class="form-horizontal">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <div class="address-main-div mb32">
+                            <div class="panel-default">
+                                <div class="panel-body vimenpaq">
+                                    <img src="/js_website_vimenpaq/static/img/logo.png" />
+
+                                    <p class="help-block">Su pedido será enviado a la sucursal seleccionada una vez confirmado el pago del mismo, excepto que en el siguiente paso elija la opción "Recogida en Jim Sports"</p>
+
+                                    <select name="office" title="Ninguna seleccionada" class="selectpicker dropup" required="true" data-dropup-auto="false" data-show-subtext="true" data-live-search="true" data-style="mb0">
                                         <option class="hidden"></option>
                                         <t t-foreach="offices" t-as="o">
-                                            <option t-att-data-subtext="o.address" t-att-value='o.id' t-att-selected="o.id == selected_office_id">
+                                            <option t-att-title="o.name" t-att-data-subtext="o.address + ', ' + o.city + '&lt;br/&gt;Horario: ' + o.schedule" t-att-value='o.id' t-att-selected="o.id == selected_office_id">
                                                 <t t-esc="o.name"/>
                                             </option>
                                         </t>
                                     </select>
                                 </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary">Confirmar <span class="fa fa-long-arrow-right"/></button>
-                                </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        <div>
+                            <a href="/shop/cart" class="btn btn-default mb32"><span class="fa fa-long-arrow-left" /> Volver al Carrito</a>
+                            <button type="submit" class="btn btn-primary pull-right mb32">Siguiente <span class="fa fa-long-arrow-right"/></button>
+                        </div>
+                    </form>
                 </div>
             </t>
         </xpath>
 
         <!-- OCULTAR BOTÓN DE CONTINUAR (SE TIENE QUE HACER DESDE EL FORMULARIO) -->
-        <xpath expr="//a[hasclass('btn','btn-primary','pull-right')]" position="replace">
-            <t t-if="not only_services" groups="sale.group_delivery_invoice_address">
-                <a class="btn btn-primary pull-right mb32 " href="/shop/confirm_order">Confirmar <span class="fa fa-long-arrow-right"/></a>
-            </t>
+        <xpath expr="//div[hasclass('oe_cart')]/div[4]" position="attributes">
+            <attribute name="t-if">not only_services</attribute>
+            <attribute name="groups">sale.group_delivery_invoice_address</attribute>
         </xpath>
     </template>
 
     <!-- PÁGINA DE CONFIRMACIÓN DE PEDIDO (CAMBIAR BOTÓN DE PAGO) -->
 
-    <template id="vimenpaq_payment" inherit_id="payment.payment_tokens_list" name="Vimenpaq Payment">
+    <template id="vimenpaq_payment_options" inherit_id="payment.payment_tokens_list" name="Vimenpaq Payment">
         <xpath expr="//button[@id='o_payment_form_pay']" position="replace">
-            <button id="o_payment_form_pay" type="submit" class="btn btn-primary btn-lg mb8 mt8"><i class="fa fa-file"></i> Finalizar</button>
+            <button id="o_payment_form_pay" type="submit" class="btn btn-primary btn-lg mb8 mt8"><i class="fa fa-check"></i> Confirmar pedido</button>
         </xpath>
     </template>
 
     <!-- INFORMACIÓN DE RECOGIDA EN PÁGINA DE CONFIRMACIÓN -->
 
-    <template id="vimenpaq_bill_to" inherit_id="website_sale.bill_to" name="Vimenpaq Bill To">
-        <xpath expr="." position="replace">
-            <t name="Bill to" t-name="website_sale.bill_to">
-                <div class="panel panel-success break-word">
-                    <div class="panel-heading">Datos de facturación:</div>
-                    <div class="panel-body">
-                        <div class="o_div_text_overflow" t-field="order.partner_invoice_id" t-options="{'widget': 'contact','fields': ['address', 'name', 'phone', 'email']}"/>
-                    </div>
-                </div>
-                <t t-if="not order.only_services">
-                    <div class="panel panel-warning break-word">
-                        <div class="panel-heading">Dirección de envío:</div>
-                        <div class="panel-body">
-                            <div class="o_div_text_overflow" t-field="order.partner_shipping_id" t-options="{'widget': 'contact','fields': ['address', 'phone']}"/>
-                        </div>
-                    </div>
-                </t>
-            </t>
+    <template id="vimenpaq_bill_to" inherit_id="website_sale.bill_to" name="Vimenpaq Bill To" priority="20">
+        <xpath expr="//t[@groups='sale.group_delivery_invoice_address']/div/div[hasclass('panel-heading')]" position="replace">
+            <div t-if="not order.only_services" class="bill-ship-heading panel-heading">Recoger en:</div>
+            <div t-else="" class="bill-ship-heading panel-heading">Enviar a:</div>
         </xpath>
     </template>
-
 </odoo>

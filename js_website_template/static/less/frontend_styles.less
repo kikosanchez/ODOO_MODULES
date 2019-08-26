@@ -1,0 +1,85 @@
+/* Declarar clases con el color por defecto del tema para que sea dinámico */
+.theme-bg{ background-color: @theme-color; }
+.theme-color{ color: @theme-color; }
+
+/* Cambiar color de texto en botones y dropdowns */
+.dropdown-toggle.bs-placeholder{
+    color: #EEE !important;
+}
+
+/* Quitar espacio extra entre artículos */
+#product-grid-table{
+    td{
+        font-size: 0;
+        .oe_product{
+            font-size: 14px;
+        }
+    }
+}
+
+/* Que desaparezca en pantallas pequeñas el Menu Style > Offer del tema Clarico */
+@media (max-width: 1000px) {
+  section#palas_y_balones {
+    display: none;
+  }
+}
+
+div.login_area_container a.regresar.btn.btn-link:hover{
+    background-color: #ff7f00;
+}
+
+/* En el Tema Clarico está !important, por lo que no se da cambiado.
+Editado  /addons/clarico_shop_left_sidebar/static/src/less/shop_left_categ.less para quitarle el !important */
+@media (min-width: 1600px){
+    .oe_shop_left {
+        width: 25% !important;
+    }
+}
+
+/* Texto Aviso Empresas en el formulario de registro */
+.registro-aviso-empresas{
+	font-size: large;
+}
+
+div.signin_main_div form > div.oe_login_buttons.c_signup_link_btn{
+	margin-bottom: 16px;
+	border-bottom: 1px solid #ccc;
+}
+
+/* Buscador que va encima de las categorias */
+#products_grid_before > div.products_grid_before_maxW > form{
+	margin-bottom: 32px;
+}
+
+/* Aumentar alto máximo en miniaturas (sport equipalia) */
+.b_fashion_part_img_div img {
+    max-height: 275px !important;
+}
+
+/* Máscara de la web */
+.mask{
+    background-color: #000 !important;
+    opacity: 0.4 !important;
+}
+
+/* Ocultar rating en productos */
+.rating-block, .shop_rating{
+    display: none !important;
+}
+
+/* Opciones de igual tamaño en wishlist (en cada producto) */
+.p_wish_cart > a{
+    font-size: 12px !important;
+}
+
+/* Ocultar buscador encima de categorías en vista móvil */
+@media (max-width: @screen-sm-min){
+    #products_grid_before form.o_website_sale_search{
+        display: none;
+    }
+}
+
+/* Clase que se aplica al string "Consultar precio" cuando el precio es 0 */
+/*span.no-price{
+    color: @brand-danger;
+}*/

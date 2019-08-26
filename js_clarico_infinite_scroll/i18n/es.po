@@ -1,0 +1,25 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* js_clarico_infinite_scroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-12 09:09+0000\n"
+"PO-Revision-Date: 2019-08-12 12:47+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: \n"
+"Language: es\n"
+
+#. module: js_clarico_infinite_scroll
+#. openerp-web
+#: code:addons/js_clarico_infinite_scroll/static/src/js/infinite_scroll.js:77
+#, python-format
+msgid "Loading more products, wait a moment or click here to cancel..."
+msgstr "Cargando más productos, espere o haga click aquí para cancelar..."

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="js_clarico_product_wishlist" inherit_id="clarico_wishlist.clarico_product_wishlist" name="Custom Product Wishlist" priority="25">
+        <!-- Quitar enlace a página de login -->
+        <xpath expr="//a[hasclass('product_wish_wo_signin')]" position="attributes">
+            <attribute name="t-attf-href">#</attribute>
+        </xpath>
+    </template>
+</odoo>

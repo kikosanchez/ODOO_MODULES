@@ -1,0 +1,36 @@
+/* listado de productos */
+
+.itemscope-main {
+    margin: 0 5px;
+}
+
+.oe_product .oe_product_image {
+    min-height: 100px;
+    background: url('/js_clarico_infinite_scroll/static/src/img/dots.gif') center center no-repeat;
+}
+
+/* paginación inferior */
+div.products_pager.bottom_pager {
+    /*display: none !important;*/
+}
+
+/* paginación superior, parte de la derecha */
+.shop-page-breadcrumb .products_pager{
+	/*display: none !important;*/
+}
+
+/* indicador de carga */
+.page-loading{
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    padding-top: 30px;
+    left: -2px;
+
+    & > div.alert{
+        background-color: @theme-color;
+        border-color: darken(@theme-color, 20%);
+        margin-bottom: 24px;
+        color: contrast(@theme-color);
+    }
+}
