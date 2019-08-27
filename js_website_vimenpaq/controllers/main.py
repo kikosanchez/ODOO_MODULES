@@ -77,7 +77,7 @@ class VimenpaqOfficesController(WebsiteSale):
             if not vimenpaq_partner_id:
                 # Si no existe el cliente VIMENPAQ se crea
                 vimenpaq_module_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-                with open(os.path.join(vimenpaq_module_path, 'static', 'img', 'logo.png'), 'rb') as image_logo:
+                with open(os.path.join(vimenpaq_module_path, 'static', 'img', 'icon.png'), 'rb') as image_logo:
                     vimenpaq_partner_id = Partner.create({
                         'customer': True,
                         'parent_id': None,
