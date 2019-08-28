@@ -1,7 +1,7 @@
 {
     "name": "JS Product Code",
     "summary": "Modifica el comportamiento de la referencia interna",
-    "version": "1.0",
+    "version": "11.0.1.0",
     "license": "AGPL-3",
     "author": "Jim Sports",
     "category": "Product",

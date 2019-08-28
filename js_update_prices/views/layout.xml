@@ -15,9 +15,25 @@
             <div class="oe_structure o_report_layout_background">
                 <div style="padding-top: 50px">
                     <h1 style="margin-top: 0">Script para modificación de precios</h1>
-                    <p>Este script actualiza los precios de los productos en los pedidos de compra.</p>
+                    <p>Este script actualiza los precios de los productos en los pedidos.</p>
 
                     <form method="GET" action="/js_update_prices/run">
+                        <hr class="mb0" />
+
+                        <div class="radio">
+                            <label>
+                                <input name="otype" type="radio" value="sale.order" disabled="disabled" /> <span class="text-muted">Pedidos de venta</span>
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input name="otype" type="radio" value="purchase.order" checked="checked" /> Pedidos de compra
+                            </label>
+                        </div>
+
+                        <hr class="mb0" />
+
                         <div class="checkbox">
                             <label>
         						<input name="tmode" type="checkbox" checked="true" value="1" /> Modo de test (no se hacen cambios)
@@ -29,6 +45,8 @@
                                 <input id="allProducts" type="checkbox" checked="true" /> Procesar todos los pedidos en borrador
                             </label>
                         </div>
+
+                        <hr class="mb0" />
 
                         <div id="setNumProducts" class="row" style="display: none;">
                             <div class="col-sm-4">

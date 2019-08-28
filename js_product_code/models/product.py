@@ -29,7 +29,7 @@ class ProductTemplateProduct(models.Model):
 
     @api.onchange('default_code')
     def _check_default_code(self):
-        self.default_code_required = bool(self.env['ir.config_parameter'].sudo().get_param('js_product_code.required_code'))
+        self.default_code_required = bool(int(self.env['ir.config_parameter'].sudo().get_param('js_product_code.required_code')))
 
         if self.default_code:
             self.default_code = self.default_code.strip()
@@ -50,7 +50,7 @@ class ProductTemplateProduct(models.Model):
 
     @api.model
     def create(self, vals):
-        defaultCodeIsRequired = bool(self.env['ir.config_parameter'].sudo().get_param('js_product_code.required_code'))
+        defaultCodeIsRequired = bool(int(self.env['ir.config_parameter'].sudo().get_param('js_product_code.required_code')))
         #  SI EL CÓDIGO ES REQUERIDO PERO NO ESTÁ DEFINIDO O ES FALSE
         if defaultCodeIsRequired and (not hasattr(self, 'default_code') or (not self.default_code)):
             # AL CREAR UN PRODUCTO AL VUELO
@@ -63,7 +63,7 @@ class ProductProduct(models.Model):
 
     @api.onchange('default_code')
     def _check_default_code(self):
-        self.default_code_required = bool(self.env['ir.config_parameter'].sudo().get_param('js_product_code.required_code'))
+        self.default_code_required = bool(int(self.env['ir.config_parameter'].sudo().get_param('js_product_code.required_code')))
 
         if self.default_code:
             self.default_code = self.default_code.strip()

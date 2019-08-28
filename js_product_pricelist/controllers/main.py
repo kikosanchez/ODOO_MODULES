@@ -28,7 +28,7 @@ class jsProductPricelist(http.Controller):
                 ('type', '=', 'product')
             ], order='name')
 
-            # Realizamos un bucle para descargar las imágenes y guardar los resultados
+            # Realizamos un bucle para recorrer los productos
             for product in product_list:
 
                 # Si no tiene variantes
@@ -44,9 +44,9 @@ class jsProductPricelist(http.Controller):
                         # Actualizamos los precios
                         for price_item in prices_list:
                             price_item.write({
-                                'applied_on':'1_product',
-                                'product_id':None,
-                                'product_tmpl_id':product.id
+                                'applied_on': '1_product',
+                                'product_id': None,
+                                'product_tmpl_id': product.id
                             })
 
                     # Sacamos la información de los productos

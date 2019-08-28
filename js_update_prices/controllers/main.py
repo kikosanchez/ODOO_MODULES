@@ -12,7 +12,7 @@ class jsUpdatePrices(http.Controller):
     @http.route([
         '/js_update_prices/run'
     ], type='http', auth='user')
-    def run(self, order='', tmode=0, **kw):
+    def run(self, otype='sale.order', order='', tmode=0, **kw):
 
         # Solo pueden acceder usuarios con permisos de configuración (Administración/Ajustes)
         if request.env.user.has_group('base.group_system'):
@@ -23,58 +23,73 @@ class jsUpdatePrices(http.Controller):
 
             # Hacemos uso de request para acceder al modelo de los pedidos
             if (order != ''):
-                purchases = request.env['purchase.order'].sudo().search([
+                orders = request.env[otype].sudo().search([
                     ('name', '=', order)
                 ], order='id')
             else:
-                purchases = request.env['purchase.order'].sudo().search([
+                orders = request.env[otype].sudo().search([
                     ('state', '=', 'draft')
                 ], order='id')
 
             #import web_pdb; web_pdb.set_trace()
 
-            # Realizamos un bucle para descargar las imágenes y guardar los resultados
-            for order in purchases:
+            # Realizamos un bucle para recorrer los pedidos
+            for order in orders:
 
                 # Realizamos un bucle para recorrer las lineas del pedido
                 for line in order.order_line:
 
                     numLines += 1
 
-                    # Buscamos los precios de compra
-                    supplier_prices = request.env['product.supplierinfo'].sudo().search([
-                        ('company_id', '=', line.company_id.id),
-                        ('product_id', '=', line.product_id.id)
-                    ], order='sequence')
+                    # Órdenes de venta
+                    if otype == 'sale.order':
 
-                    # Si existe un precio en la tarifa lo actualizamos si la linea está como borrador
-                    if (line.state == 'draft' and len(supplier_prices) > 0):
+                        # TODO
+                        debug_processed.append({
+                            'id': line.id,
+                            'name': line.name,
+                            'quantity': line.product_qty,
+                            'old_price': line.price_unit,
+                            'new_price': line.price_unit
+                        })
 
-                        old_price = line.price_unit
-                        price_unit = supplier_prices[0].price
-                        price_subtotal = price_unit * line.product_qty
-                        price_total = price_subtotal
+                    # Órdenes de compra
+                    if otype == 'purchase.order':
 
-                        if (line.price_unit != price_unit):
+                        # Buscamos los precios de compra
+                        supplier_prices = request.env['product.supplierinfo'].sudo().search([
+                            ('company_id', '=', line.company_id.id),
+                            ('product_id', '=', line.product_id.id)
+                        ], order='sequence')
 
-                            # Si no estamos en modo test
-                            if not test_mode:
+                        # Si existe un precio en la tarifa lo actualizamos si la linea está como borrador
+                        if (line.state == 'draft' and len(supplier_prices) > 0):
 
-                                # Actualizamos el precio
-                                line.write({
-                                    'price_unit': price_unit,
-                                    'price_subtotal': price_subtotal,
-                                    'price_total': price_total
+                            old_price = line.price_unit
+                            price_unit = supplier_prices[0].price
+                            price_subtotal = price_unit * line.product_qty
+                            price_total = price_subtotal
+
+                            if (line.price_unit != price_unit):
+
+                                # Si no estamos en modo test
+                                if not test_mode:
+
+                                    # Actualizamos el precio
+                                    line.write({
+                                        'price_unit': price_unit,
+                                        'price_subtotal': price_subtotal,
+                                        'price_total': price_total
+                                    })
+
+                                # Guardamos la linea en el listado
+                                debug_processed.append({
+                                    'id': line.id,
+                                    'name': line.name,
+                                    'quantity': line.product_qty,
+                                    'old_price': old_price,
+                                    'new_price': price_unit
                                 })
-
-                            # Guardamos la linea en el listado
-                            debug_processed.append({
-                                'id': line.id,
-                                'name': line.name,
-                                'quantity': line.product_qty,
-                                'old_price': old_price,
-                                'new_price': price_unit
-                            })
 
             # Pasamos los resultados a la vista
             return request.render('js_update_prices.prices_edit_batch', {
