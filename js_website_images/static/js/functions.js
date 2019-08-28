@@ -28,7 +28,11 @@
         var image_slider_num = parseInt($attr_images.attr('data-slide-to'));
 
         if (!isNaN(image_slider_num)){
+            console.log('SLIDE TO', image_slider_num);
+            console.log('HIDE', query_selector);
             $('#o-carousel-product').carousel(image_slider_num);
+            $('ol.carousel-indicators li').css('opacity', 1);
+            $('ol.carousel-indicators li').not(query_selector).css('opacity', 0.2);
             return true;
         }
 
@@ -40,27 +44,31 @@
      **/
     $(document).ready(function() {
 
-        $('form.js_add_cart_variants .js_variant_change').on('change', function(){
+        // Launch at start (one time)
+        setTimeout(function(){
 
-            var attrIds = [];
+            var $formInputs = $('form.js_add_cart_variants .js_variant_change');
 
-            // Loop form inputs to get current values
-            $('select.js_variant_change option:selected, input.js_variant_change:checked').each(function() {
-                var attr_selected = $(this).val()
-                if (attr_selected) attrIds.push(attr_selected);
+            // Launch when a input is changed
+            $formInputs.on('change', function(e){
+                e.stopPropagation();
+                var attrIds = [];
+
+                // Loop form inputs to get current values
+                $('select.js_variant_change option:selected, input.js_variant_change:checked').each(function() {
+                    var attr_selected = $(this).val()
+                    if (attr_selected) attrIds.push(attr_selected);
+                });
+
+                // Select combination image if exists
+                if (!getAttrCombinations(attrIds).some(slideToImgIfExist) && !slideToImgIfExist($(this).val()))
+                    slideToImgIfExist($formInputs.first().val());
             });
 
-            // Select combination image if exists
-            getAttrCombinations(attrIds).forEach(function(comb) {
-                if (slideToImgIfExist(comb)) return;
-            });
+            $formInputs.first().trigger('change');
 
-            // Select single attr image if exists
-            slideToImgIfExist($(this).val());
+        }, 1000);
 
-            //$('ol.carousel-indicators li').show();
-            //$('ol.carousel-indicators li').not(query_selector).hide();
-        }).trigger('change');
     });
 
 })(jQuery);
