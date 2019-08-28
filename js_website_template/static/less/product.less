@@ -31,6 +31,10 @@
         }
     }
 
+    #o-carousel-product.carousel a.carousel-control{
+        z-index: 999;
+    }
+
     #product_full_spec {
         text-align: justify;
 
@@ -88,7 +92,7 @@ table#product-grid-table form section div.product_price > b > del{
 }
 
 
-/* En aquellos productos en los que la primera combinación de color/talla [SELECT/SELECT] no está disponible, 
+/* En aquellos productos en los que la primera combinación de color/talla [SELECT/SELECT] no está disponible,
 el <li> desaparecía oculto por display: none y no había forma de seleccionar otro atributo;
 */
 .css_not_available.js_product > *:nth-child(5) > * {
@@ -106,4 +110,3 @@ ul.js_add_cart_variants li div.select_wrapp select#attr_select option.css_not_av
 section#product_full_spec > div.prod_des > table > tbody > tr > td > div > div > p{
     max-width: 50%;
 }
-

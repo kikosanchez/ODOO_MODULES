@@ -46,7 +46,30 @@
     </template>
 
     <!-- Personalizar vista del producto (variantes) -->
-    <template id="js_clarico_product_product" inherit_id="clarico_product.clarico_product_product" name="JS Clarico Product Variant" priority="15">
+    <template id="js_clarico_product_product" inherit_id="clarico_product.clarico_product_product" name="JS Clarico Product Variant" priority="31">
+        <!-- Quitar descripción del producto debajo del nombre -->
+        <xpath expr="//div[@id='product_details']/div[3]" position="replace"></xpath>
+
+        <!-- Añadir atributos debajo del nombre (antes del formulario) -->
+        <xpath expr="//form[hasclass('js_add_cart_variants')]" position="before">
+            <hr t-if="sum([(1 if len(l.value_ids)==1 else 0) for l in product.attribute_line_ids])" id='hr_product_attributes_simple'/>
+            <p class="text-muted" id="product_attributes_simple">
+                <t t-foreach="product.attribute_line_ids.sorted(key=lambda x: x.attribute_id.sequence)" t-as="variant_id">
+                    <t t-if="variant_id.attribute_id.create_variant">
+                        <t t-if="len(variant_id.value_ids)==1">
+                            <span t-field="variant_id.attribute_id" />: <span t-field="variant_id.value_ids[0].name" /><br /></t>
+                    </t>
+                </t>
+            </p>
+        </xpath>
+    </template>
+
+    <!-- Personalizar vista del producto -->
+    <template id="js_clarico_product_product_price" inherit_id="clarico_product.clarico_product_product" name="JS Clarico Product Variant Price" priority="15">
+        <!-- Quitar condiciones debajo de añadir al carrito -->
+        <xpath expr="//div[hasclass('p_static_desc_para')]" position="replace"></xpath>
+
+        <!-- Cambiar formulario de producto -->
         <xpath expr="//form" position="replace">
             <!-- Si el producto no tiene precio no mostrar opciones de compra (en vista producto) -->
             <t t-if="product.website_price_max > 0">
@@ -85,25 +108,6 @@
                 <hr style="margin-bottom: 12px" />
                 <a href="/contactus" class="btn btn-danger">Consultar precio</a>
             </t>
-        </xpath>
-
-        <!-- Quitar condiciones debajo de añadir al carrito -->
-        <xpath expr="//div[hasclass('p_static_desc_para')]" position="replace"></xpath>
-
-        <!-- Quitar descripción del producto debajo del nombre -->
-        <xpath expr="//div[@id='product_details']/div[3]" position="replace"></xpath>
-
-        <!-- Añadir atributos debajo del nombre (antes del formulario) -->
-        <xpath expr="//form[hasclass('js_add_cart_variants')]" position="before">
-            <hr t-if="sum([(1 if len(l.value_ids)==1 else 0) for l in product.attribute_line_ids])" id='hr_product_attributes_simple'/>
-            <p class="text-muted" id="product_attributes_simple">
-                <t t-foreach="product.attribute_line_ids.sorted(key=lambda x: x.attribute_id.sequence)" t-as="variant_id">
-                    <t t-if="variant_id.attribute_id.create_variant">
-                        <t t-if="len(variant_id.value_ids)==1">
-                            <span t-field="variant_id.attribute_id" />: <span t-field="variant_id.value_ids[0].name" /><br /></t>
-                    </t>
-                </t>
-            </p>
         </xpath>
     </template>
 </odoo>
