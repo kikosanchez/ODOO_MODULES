@@ -42,7 +42,7 @@
     /**
      * CHANGE VARIANT IMAGE ON SELECT
      **/
-    $(document).ready(function() {
+    $(window).load(function() {
 
         // Launch at start (one time)
         setTimeout(function(){
@@ -67,7 +67,7 @@
 
             $formInputs.first().trigger('change');
 
-        }, 1000);
+        }, 200);
 
     });
 
