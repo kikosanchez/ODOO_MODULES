@@ -139,6 +139,12 @@ msgstr "” EN"
 
 
 
+
+#. module: clarico_compare
+#: model:ir.ui.view,arch_db:clarico_compare.clarico_compare_clarico_product
+msgid "Specifications for \""
+msgstr "Descripción para \""
+
 #. module: clarico_wishlist
 #: model:ir.ui.view,arch_db:clarico_wishlist.clarico_wishlist
 msgid "( Clear wishlist )"
@@ -198,6 +204,22 @@ msgstr "Ver lista\n"
 "					(<span class=\"my_wish_quantity\">0</span>)\n"
 "				</span>"
 
+#. module: clarico_compare
+#: model:ir.ui.view,arch_db:clarico_compare.clarico_compare_product_compare
+msgid "Compare Product"
+msgstr "Comparador"
+
+#. module: clarico_compare
+#: model:ir.ui.view,arch_db:clarico_compare.clarico_compare_product_compare
+msgid "<i class=\"fa fa-shopping-cart\"/>\n"
+"															&amp;nbsp;Add to Cart"
+msgstr "<i class=\"fa fa-shopping-cart\"/>\n"
+"															&amp;nbsp;Añadir al Carrito"
+
+#. module: clarico_compare
+#: model:ir.ui.view,arch_db:clarico_compare.clarico_compare_max_message
+msgid "<span> <i class=\"fa fa-warning text-danger\"/> You can compare max 4 products.</span>"
+msgstr "<span> <i class=\"fa fa-warning text-danger\"/> Puedes comparar 4 productos como máximo</span>"
 
 
 #. module: js_website_template
