@@ -2,6 +2,12 @@
 .theme-bg{ background-color: @theme-color; }
 .theme-color{ color: @theme-color; }
 
+/* Color active/focus en enlaces */
+a:focus, a:active {
+    color: darken(@theme-color, 10%);
+    text-decoration: underline;
+}
+
 /* Cambiar color de texto en botones y dropdowns */
 .dropdown-toggle.bs-placeholder{
     color: #EEE !important;
