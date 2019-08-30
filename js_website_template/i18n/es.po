@@ -243,3 +243,8 @@ msgstr "<i class=\"fa fa-shopping-cart\"/>\n"
 #: model:ir.ui.view,arch_db:clarico_compare.clarico_compare_max_message
 msgid "<span> <i class=\"fa fa-warning text-danger\"/> You can compare max 4 products.</span>"
 msgstr "<span> <i class=\"fa fa-warning text-danger\"/> Puedes comparar 4 productos como máximo</span>"
+
+#. module: clarico_blog
+#: model:ir.ui.view,arch_db:clarico_blog.clarico_blog_opt_blog_rc_tags
+msgid "Stay updated"
+msgstr "Síguenos"
