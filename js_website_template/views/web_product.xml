@@ -105,8 +105,7 @@
             </t>
 
             <t t-else="">
-                <hr style="margin-bottom: 12px" />
-                <a href="/contactus" class="btn btn-danger">Consultar precio</a>
+                <a href="/contactus" class="btn btn-warning">Consultar precio</a>
             </t>
         </xpath>
     </template>
