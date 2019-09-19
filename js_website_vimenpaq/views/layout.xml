@@ -292,9 +292,26 @@
     <!-- INFORMACIÓN DE RECOGIDA EN PÁGINA DE CONFIRMACIÓN -->
 
     <template id="vimenpaq_bill_to" inherit_id="website_sale.bill_to" name="Vimenpaq Bill To" priority="20">
+        <!-- Cambiar título según proceda (comprobando si es cliente individual o empresa) -->
         <xpath expr="//t[@groups='sale.group_delivery_invoice_address']/div/div[hasclass('panel-heading')]" position="replace">
             <div t-if="not order.only_services" class="bill-ship-heading panel-heading">Recoger en:</div>
             <div t-else="" class="bill-ship-heading panel-heading">Enviar a:</div>
+        </xpath>
+        <!-- Cambiar dirección de envío si se escoge la opción "Recogida en Jim Sports" por la de la empresa -->
+        <xpath expr="//t[@groups='sale.group_delivery_invoice_address']/div/div[hasclass('panel-body')]" position="replace">
+            <div class="panel-body">
+              <t t-if="order.carrier_id.id == 4" t-call="website.company_description"/>
+              <div t-else="" class="o_div_text_overflow" t-field="order.partner_shipping_id" t-options="{'widget': 'contact','fields': ['address', 'name', 'phone']}"/>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- PDF DEL PEDIDO -->
+
+    <template id="vimenpaq_report_saleorder_document" inherit_id="sale.report_saleorder_document" name="Vimenpaq Sale Order Document">
+        <!-- Ocultar dirección de envío si se escoge la opción "Recogida en Jim Sports" -->
+        <xpath expr="//div[@t-if='doc.partner_shipping_id != doc.partner_invoice_id']" position="attributes">
+            <attribute name="t-if">doc.partner_shipping_id != doc.partner_invoice_id and doc.carrier_id.id != 4</attribute>
         </xpath>
     </template>
 </odoo>

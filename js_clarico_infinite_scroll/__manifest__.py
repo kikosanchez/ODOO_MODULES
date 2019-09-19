@@ -8,7 +8,7 @@
     'website': 'https://jimsports.com',
     'author':'Jim Sports',
     'category': 'Website',
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.0',
     'depends': [
         'website_sale',
         'website_sale_wishlist',

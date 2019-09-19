@@ -238,7 +238,6 @@ msgid "<i class=\"fa fa-shopping-cart\"/>\n"
 "															&amp;nbsp;Add to Cart"
 msgstr "<i class=\"fa fa-shopping-cart\"/>\n"
 "															&amp;nbsp;Añadir al Carrito"
-
 #. module: clarico_compare
 #: model:ir.ui.view,arch_db:clarico_compare.clarico_compare_max_message
 msgid "<span> <i class=\"fa fa-warning text-danger\"/> You can compare max 4 products.</span>"
