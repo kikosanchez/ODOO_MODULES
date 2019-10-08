@@ -23,7 +23,7 @@ Los usuarios de portal previos a la instalación del módulo se mantienen.
 
 **2.** Al crear manualmente un contacto, se crea automáticamente una dirección de facturación con los mismos datos en el momento de guardarlo. Esta dirección se puede editar, como siempre.
 
-**3.** El módulo impide la creación manual de más de una dirección de facturación desde el panel de contacto.
+**3.** El módulo impide la creación manual de más de una dirección de facturación desde el panel del contacto.
 
 ## **1. Asignación de usuario de portal únicamente al contacto padre**
 
