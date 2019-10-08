@@ -53,4 +53,4 @@ En las ventas **web** , Odoo siempre asigna como dirección de facturación al c
 Para que se asigne un hijo de tipo **Dirección de Facturación** (si lo tiene) se hace un override de la función **\_prepare\_sale\_order\_values()**.  
 Esta función sólo se ejecuta al principio, cuando el cliente web no tiene ningún pedido activo; un pedido vacío sin artículos (como un carrito abandonado) también es un pedido activo.
 
-También hay un **direcciones\_checkout.xml** para reemplazar el código de la página de checkout para que coja **partner\_invoice\_id** en vez de **partner\_id**.
+También hay un **direcciones\_checkout.xml** en **/views** para reemplazar el código de la página de checkout para que coja **partner\_invoice\_id** en vez de **partner\_id**.
