@@ -7,7 +7,7 @@
     website  
     website\_sale  
 
-Versión Odoo: Community 11.0
+Versión Odoo: Community 11.0  
 Versión módulo: 1.0.0
 
 ## **Descripción**
