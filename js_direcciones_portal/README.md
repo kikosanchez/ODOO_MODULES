@@ -32,7 +32,7 @@ En un override de la función **onchange\_portal().**
 Ahora pone **contact\_partners = [partner]**
 donde antes ponía **contact\_partners = partner.child\_ids or [partner]**
 
-**2. Creación automática de una dirección de facturación al crear un contacto empresa**
+# **2. Creación automática de una dirección de facturación al crear un contacto empresa**
 
 Se hace un override en la función **\_handle\_first\_contact\_creation()** de **js\_direcciones\_portal** / **models** / **partner.py**
 
@@ -41,17 +41,15 @@ Es posible crear una dirección de facturación con datos distintos si la creamo
 No se crea automáticamente si ya hay previamente creado un contacto hijo porque el condicional child\_ids == 0 no comprueba de que tipo son los hijos.
 De todas formas siempre se puede editar esta única dirección de facturación.
 
-**3. Impedir la creación de más de una dirección de facturación**
+# **3. Impedir la creación de más de una dirección de facturación**
 
 Una empresa solo debería tener una dirección de facturación.
 Override de la función **create()** de **res.partner** en **js\_direcciones\_portal** / **models** / **partner.py**
 Se hace un return en la función **create()** si el **res.partner** es de tipo **invoice** y no hay otro **invoice** entre los hijos.
 
-**4. dirección de facturación, si la tiene**
+# **4. dirección de facturación, si la tiene**
 
 En las ventas **web** , Odoo siempre asigna como dirección de facturación al contacto parent. Da igual que tenga un contacto hijo que sea Dirección de facturación; lo ignora.
 Para que se asigne un hijo de tipo **Dirección de Facturación** (si lo tiene) se hace un override de la función **\_prepare\_sale\_order\_values()**. Esta función sólo se ejecuta al principio, cuando el cliente web no tiene ningún pedido activo; un pedido vacío sin artículos (como un carrito abandonado) también es un pedido activo.
 
 También hay un **direcciones\_checkout.xml** para reemplazar el código de la página de checkout para que coja **partner\_invoice\_id** en vez de **partner\_id**.
-
-**\&lt;/template\&gt;**
