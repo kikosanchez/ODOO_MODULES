@@ -1,8 +1,8 @@
 # JS Direcciones en Portal
 
-**Nombre técnico** : js\_direcciones\_portal
+**Nombre técnico**: js\_direcciones\_portal
 
-**Dependencias** :
+**Dependencias**:
     portal
     website
     website\_sale
@@ -10,7 +10,7 @@
 Versión Odoo: Community 11.0
 Versión módulo: 1.0.0
 
-**Descripción**
+## **Descripción**
 
 **-** Cuando un contacto cliente tiene precios específicos, sólo se muestran en la web si está logueado como él mismo, como el contacto padre; los hijos heredan las tarifas del padre pero no los precios específicos.  
 Pero en la lista de contactos para dar permisos de portal, Odoo sólo muestra al contacto padre cuando éste no tiene hijos: en cuanto hay una dirección de facturación o de envío, el padre desaparece de la lista. Así que a la fuerza hay que asignar acceso al portal a un hijo, con la consiguiente pérdida de las tarifas específicas.  
