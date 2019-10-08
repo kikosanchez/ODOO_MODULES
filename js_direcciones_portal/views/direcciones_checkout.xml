@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- en el carrito /shop/checkout, la dirección de facturación -->
+    <template id="js_direcciones_portal_checkout" inherit_id="website_sale.checkout" name="JS Direcciones Portal Checkout">
+        <xpath expr="//t[@t-set='contact'][@t-value='order.partner_id']" position="replace">
+            <t t-if="order.partner_invoice_id">
+                <t t-set="contact" t-value="order.partner_invoice_id" />
+            </t>
+            <t t-else="">
+                <t t-set="contact" t-value="order.partner_id" />
+            </t>
+        </xpath>
+    </template>
+</odoo>
