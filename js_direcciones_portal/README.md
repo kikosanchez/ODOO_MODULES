@@ -3,9 +3,9 @@
 **Nombre técnico**: js\_direcciones\_portal
 
 **Dependencias**:
-    portal
-    website
-    website\_sale
+    portal  
+    website  
+    website\_sale  
 
 Versión Odoo: Community 11.0
 Versión módulo: 1.0.0
