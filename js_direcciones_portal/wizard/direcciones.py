@@ -2,17 +2,20 @@
 # from odoo.tools.translate import _
 # from odoo.tools import email_split
 # from odoo.exceptions import UserError
-# from odoo import api, models, fields
+from odoo import api, models, fields
 # _logger = logging.getLogger(__name__)
 
-from odoo import models, api
+#from odoo import models, api
 from odoo.addons.portal.wizard.portal_wizard import PortalWizard
 
 # Override /addons/portal/wizard/portal_wizard.py > onchange_portal_id
-class JSPortalWizard(PortalWizard):
+class Direcciones(models.TransientModel):
+
+    _inherit = 'portal.wizard'
+
     # Hacer que sólo aparezca el contacto padre en el listado de Acceso al Portal
     @api.onchange('portal_id')
-    def onchange_portal_id(self):        
+    def onchange_portal_id(self):
         # for each partner, determine corresponding portal.wizard.user records
         partner_ids = self.env.context.get('active_ids', [])
         contact_ids = set()
