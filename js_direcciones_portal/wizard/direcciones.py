@@ -5,8 +5,8 @@
 from odoo import api, models, fields
 # _logger = logging.getLogger(__name__)
 
-#from odoo import models, api
-from odoo.addons.portal.wizard.portal_wizard import PortalWizard
+# from odoo import models, api
+# from odoo.addons.portal.wizard.portal_wizard import PortalWizard
 
 # Override /addons/portal/wizard/portal_wizard.py > onchange_portal_id
 class Direcciones(models.TransientModel):
