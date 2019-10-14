@@ -1,7 +1,7 @@
 from odoo import api, fields, models, tools
 from odoo.http import request
 
-class DirecccionesWebsite(models.Model):
+class DireccionesWebsite(models.Model):
     _inherit = 'website'
 
     ##############################################################################################################    
