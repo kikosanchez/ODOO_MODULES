@@ -17,6 +17,20 @@
 
     <template id="js_quitar_precios_tachados_productos_sugeridos_carrito" inherit_id="website_sale.suggested_products_list" name="JS Quitar precios tachados productos sugeridos carrito">
         <xpath expr="//tbody/tr/td[hasclass('td-price')]/t" position="replace"></xpath>
+
+        <!-- Cambiar el enlace de Añadir al carrito si el producto tiene marcada la opción mensaje personalizado en las opciones de inventario  -->
+        <xpath expr="//a[hasclass('sugg_add2cart_link', 'js_add_suggested_products')]" position="replace">
+            <t t-if="product.inventory_availability == 'custom'">
+                <div t-attf-class="availability_message_#{product.id} availability_messages text-success mt16" style="font-family: Muli-Bold;">
+                    <t t-esc="product.custom_message" />
+                </div>
+            </t>
+            <t t-else="">
+                <a class="sugg_add2cart_link js_add_suggested_products">
+                    <strong>Add to Cart</strong>
+                </a>
+            </t>
+        </xpath>
     </template>
 
     <!-- Hacer que el subtotal de las líneas del carrito salgan con impuestos
