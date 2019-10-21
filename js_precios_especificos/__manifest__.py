@@ -1,0 +1,46 @@
+{
+    'name': 'JS Precios Específicos',
+    'version': '11.0.2.0.0',
+    'author': 'Jim Sports',
+    "category": "Custom",
+    'license': 'AGPL-3',
+    'depends': [
+        'product',
+        'sale',
+        'website'
+        #'sale_stock',
+        #'sales_team',
+        #'sale_order_dates',
+        #'delivery',
+        #'custom_sale_order_variant_mgmt',
+        #'jim_stock',
+        #'sale_order_batch_confirm',
+        #'telesale',
+        #'sale_early_payment_discount',
+        #'web_tree_many2one_clickable',
+        #'web_ir_actions_act_window_message',
+        #'partner_sale_risk'
+    ],
+    "data": [
+        #'wizard/apply_global_discount.xml',
+        'security/jim_sale_security.xml',
+        'security/ir.model.access.csv',
+        'views/customer_price.xml',
+        'views/product_view.xml',
+        'views/website.xml',
+        #'views/sale_view.xml',
+        #'views/account_invoice.xml',
+        #'views/stock_picking.xml',
+        'views/res_partner_view.xml',
+        #'views/payment_term_view.xml',
+        #'views/sale_history_view.xml',
+        #'report/report_stock_forecast.xml',
+        #'report/report_sale_line.xml',
+        #'report/report_web_product.xml',
+        #'wizard/wzd_sale_order_cancel.xml',
+        # 'views/pricelist.xml',
+        #'report/sale_report_views.xml',
+        #'report/account_invoice_report_views.xml'
+    ],
+    # "installable": True
+}
