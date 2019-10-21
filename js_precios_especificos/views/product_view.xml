@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
-© 2019 Jim Sports
-License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
- -->
 <odoo>
     <data>
+        <!-- Ads lqdr boolean field -->
+        <!--
+        <record id="product_template_lqdr_form" model="ir.ui.view">
+            <field name="name">product.template.lqdr.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="stock.view_template_property_form"/>
+            <field name="arch" type="xml">
+                <field name="route_ids" position="before">
+                        <field name="lqdr"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="product_template_search_view" model="ir.ui.view">
+            <field name="name">product.template.search.view.lqdr</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <filter name="filter_to_purchase" position="after">
+                    <filter string="LQDR" name="lqdr" domain="[('lqdr', '=', 1)]"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="product_template_tree_view" model="ir.ui.view">
+            <field name="name">product_template_tree_view.lqdr</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="uom_id" position="after">
+                    <field name="lqdr"/>
+                </field>
+            </field>
+        </record>
+        -->
+
         <record id="product_template_only_form_view_prices" model="ir.ui.view">
             <field name="name">product.template.product.form.prices</field>
             <field name="model">product.template</field>
@@ -32,5 +64,14 @@ License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
                 </div>
             </field>
         </record>
+
+        <!--
+        <record id="sale.action_product_sale_list" model="ir.actions.act_window">
+            <field name="name">Sale Order Lines</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="context">{'search_default_product_id': [active_id], 'default_product_id': active_id}</field>
+            <field name="domain">[('state', 'in', ['sale', 'done','progress', 'lqdr', 'pending', 'progress_lqdr','proforma'])]</field>
+        </record>
+        -->
     </data>
 </odoo>

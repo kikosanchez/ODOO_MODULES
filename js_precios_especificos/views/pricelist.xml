@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
-© 2019 Jim Sports
-License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
- -->
+<!-- © 2017 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record id="product_pricelist_item_tre_editable" model="ir.ui.view">
         <field name="name">product.pricelist.item.tree.editable</field>
@@ -10,7 +8,7 @@ License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
         <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree string="Pricelist Items" editable="top">
-                <!-- field name="sequence" widget="handle"/ -->
+                <field name="sequence" widget="handle"/>
                 <field colspan="4" name="name"/>
                 <field name="product_id" groups="product.group_product_variant"/>
                 <field name="product_tmpl_id"/>
@@ -22,6 +20,7 @@ License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
             </tree>
         </field>
     </record>
+
 
     <record id="product_pricelist_item_view_search" model="ir.ui.view">
         <field name="name">product.pricelist.item.search</field>
@@ -47,6 +46,8 @@ License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
         <field name="domain">[('compute_price', '=', 'fixed')]</field>
     </record>
 
-    <menuitem name="Fixed prices" parent="sale.menu_product_pricelist_main" action="product_pricelist_item_fixed_price_action" id="product_pricelist_item_fixed_price_menu"/>
+    <menuitem name="Fixed prices" parent="sale.menu_product_pricelist_main"
+              action="product_pricelist_item_fixed_price_action"
+              id="product_pricelist_item_fixed_price_menu"/>
 
 </odoo>
