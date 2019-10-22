@@ -4,12 +4,12 @@ import odoo.addons.decimal_precision as dp
 import time
 
 class CustomerPrice(models.Model):
-    _name = "customer.price"
+    _name = 'customer.price'
 
     product_tmpl_id = fields.Many2one('product.template', 'Template', index=1)
     product_id = fields.Many2one('product.product', 'Product', index=1)
     partner_id = fields.Many2one('res.partner', 'Customer', required=True, index=1)
-    min_qty = fields.Float('Min Quantity', default=0.0, required=True)
+    min_qty = fields.Float('Min Quantity', default=1.0, required=True)
     price = fields.Float('Price', default=0.0, digits=dp.get_precision('Product Price'), required=True, help="The price to purchase a product")
     date_start = fields.Date('Start Date', index=1, help="Start date for this customer price")
     date_end = fields.Date('End Date', index=1, help="End date for this customer price")
@@ -30,7 +30,8 @@ class CustomerPrice(models.Model):
         product = self.product_tmpl_id or self.product_id
         currency = pricelist.currency_id.symbol
         if self.partner_id and pricelist and product and self.min_qty and self.price:
-            product_list_price = pricelist.get_product_price(product, self.min_qty, self.partner_id, self.date_end or False)
+            # No podemos obtener el precio del producto con cantidad 0, sin embargo si que funciona para la cantidad 0.1
+            product_list_price = pricelist.get_product_price(product, self.min_qty or 1, self.partner_id, self.date_end or False)
             if self.price >= product_list_price:
                 # Convertir precio a string con la moneda
                 product_list_price = str(product_list_price) + currency if pricelist.currency_id.position == 'after' else currency + str(product_list_price)

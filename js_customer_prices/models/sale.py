@@ -3,7 +3,7 @@ from odoo import api, fields, models
 from odoo.addons import decimal_precision as dp
 
 class SaleOrder(models.Model):
-    _inherit = "sale.order"
+    _inherit = 'sale.order'
 
     # Aquí se almacena el importe descontado en el pedido para este cliente sobre su tarifa (por tener un precio especial)
     customer_discounts = fields.Monetary(string='Customer discounts', store=True, readonly=True, default=0.0, compute='_recalculate_prices_for_customer')

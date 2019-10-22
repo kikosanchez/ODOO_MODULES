@@ -2,14 +2,13 @@
 from odoo import fields, models, api
 
 class ProductTemplate(models.Model):
-    _inherit = "product.template"
+    _inherit = 'product.template'
 
     @api.multi
     def _get_customer_prices_count(self):
         for tmpl in self:
             tmpl.customer_prices_count = len(tmpl.customer_tmpl_prices)
 
-    # lqdr = fields.Boolean('LQDR')
     customer_tmpl_prices = fields.One2many('customer.price', 'product_tmpl_id', 'Customer Prices')
     customer_prices_count = fields.Integer(compute='_get_customer_prices_count', string='#Prices')
 
