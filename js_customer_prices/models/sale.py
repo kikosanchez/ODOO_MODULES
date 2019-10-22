@@ -45,10 +45,11 @@ class SaleOrder(models.Model):
                 customer_discounts = 0.0
                 # Recorremos de nuevo las líneas para recalcular los precios
                 for line in order.order_line:
+                    qty = line.product_uom_qty
                     # Precio del listado para el cliente (total, precio * cantidad)
-                    product_list_price = order.pricelist_id.get_product_price(line.product_id, line.product_uom_qty, order.partner_id, order.date_order) * line.product_uom_qty
+                    product_list_price = order.pricelist_id.get_product_price(line.product_id, line.product_uom_qty, order.partner_id, order.date_order) * qty
                     # Precio específico del cliente (total, precio * cantidad)
-                    customer_price = (self._get_customer_price(order.partner_id, line.product_id, line.product_uom_qty, order.date_order, tmpls_in_order) * line.product_uom_qty) or product_list_price
+                    customer_price = (self._get_customer_price(order.partner_id, line.product_id, qty, order.date_order, tmpls_in_order) * line.product_uom_qty) or product_list_price
                     # Calcular descuento
                     customer_discount = product_list_price - customer_price
                     # Si el descuento es 0 quiere decir que no hay cambios en el precio 
@@ -56,30 +57,36 @@ class SaleOrder(models.Model):
                     # el precio haya cambiado
                     if customer_discount != 0 or line.price_old:
                         # Volvemos a dividir el precio para obtenerlo por unidad
-                        product_list_price = product_list_price / line.product_uom_qty
-                        customer_price = customer_price / line.product_uom_qty
-                        # Si una línea es diferente hay que recalcular el total
-                        recalculate_totals = True
-                        # Si el descuento es menor a 0 hay algún error en las tarifas o este 
-                        # cliente tiene un precio más alto que en su tarifa por algún motivo
-                        # entonces no lo trataremos como un descuento pero aplicaremos 
-                        # igualmente su precio, en caso contrario lo sumamos al total
-                        if customer_discount > 0:
-                            customer_discounts += customer_discount
+                        # es necesario redondearlo al número de decimales configurado para
+                        # asegurarnos que coincida
+                        decimal_places = order.partner_id.property_product_pricelist.currency_id.decimal_places
+                        product_list_price = round(product_list_price/qty, decimal_places)
+                        customer_price = round(customer_price/qty, decimal_places)
+                        # Si es un precio manual no lo actualizamos (sabemos que es manual
+                        # porque no está en la tarifa ni en los precios de cliente)
+                        if line.price_unit in (product_list_price, customer_price):
+                            # Hay que recalcular el total
+                            recalculate_totals = True
+                            # Si el descuento es menor a 0 hay algún error en las tarifas o este 
+                            # cliente tiene un precio más alto que en su tarifa por algún motivo
+                            # entonces no lo trataremos como un descuento pero aplicaremos 
+                            # igualmente su precio, en caso contrario lo sumamos al total
+                            if customer_discount > 0:
+                                customer_discounts += customer_discount
 
-                        # Calcular impuestos del nuevo precio
-                        customer_price_taxes = line.tax_id.compute_all(customer_price, order.currency_id, line.product_uom_qty, product=line.product_id, partner=order.partner_shipping_id)
-                        
-                        # Actualizar línea
-                        line.write({
-                            'price_unit': customer_price,
-                            'price_subtotal': customer_price_taxes['total_excluded'],
-                            'price_total': customer_price_taxes['total_included'],
-                            'price_old': product_list_price if customer_discount > 0 else 0.0
-                        })
+                            # Calcular impuestos del nuevo precio
+                            customer_price_taxes = line.tax_id.compute_all(customer_price, order.currency_id, line.product_uom_qty, product=line.product_id, partner=order.partner_shipping_id)
 
-                        # Actualizar precio en la interfaz
-                        line._get_price_reduce()
+                            # Actualizar línea
+                            line.write({
+                                'price_unit': customer_price,
+                                'price_subtotal': customer_price_taxes['total_excluded'],
+                                'price_total': customer_price_taxes['total_included'],
+                                'price_old': product_list_price if customer_discount > 0 else 0.0
+                            })
+
+                            # Actualizar precio en la interfaz
+                            line._get_price_reduce()
                 # Actualizar descuento total en pedido
                 order.update({ 'customer_discounts': customer_discounts })
         # Hacer cálculos restantes (actualiza los totales)
