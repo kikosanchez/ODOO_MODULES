@@ -20,6 +20,7 @@
         'views/res_partner.xml',
         'views/product.xml',
         'views/website.xml',
+        'views/sale.xml'
     ],
 
     # Odoo Store
