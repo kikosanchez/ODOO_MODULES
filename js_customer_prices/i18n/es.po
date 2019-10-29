@@ -215,7 +215,7 @@ msgstr "Precios de plantilla"
 
 #. module: js_customer_prices
 #: model:ir.model.fields,help:js_customer_prices.field_customer_price_price
-msgid "The price to purchase a product"
+msgid "The price for a product"
 msgstr "El precio para el producto"
 
 #. module: js_customer_prices
@@ -229,7 +229,7 @@ msgid "You can define a specific price by customer into a range of dates."
 msgstr "Puedes definir un precio para un cliente a partir de una cantidad y delimitado por unas fechas."
 
 #: model:ir.actions.act_window,help:js_customer_prices.action_customer_prices_tmpl
-msgid "When a variant does not have a specific price for a customer, a rule is searched for the template, for this the total number of variants in the order/cart is taken into account."
+msgid "When a variant does not have a specific price for a customer, a rule is searched for the template, for that the total number of variants in the order/cart is taken into account."
 msgstr "Cuando una variante no tiene un precio específico para un cliente se busca una regla para la plantilla, para ello se tiene en cuenta el número total de variantes en el pedido/carrito."
 
 #: model:ir.actions.act_window,help:js_customer_prices.action_customer_prices_variant

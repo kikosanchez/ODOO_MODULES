@@ -12,6 +12,19 @@ class ProductTemplate(models.Model):
     customer_tmpl_prices = fields.One2many('customer.price', 'product_tmpl_id', 'Customer Prices')
     customer_prices_count = fields.Integer(compute='_get_customer_prices_count', string='#Prices')
 
+    @api.multi
+    def customer_prices_by_product(self):
+        self.ensure_one()
+        return {
+            'name': 'Customer Prices',
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'customer.price',
+            'type': 'ir.actions.act_window',
+            'domain': "[('product_tmpl_id', '=', %s)]" % self.id,
+            'context': "{ 'default_product_tmpl_id': %s }" % self.id
+        }
+
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
@@ -22,3 +35,16 @@ class ProductProduct(models.Model):
 
     customer_product_prices = fields.One2many('customer.price', 'product_id', 'Customer Prices')
     customer_prices_count = fields.Integer(compute='_get_customer_prices_count', string='#Prices')
+
+    @api.multi
+    def customer_prices_by_product(self):
+        self.ensure_one()
+        return {
+            'name': 'Customer Prices',
+            'view_type': 'form',
+            'view_mode': 'tree',
+            'res_model': 'customer.price',
+            'type': 'ir.actions.act_window',
+            'domain': "[('product_id', '=', %s)]" % self.id,
+            'context': "{ 'default_product_id': %s }" % self.id
+        }
