@@ -31,7 +31,7 @@ class SaleOrder(models.Model):
         return price
 
     @api.multi
-    @api.depends('partner_id', 'date_order', 'pricelist_id', 'order_line.product_id', 'order_line.price_total')
+    @api.depends('partner_id', 'date_order', 'pricelist_id', 'order_line.product_id', 'order_line.product_uom_qty')
     def _recalculate_prices_for_customer(self):
         # Flag para saber si hay que recalcular el total
         recalculate_totals = False
@@ -47,9 +47,9 @@ class SaleOrder(models.Model):
                 for line in order.order_line:
                     qty = line.product_uom_qty
                     # Precio del listado para el cliente (total, precio * cantidad)
-                    product_list_price = order.pricelist_id.get_product_price(line.product_id, line.product_uom_qty, order.partner_id, order.date_order) * qty
+                    product_list_price = order.pricelist_id.get_product_price(line.product_id, qty, order.partner_id, order.date_order) * qty
                     # Precio específico del cliente (total, precio * cantidad)
-                    customer_price = (self._get_customer_price(order.partner_id, line.product_id, qty, order.date_order, tmpls_in_order) * line.product_uom_qty) or product_list_price
+                    customer_price = (self._get_customer_price(order.partner_id, line.product_id, qty, order.date_order, tmpls_in_order) * qty) or product_list_price
                     # Calcular descuento
                     customer_discount = product_list_price - customer_price
                     # Si el descuento es 0 quiere decir que no hay cambios en el precio 
@@ -64,7 +64,7 @@ class SaleOrder(models.Model):
                         customer_price = round(customer_price/qty, decimal_places)
                         # Si es un precio manual no lo actualizamos (sabemos que es manual
                         # porque no está en la tarifa ni en los precios de cliente)
-                        if line.price_unit in (product_list_price, customer_price):
+                        if line.price_unit in (product_list_price, customer_price, line.price_ctm):
                             # Hay que recalcular el total
                             recalculate_totals = True
                             # Si el descuento es menor a 0 hay algún error en las tarifas o este 
@@ -79,10 +79,16 @@ class SaleOrder(models.Model):
 
                             # Actualizar línea
                             line.write({
-                                'price_unit': customer_price,
-                                'price_subtotal': customer_price_taxes['total_excluded'],
-                                'price_total': customer_price_taxes['total_included'],
-                                'price_old': product_list_price if customer_discount > 0 else 0.0
+                                # Precio del cliente, se guarda para poder compararlo a posterior
+                                'price_ctm': customer_price if product_list_price != customer_price else 0.0, 
+                                # Precio anterior a esta sobreescritura
+                                'price_old': product_list_price if product_list_price != customer_price else 0.0,
+                                # Precio de línea, este puede ser cambiado en cualquier momento
+                                'price_unit': customer_price, 
+                                # Subtotal de la línea
+                                'price_subtotal': customer_price_taxes['total_excluded'], 
+                                # Total de la línea
+                                'price_total': customer_price_taxes['total_included'], 
                             })
 
                             # Actualizar precio en la interfaz
@@ -96,5 +102,7 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    # Aquí se almacena el importe que se debería cobrar si no tuviese un precio específico (si no lo tiene será 0)
-    price_old = fields.Float('Customer price after discount', drequired=False, digits=dp.get_precision('Product Price'), default=0.0)
+    # Aquí se almacena el importe que se debería cobrar si no tuviese un precio específico
+    price_old = fields.Float('Pricelist price', digits=dp.get_precision('Product Price'), default=0.0)
+    # Aquí se almacena el precio específico del cliente
+    price_ctm = fields.Float('Customer price', digits=dp.get_precision('Product Price'), default=0.0)

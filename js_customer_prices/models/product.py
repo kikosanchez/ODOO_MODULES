@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 from odoo import fields, models, api
 
+customer_prices_action = {
+    'name': 'Customer Prices',
+    'view_type': 'form',
+    'view_mode': 'tree,form',
+    'res_model': 'customer.price',
+    'type': 'ir.actions.act_window'
+}
+
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
@@ -15,15 +23,11 @@ class ProductTemplate(models.Model):
     @api.multi
     def customer_prices_by_product(self):
         self.ensure_one()
-        return {
-            'name': 'Customer Prices',
-            'view_type': 'form',
-            'view_mode': 'tree,form',
-            'res_model': 'customer.price',
-            'type': 'ir.actions.act_window',
+        customer_prices_action.update({
             'domain': "[('product_tmpl_id', '=', %s)]" % self.id,
             'context': "{ 'default_product_tmpl_id': %s }" % self.id
-        }
+        })
+        return customer_prices_action
 
 class ProductProduct(models.Model):
     _inherit = "product.product"
@@ -39,12 +43,8 @@ class ProductProduct(models.Model):
     @api.multi
     def customer_prices_by_product(self):
         self.ensure_one()
-        return {
-            'name': 'Customer Prices',
-            'view_type': 'form',
-            'view_mode': 'tree',
-            'res_model': 'customer.price',
-            'type': 'ir.actions.act_window',
+        customer_prices_action.update({
             'domain': "[('product_id', '=', %s)]" % self.id,
             'context': "{ 'default_product_id': %s }" % self.id
-        }
+        })
+        return customer_prices_action

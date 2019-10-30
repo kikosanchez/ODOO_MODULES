@@ -10,7 +10,7 @@
             </xpath>
 
             <xpath expr="//field[@name='order_line']/tree" position="attributes">
-                <attribute name="decoration-success">price_old > 0</attribute>
+                <attribute name="decoration-success">price_old != 0</attribute>
             </xpath>
 
 	        <xpath expr="//field[@name='amount_untaxed']" position="before">
