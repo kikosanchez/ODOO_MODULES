@@ -26,13 +26,8 @@ msgstr "Attention, regardez ça!"
 #. module: js_customer_prices
 #: js_customer_prices\models\customer_price.py:37
 #, python-format
-msgid ""
-"Customer price is higher or equal than the one assigned on its pricelist\n"
-"Actual price on %s is: %s"
-msgstr ""
-"Le prix spécifique du client est supérieur ou égal à celui attribué dans sa "
-"liste de prix %s\n"
-"Le prix dans sa liste de prix est: %s"
+msgid "Customer price is higher or equal than the one assigned on its pricelist\nActual price on %s is: %s"
+msgstr "Le prix spécifique du client est supérieur ou égal à celui attribué dans sa liste de prix %s\nLe prix dans sa liste de prix est: %s"
 
 #. module: js_customer_prices
 #: model:ir.model.fields,field_description:js_customer_prices.field_product_product_customer_prices_count
@@ -47,12 +42,8 @@ msgstr "Vos prix spécifiques sont automatiquement recalculées"
 
 #. module: js_customer_prices
 #: model:ir.ui.view,arch_db:js_customer_prices.website_total
-msgid ""
-"<span class=\"col-xs-6\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"/"
-"> Customer discounts:</span>"
-msgstr ""
-"<span class=\"col-xs-6\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"/"
-"> Remises client:</span>"
+msgid "<span class=\"col-xs-6\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"/> Customer discounts:</span>"
+msgstr "<span class=\"col-xs-6\"><i class=\"fa fa-info-circle\" aria-hidden=\"true\"/> Remises client:</span>"
 
 #. module: js_customer_prices
 #: model:ir.actions.act_window,help:js_customer_prices.action_customer_prices_partner
@@ -235,27 +226,15 @@ msgstr "Variante"
 #. module: js_customer_prices
 #: model:ir.actions.act_window,help:js_customer_prices.action_customer_prices_partner
 msgid "You can define a specific price by customer into a range of dates."
-msgstr ""
-"Vous pouvez définir un prix spécifique à partir d'un montant et délimité par "
-"une plage de dates."
+msgstr "Vous pouvez définir un prix spécifique à partir d'un montant et délimité par une plage de dates."
 
 #: model:ir.actions.act_window,help:js_customer_prices.action_customer_prices_tmpl
-msgid ""
-"When a variant does not have a specific price for a customer, a rule is "
-"searched for the template, for this the total number of variants in the "
-"order/cart is taken into account."
-msgstr ""
-"Quand une variante n'a pas de prix spécifique pour un client, on est "
-"recherchée dans le modèle. Pour cela, le nombre total de variantes dans la "
-"commande/panier est pris en compte."
+msgid "When a variant does not have a specific price for a customer, a rule is searched for the template, for that the total number of variants in the order/cart is taken into account."
+msgstr "Quand une variante n'a pas de prix spécifique pour un client, on est recherchée dans le modèle. Pour cela, le nombre total de variantes dans la commande/panier est pris en compte."
 
 #: model:ir.actions.act_window,help:js_customer_prices.action_customer_prices_variant
-msgid ""
-"If a specific price for a customer is found in the variant it will be used "
-"instead of any other price."
-msgstr ""
-"Si un prix spécifique est trouvé dans la variante, il sera utilisé à la "
-"place de tout autre prix."
+msgid "If a specific price for a customer is found in the variant it will be used instead of any other price."
+msgstr "Si un prix spécifique est trouvé dans la variante, il sera utilisé à la place de tout autre prix."
 
 #. module: js_customer_prices
 #: model:ir.model,name:js_customer_prices.model_customer_price
