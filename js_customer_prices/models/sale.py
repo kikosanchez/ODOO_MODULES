@@ -78,7 +78,7 @@ class SaleOrder(models.Model):
                             customer_price_taxes = line.tax_id.compute_all(customer_price, order.currency_id, line.product_uom_qty, product=line.product_id, partner=order.partner_shipping_id)
 
                             # Actualizar línea
-                            line.write({
+                            line.update({
                                 # Precio del cliente, se guarda para poder compararlo a posterior
                                 'price_ctm': customer_price if product_list_price != customer_price else 0.0, 
                                 # Precio anterior a esta sobreescritura
