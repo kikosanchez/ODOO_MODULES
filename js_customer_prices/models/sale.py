@@ -62,17 +62,6 @@ class SaleOrder(models.Model):
                         decimal_places = order.partner_id.property_product_pricelist.currency_id.decimal_places
                         product_list_price = round(product_list_price/qty, decimal_places)
                         customer_price = round(customer_price/qty, decimal_places)
-
-                        # Guardar nuevos datos (necesario para recalcular todas las líneas y no sólo la actual)
-                        line.write({
-                            # Precio de línea
-                            'price_unit': customer_price,
-                            # Precio del cliente, se guarda para poder compararlo a posterior
-                            'price_ctm': customer_price if product_list_price != customer_price else 0.0, 
-                            # Precio anterior a esta sobreescritura
-                            'price_old': product_list_price if product_list_price != customer_price else 0.0
-                        })
-
                         # Si es un precio manual no lo actualizamos (sabemos que es manual
                         # porque no está en la tarifa ni en los precios de cliente)
                         if line.price_unit in (product_list_price, customer_price, line.price_ctm):
@@ -84,6 +73,16 @@ class SaleOrder(models.Model):
                             # igualmente su precio, en caso contrario lo sumamos al total
                             if customer_discount > 0:
                                 customer_discounts += customer_discount
+
+                            # Guardar nuevos datos (necesario para recalcular todas las líneas y no sólo la actual)
+                            line.write({
+                                # Precio de línea
+                                'price_unit': customer_price,
+                                # Precio del cliente, se guarda para poder compararlo a posterior
+                                'price_ctm': customer_price if product_list_price != customer_price else 0.0, 
+                                # Precio anterior a esta sobreescritura
+                                'price_old': product_list_price if product_list_price != customer_price else 0.0
+                            })
 
                             # Calcular impuestos del nuevo precio
                             customer_price_taxes = line.tax_id.compute_all(customer_price, order.currency_id, line.product_uom_qty, product=line.product_id, partner=order.partner_shipping_id)
