@@ -18,16 +18,22 @@ msgstr ""
 "Language: fr\n"
 
 #. module: js_customer_prices
-#: js_customer_prices\models\customer_price.py:36
+#: js_customer_prices\models\customer_price.py:42
 #, python-format
 msgid "Warning, check this!"
 msgstr "Attention, regardez ça!"
 
 #. module: js_customer_prices
-#: js_customer_prices\models\customer_price.py:37
+#: js_customer_prices\models\customer_price.py:43
 #, python-format
 msgid "Customer price is higher or equal than the one assigned on its pricelist\nActual price on %s is: %s"
 msgstr "Le prix spécifique du client est supérieur ou égal à celui attribué dans sa liste de prix %s\nLe prix dans sa liste de prix est: %s"
+
+#. module: js_customer_prices
+#: js_customer_prices\models\customer_price.py:64
+#, python-format
+msgid "Product/variant must be unique in customer pricelist!"
+msgstr ""
 
 #. module: js_customer_prices
 #: model:ir.model.fields,field_description:js_customer_prices.field_product_product_customer_prices_count
@@ -155,6 +161,16 @@ msgstr "Quantité Min"
 #: model:ir.model.fields,field_description:js_customer_prices.field_customer_price_price
 msgid "Price"
 msgstr "Prix"
+
+#. module: js_customer_prices
+#: model:ir.model.fields,field_description:js_customer_prices.field_sale_order_line_price_ctm
+msgid "Customer Price"
+msgstr ""
+
+#. module: js_customer_prices
+#: model:ir.model.fields,field_description:js_customer_prices.field_sale_order_line_price_old
+msgid "Pricelist Price"
+msgstr ""
 
 #. module: js_customer_prices
 #: model:ir.model,name:js_customer_prices.model_product_product

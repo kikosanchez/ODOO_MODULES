@@ -75,7 +75,7 @@
             <field name="search_view_id" ref="view_customer_price_filter"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">Click to add a new customer price rule.</p>
-                <p>When a variant does not have a specific price for a customer, a rule is searched for the template, for this the total number of variants in the order/cart is taken into account.</p>
+                <p>When a variant does not have a specific price for a customer, a rule is searched for the template, for that the total number of variants in the order/cart is taken into account.</p>
             </field>
         </record>
 
