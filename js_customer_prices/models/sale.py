@@ -62,6 +62,17 @@ class SaleOrder(models.Model):
                         decimal_places = order.partner_id.property_product_pricelist.currency_id.decimal_places
                         product_list_price = round(product_list_price/qty, decimal_places)
                         customer_price = round(customer_price/qty, decimal_places)
+
+                        # Guardar nuevos datos (necesario para recalcular todas las líneas y no sólo la actual)
+                        line.write({
+                            # Precio de línea
+                            'price_unit': customer_price,
+                            # Precio del cliente, se guarda para poder compararlo a posterior
+                            'price_ctm': customer_price if product_list_price != customer_price else 0.0, 
+                            # Precio anterior a esta sobreescritura
+                            'price_old': product_list_price if product_list_price != customer_price else 0.0
+                        })
+
                         # Si es un precio manual no lo actualizamos (sabemos que es manual
                         # porque no está en la tarifa ni en los precios de cliente)
                         if line.price_unit in (product_list_price, customer_price, line.price_ctm):
@@ -79,19 +90,15 @@ class SaleOrder(models.Model):
 
                             # Actualizar línea
                             line.update({
-                                # Precio del cliente, se guarda para poder compararlo a posterior
-                                'price_ctm': customer_price if product_list_price != customer_price else 0.0, 
-                                # Precio anterior a esta sobreescritura
-                                'price_old': product_list_price if product_list_price != customer_price else 0.0,
-                                # Precio de línea, este puede ser cambiado en cualquier momento
-                                'price_unit': customer_price, 
+                                # Precio de línea
+                                'price_unit': customer_price,
                                 # Subtotal de la línea
                                 'price_subtotal': customer_price_taxes['total_excluded'], 
                                 # Total de la línea
-                                'price_total': customer_price_taxes['total_included'], 
+                                'price_total': customer_price_taxes['total_included']
                             })
 
-                            # Actualizar precio en la interfaz
+                            # Actualizar precio (price_reduce_taxinc/price_reduce_taxexcl)
                             line._get_price_reduce()
                 # Actualizar descuento total en pedido
                 order.update({ 'customer_discounts': customer_discounts })

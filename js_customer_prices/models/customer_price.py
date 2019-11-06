@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 import odoo.addons.decimal_precision as dp
+from odoo.exceptions import ValidationError
 import time
 
 class CustomerPrice(models.Model):
@@ -43,6 +44,7 @@ class CustomerPrice(models.Model):
                     }
                 }
 
+
     @api.model
     def _get_partner_parents_ids(self, partner, parents=[]):
         # Buscar recursivamente los padres
@@ -53,7 +55,17 @@ class CustomerPrice(models.Model):
         return parents
 
     @api.model
-    def get_price_obj(self, partner_id, product_id, min_qty, date, product_key = 'product_id'):
+    def _check_price_obj(self, values):
+        # Si ya existe esta combianción de plantilla/variante/cliente no lo creamos
+        if self.env['customer.price'].search([
+            ('product_tmpl_id', '=', values.get('product_tmpl_id', False)), 
+            ('product_id', '=', values.get('product_id', False)), 
+            ('partner_id', '=', values.get('partner_id', False))
+        ]):
+            raise ValidationError(_('Product/variant must be unique in customer pricelist!'))
+
+    @api.model
+    def get_price_obj(self, partner_id, product_id, min_qty, date=False, product_key='product_id'):
         # Si no se pasa una fecha límite es la actual
         date_end = date or time.strftime("%Y-%m-%d")
         # Buscamos y devolvemos la instancia
@@ -99,3 +111,13 @@ class CustomerPrice(models.Model):
         # cambiar el tipo de datos, a efectos prácticos
         # se puede interpretar como un False
         return 0.0
+
+    @api.model
+    def create(self, values):
+        self._check_price_obj(values)
+        return super(CustomerPrice, self).create(values)
+
+    @api.multi
+    def write(self, values):
+        self._check_price_obj(values)
+        return super(CustomerPrice, self).write(values)
