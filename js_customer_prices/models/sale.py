@@ -76,7 +76,7 @@ class SaleOrder(models.Model):
 
                             # Guardar nuevos datos (necesario para recalcular todas las líneas y no sólo la actual)
                             line.write({
-                                # Precio de línea
+                                # Precio de línea (web)
                                 'price_unit': customer_price,
                                 # Precio del cliente, se guarda para poder compararlo a posterior
                                 'price_ctm': customer_price if product_list_price != customer_price else 0.0, 
@@ -89,7 +89,7 @@ class SaleOrder(models.Model):
 
                             # Actualizar línea
                             line.update({
-                                # Precio de línea
+                                # Precio de línea (backend)
                                 'price_unit': customer_price,
                                 # Subtotal de la línea
                                 'price_subtotal': customer_price_taxes['total_excluded'], 
@@ -97,7 +97,7 @@ class SaleOrder(models.Model):
                                 'price_total': customer_price_taxes['total_included']
                             })
 
-                            # Actualizar precio (price_reduce_taxinc/price_reduce_taxexcl)
+                            # Actualizar precio (price_reduce_taxinc/price_reduce_taxexcl) en web
                             line._get_price_reduce()
                 # Actualizar descuento total en pedido
                 order.update({ 'customer_discounts': customer_discounts })
