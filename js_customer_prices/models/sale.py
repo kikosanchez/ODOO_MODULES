@@ -10,7 +10,6 @@ class SaleOrder(models.Model):
 
     @api.model
     def _get_product_templates(self):
-        self.ensure_one()
         tmpls_in_order = {}
         # Recorremos todas las líneas para obtener una relacción
         # de plantillas y cantidad total de variantes
@@ -71,7 +70,6 @@ class SaleOrder(models.Model):
 
     @api.multi
     def write(self, values):
-        print(values)
         isWrited = super(SaleOrder, self).write(values)
         if isWrited:
             for order in self:
