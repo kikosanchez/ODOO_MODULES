@@ -68,13 +68,19 @@
                         $parent.find("#add_to_cart").show();
                         $parent.find("div.css_quantity").show();
                         $price_wrap.show();
-                    }else{
-                        // No está disponible o no tiene precio
+                    }else if (current_variant_price <= 0){
+                        // No tiene precio
                         var product_name = $('.c_product_name').text();
                         $('<span class="no-price"><hr style="margin-bottom: 12px"/><a href="/contactus" class="btn btn-danger">Consultar precio</a></span>').insertAfter($price_wrap);
                         $parent.find("#add_to_cart").hide();
                         $parent.find("div.css_quantity").hide();
                         $price_wrap.hide();
+                    }else{
+                        // No está disponible
+                        var product_name = $('.c_product_name').text();
+                        $('<span class="no-price"><hr style="margin-bottom: 12px"/><a href="/contactus" class="btn btn-danger">Consultar disponibilidad</a></span>').insertAfter($price_wrap);
+                        $parent.find("#add_to_cart").hide();
+                        $parent.find("div.css_quantity").hide();
                     }
 
                     break;
