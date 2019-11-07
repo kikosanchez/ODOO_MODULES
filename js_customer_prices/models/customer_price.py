@@ -44,7 +44,6 @@ class CustomerPrice(models.Model):
                     }
                 }
 
-
     @api.model
     def _get_partner_parents_ids(self, partner, parents=[]):
         # Buscar recursivamente los padres

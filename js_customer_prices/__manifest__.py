@@ -9,7 +9,7 @@
     'depends': [
         'product',
         'sale',
-        'website'
+        'website_sale'
     ],
 
     # Security & Views

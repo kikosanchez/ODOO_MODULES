@@ -13,7 +13,7 @@
     </template>
 
     <!-- Añadir descuentos de cliente en el carrito -->
-    <template id="website_total" inherit_id="website_sale.total" name="website_sale.cart.discounts">
+    <template id="website_customer_total" inherit_id="website_sale.total" name="website_sale.cart.discounts">
         <xpath expr="//div[@id='order_total_untaxed']" position="before">
             <div class="row" id="order_customer_discounts" t-if="website_sale_order.customer_discounts &gt; 0" title="Customer discounts are recalculated on any cart changes" data-toggle="tooltip" data-placement="left">
                 <span class="col-xs-6"><i class="fa fa-info-circle" aria-hidden="true"></i> Customer discounts:</span>
