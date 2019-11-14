@@ -46,6 +46,10 @@ class CustomerPrice(models.Model):
 
     @api.model
     def _get_partner_parents_ids(self, partner, parents=[]):
+        ##todo
+        ## Creo que deberías de buscar solo hasta el parent marcado como compañia
+        
+        
         # Buscar recursivamente los padres
         # de un contacto
         while partner.parent_id:
@@ -55,7 +59,11 @@ class CustomerPrice(models.Model):
 
     @api.model
     def _check_price_obj(self, values):
+        
+        ## todo
+        ## si solo quieres comprobar si exsite no instancies, haz un search read que es muuucho más rápido
         # Si ya existe esta combianción de plantilla/variante/cliente no lo creamos
+        
         if self.env['customer.price'].search([
             ('product_tmpl_id', '=', values.get('product_tmpl_id', False)), 
             ('product_id', '=', values.get('product_id', False)), 
@@ -65,6 +73,11 @@ class CustomerPrice(models.Model):
 
     @api.model
     def get_price_obj(self, partner_id, product_id, min_qty, date=False, product_key='product_id'):
+        ## Todo 
+        ## Lo mismo que antes, haz un serarch_read, solo te interesa recuperar 
+        ## el valor del campo customer price y el del partner para filtrar.
+        
+        
         # Si no se pasa una fecha límite es la actual
         date_end = date or time.strftime("%Y-%m-%d")
         # Buscamos y devolvemos la instancia
@@ -84,6 +97,15 @@ class CustomerPrice(models.Model):
 
     @api.model
     def get_customer_price(self, partner, product, qty, date=False):
+        ## Todo
+        ## Haces 2 llamadas al get_price_obj, una con product_id, y otra con product_tmpl_id. 
+        ## Puedes hacer una sola, recuperandotodos los registros y ordenando por el que consideres primero
+        ## si en el order del searh_read pones order = 'product_id, min_qty_ASC" ó order = 'product_tmpl_id, min_qty_ASC
+        ## ademas el search_read puedes hacerlos con partner_id in clients_to_search recuperas todos, y después 
+        ## coges el que te haga falta.        
+
+        
+        
         # Si no se recibe una instancia de un models.Model (un objeto)
         # mejor pasar la instancia si podemos para evitar una segunda llamada a la BBDD
         if not isinstance(partner, models.Model):
