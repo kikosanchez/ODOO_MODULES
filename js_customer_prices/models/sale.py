@@ -8,6 +8,14 @@ class SaleOrder(models.Model):
     # Aquí se almacena el importe descontado en el pedido para este cliente sobre su tarifa (por tener un precio especial)
     customer_discounts = fields.Monetary(string='Customer discounts', readonly=True, default=0.0)
 
+    ##api.depends('order_line.price_total')
+    ## def _amount_all(self):
+    ##  
+    ##  for order in self:
+    ##      order.customer_discounts = sum(x.price_olf- x.price.ctm for x in order.order_line
+    ## return super().....
+    
+    
     @api.model
     def _get_product_templates(self):
         tmpls_in_order = {}
@@ -85,7 +93,17 @@ class SaleOrderLine(models.Model):
     price_old = fields.Float('Pricelist Price', digits=dp.get_precision('Product Price'), default=0.0)
     # Aquí se almacena el precio específico del cliente
     price_ctm = fields.Float('Customer Price', digits=dp.get_precision('Product Price'), default=0.0)
-
+    
+    ##
+    ##@api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id')
+    ##def _compute_amount(self):
+    ## si la plantilla de la línea tiene variantes y si hay variantes en las líneas de pedido,   
+    ## lines_to_check = self.order_id.order_lines.filtered(lambda x: x.product_id.product_tmpl_id==line.product_id.product_tmpl_id
+    ## if lines_to_check:
+    ##  lines_toc_check ._recalculate_prices_for_customer(.....)
+    ##
+    ## con esto calculas por línea lo que necesites
+    
     @api.model
     def _recalculate_prices_for_customer(self, partner_id, partner_shipping_id, pricelist_id, date_order, tmpls_in_order):
         qty = self.product_uom_qty
